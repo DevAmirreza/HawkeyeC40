@@ -1,0 +1,83 @@
+/* ManagePet */
+
+//PetName : puppy!#&*%@()=+-  					Expected : Invalid Pet Name
+//PetName : puppy 			  					Expected : ok 
+//PetName : [Empty]								Expected : PetName is required
+//Breed : german!#&*%@()=+-   					Expected : Invalid breed 
+//Breed : german 			  					Expected : ok
+//Gender : Selected 							Expected : ok
+//Gender : Not Selected							Expected : Gender is required
+//PetSize : Selected 							Expected : ok
+//PetSize : Not Selected 						Expected : Pet Size is required
+//Vaccination Field : test#!45 					Expected : Invalid Date 
+//Vaccination Field : 18-Dec-17					Expected : ok 
+//Vaccination Field : 18-Dec-27(10 years)		Expected : ok
+//Vaccination Field : 18-Dec-28(11 years)		Expected : Invalid Date
+//Vaccination Field : 18-Dec-07(10 years past)	Expected : ok
+//Vaccination Field : 18-Dec-06(11 years past)	Expected : Invalid Date 
+
+
+/*Manage Customer */
+
+
+//First Name Field : Amir								Expected: ok
+//Last Name Field  : Yadollahi							Expected: ok
+//Home Phone# 	   : 4389905678							Expected: ok
+//Home phone#      : (819)4519926						Expected: ok
+//Home phone#      : 819-451-9926						Expected: ok
+//Address 		   : 115 Rue De St-Joseph				Expected: ok
+//City 			   : ottawa								Expected: ok
+//Province 		   : ON									Expected: ok
+//Postal Code 	   : J1B 0B6							Expected: ok
+//Email			   : sdf@sfds.com						Expected: ok
+//Emergency first name : Steve							Expected: ok
+//Emergency last name : Jobs 							Expected: ok
+//Emergency phone # : 8194519926						Expected: ok
+//Emergency phone # : (819)4519926						Expected: ok
+//Emergency phone # : 819-451-9926						Expected: ok
+
+
+//First Name Field : [Empty]							Expected: Name is required
+//Last Name Field  : [Empty]							Expected: Field is required
+//Home Phone# 	   : [Empty]							Expected: Field is required
+//Address 		   : [Empty]							Expected: Field is required
+//City 			   : [Not Selected]						Expected: Field is required
+//Province 		   : [Not Selected]						Expected: Field is required
+//Postal Code 	   : [Empty]							Expected: Field is required
+
+
+//First Name Field : Amir#!&%$-+						Expected: Field is invalid
+//Last Name Field  : Yadollahi#!&%$-+					Expected: Field is invalid
+//Home Phone# 	   : 4389905678#!&%$-+					Expected: Field is invalid
+//Address 		   : 115 Rue De St-Joseph#!&%$-+		Expected: Field is invalid
+//City 			   : ottawa#!&%$-+						Expected: Field is invalid
+//Province 		   : ON#!&%$-+							Expected: Field is invalid
+//Postal Code 	   : J1B 0B6#!&%$-+						Expected: Field is invalid
+//Email			   : dsfsdfsdf#!&%$-+					Expected: Field is invalid
+//Emergency first name : Steve#!&%$-+					Expected: Field is invalid
+//Emergency last name : Jobs#!&%$-+						Expected: Field is invalid
+//Emergency phone # : 8194519926#!&%$-+					Expected: Field is invalid
+
+//First Name Field : 2222222							Expected: Wrong first name format
+//Last Name Field  : 1111111							Expected: Wrong last  name format
+//Email			   : sdasdas@ssdfsdf					Expected: Wrong Email Format
+//Email			   : ssdfsdf							Expected: Wrong Email Format
+//Email			   : sdasdas.com						Expected: Wrong Email Format
+//Home Phone# 	   : dsfdsfdsfd							Expected: Wrong phone# format 
+//Emergency first name : 111111aaaaa					Expected: Wrong field format
+//Emergency last name  : 111111aaaaa					Expected: Wrong field format
+//Emergency phone # : 111111aaaaa						Expected: Wrong field format
+//Postal Code 	    : dfgdfgdfg							Expected: Wrong field format
+//Postal Code 	    : J1B 0B6							Expected: Wrong field format
+
+
+/*Manage Reservation*/
+
+//Start Date : [Empty]									Expected:Start Date is required
+//End Date : [Empty]									Expected:End Date is required
+//Frequency : [Empty]									Expected:Frequency is required
+//Frequency : [Empty]									Expected:Frequency is required
+
+
+//Start Date : asdasd									Expected:Invalid Start Date 
+//End Date : 234dsfsdf									Expected:Invalid End Date 

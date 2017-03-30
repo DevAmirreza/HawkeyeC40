@@ -1,0 +1,458 @@
+﻿@import url('https://fonts.googleapis.com/css?family=Playfair+Display+SC|Vidaloka');
+@import url('https://fonts.googleapis.com/css?family=Hind');
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+body {
+    background-color: #EEEEEE;
+    overflow-x: hidden;
+}
+/*Navbar*/
+
+.navbar-inverse .navbar-collapse,
+.navbar-inverse .navbar-form {
+    border-radius: 0;
+    border: none;
+}
+.navbar {
+    width: 100%;
+    background-color: #1B272B;
+    -webkit-box-shadow: 1px 2px 20px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 1px 2px 20px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 1px 2px 20px 0px rgba(0, 0, 0, 0.75);
+    margin-bottom: 0;
+    z-index: 1;
+    border-color: #1B272B;
+
+}
+
+.navbar-brand{
+    font-family: 'Raleway', sans-serif;
+    font-size:180% ;
+    color:#d35400;
+}
+.page_title {
+    width: 100%;
+    height: 50px;
+    background-color: #D35400;
+    color: white;
+    top: auto;
+    margin: 0;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 1%;
+    padding-top: 10px;
+    font-size: 150%;
+}
+.rightSide {
+    background-color: #F2F1EF;
+    margin: 0;
+    margin-right: auto;
+    margin-left: auto;
+    top: 0;
+    border: solid 1px silver;
+    -webkit-box-shadow: -1px 2px 20px -3px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -1px 2px 20px -3px rgba(0, 0, 0, 0.75);
+    box-shadow: -1px 2px 20px -3px rgba(0, 0, 0, 0.75);
+    padding-top: 15px;
+}
+.petProfileImage {
+    width: 150px;
+    height: 150px;
+    border: solid 1.5px #EF4836;
+    border-radius: 50%;
+    background-size: cover;
+    background-position-x: center;
+    background-position-y: center;
+    margin: 0;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+}
+/**Form Css**/
+
+.container {
+    padding-top: 15px;
+}
+.label-control {
+    text-align: right;
+    margin-top: 5px;
+}
+.cal {
+    margin-top: 8px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.btn-primary {
+    margin-right: 15px;
+}
+/*.item1 {
+border:solid 1px red ;
+}
+
+.item2 {
+border:solid 1px red ;
+}*/
+
+.txtArea {
+    margin-top: 10px;
+    padding: 1%;
+    width: 100%;
+    text-align: left;
+}
+.petList {
+    margin: 0;
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+    min-height: 200px;
+    border-top: solid 1px silver;
+    padding-top: 15px;
+    padding-bottom: 5px;
+    background-color: white;
+    padding: 1%;
+}
+
+.listOfAllPets {
+    max-height:400px;
+    overflow-y:scroll;
+}
+
+.right {
+    margin-top: 20px;
+    text-align: center;
+    width: 45%;
+    margin-top: 0;
+    margin-right: auto;
+    margin-left: auto;
+}
+.this {
+    border: solid 1px red;
+}
+.right {
+    text-align: right;
+}
+.subtitle {
+    padding-left: 15px;
+    border-bottom: solid 1px silver;
+}
+
+
+.continue{
+    text-align:center ;
+    margin:0 ;
+    margin-right:auto ;
+    margin-left:auto ;
+    font-size:200% ;
+    width:100%;
+}
+
+.detail {
+text-align:center ;
+}
+
+.message {
+font-size:120% ;
+font-family: 'Hind', sans-serif;
+line-height:38px ;
+}
+
+.banner{
+    margin-top:100px;
+    width:80%;
+    margin-right:auto ;
+    margin-left:auto ;
+    background-color:rgba(0,0,0,0.75);
+    color:white ;
+    padding:1% ;
+    font-size:130% ;
+    line-height:40px ;
+    text-align:center ;
+    font-family: 'Hind', sans-serif;
+    margin-bottom:15px ;
+}
+
+
+.align-left {
+    width:100% ;
+    text-align:left ;
+    padding-left:3% ;
+    font-size:110% ;
+}
+
+.footer{
+  top:auto ;
+  position: absolute;
+  bottom: 0;
+  margin-bottom:0 ;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: red;
+}
+.cover{
+    background-position:unset;
+    background-image:url('../images/anoir-chafik-37957.jpg');
+    border:solid 1px transparent  ;
+    background-size:cover;
+}
+
+.error_box{
+    margin:0 ;
+    margin-right:auto ;
+    margin-left:auto ;
+    padding-left:110px ; 
+    font-size:110% ;
+    text-align:left ;
+    font-weight:bold ;
+}
+
+.error_style{
+    color:red ;
+}
+
+.error_msg {
+color:red ;
+text-align:right  ; 
+}
+
+.red {
+color:red ;
+}
+
+
+footer{
+    width:100% ;
+    margin-top:25px ;
+    margin-bottom:0 ;
+    height:100px ;
+    margin-right:auto ;
+    margin-left:auto ;
+    bottom:0 ;
+     background-color: #1D2A2E;
+    -webkit-box-shadow: 1px 2px 20px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 1px 2px 20px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 1px 2px 20px 0px rgba(0, 0, 0, 0.75);
+}
+
+.copyright{
+    color:silver ; 
+    font-size:95% ;
+    text-align:center ;
+    padding-top:1% ;
+}
+
+.search {
+width:60% ;
+margin:0 ;
+margin-right:auto ;
+margin-left:350px ; 
+
+}
+
+.glyphicon-exclamation-sign{
+    padding-top:9px ;
+    margin-left:6px ;
+}
+
+.btnRadio {
+    background-color: #D35400;
+    color:white ;
+    padding-right:2% ;
+    padding-left:2% ;
+}
+
+.whiteBackground {
+    background-color:white !important ;
+}
+
+
+
+@media (min-width: 768px) {
+
+    ul{
+          list-style-image: url(/images/warning.png);
+    }
+
+    .block{
+        display:block ; 
+        margin-top:15px ;
+        float:left;
+        margin-left:-9px !important;
+    }
+
+.error_msg
+{
+    margin-left:115px ;
+    color:red ;
+    text-align:left ;
+    position:static;
+    padding-bottom:20px ;
+    overflow: hidden ;
+    max-height:20px; 
+    display:block;
+}
+
+
+    .oneSixity {
+    margin-left:165px;
+    }
+
+    .row {
+        margin-top: 25px;
+    }
+    .push-left {
+        margin-left: -30px;
+    }
+    .buttons {
+        margin-top: 20px;
+        margin-left: 175px;
+    }
+    .container {
+        overflow: hidden;
+        background-color: #ECECEC;
+        border: solid 1px silver;
+    }
+    .btnEdit {
+        margin: 0;
+        margin-left: auto;
+        margin-right: 5px;
+        margin-bottom: 20px;
+        float: right;
+        padding-right: 2%;
+        padding-left: 2%;
+    }
+    .btnSave {} .navbar {
+        border-radius: 0;
+    }
+    .form-control {
+        width: 40%;
+    }
+    .short {
+        width: 20%;
+    }
+    .medium {
+        width: 30%;
+    }
+    .rightSide {
+        width: 60%;
+        margin-left: auto;
+        margin-right: 0;
+        /*padding-left:20% ;*/
+        
+        overflow: hidden;
+        float: right;
+    }
+    .clerkSearchBox {
+        width: 38%;
+        height: 665px;
+        top: auto;
+        margin: 0;
+        margin-right: auto;
+        margin-left: 0;
+        display: inline-block;
+        position: relative;
+    }
+    .clerkSearchBox > .form-control {
+        width: 50%;
+    }
+    .centerit {
+        margin: 0;
+        margin-right: auto;
+        margin-left: auto;
+        width: 90%;
+        padding-top: 15px;
+        padding-left: 15%;
+    }
+    .item2 {
+        float: right;
+        margin-left: auto;
+    }
+    .cal {
+        margin-top: 8px;
+        margin-right: auto;
+        margin-left: 0;
+    }
+    .prov {
+        width: 15%;
+    }
+    .city {
+        width: 20%;
+    }
+    .postal {
+        width: 25%;
+    }
+    .fname {
+        width: 30%;
+    }
+    .phone {
+        width: 15%;
+    }
+    .right-wrap {
+        display: inline-block;
+        float: right;
+        margin: 0;
+        margin-right: 100px;
+        margin-left: auto;
+    }
+    .container {
+        padding-bottom: 20px;
+        margin: 0;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .pet-save {
+        margin-left: -60px;
+    }
+    .btnEditPet {
+        margin-top: 20px;
+        margin-left: 50px;
+        padding-right: 4%;
+        padding-left: 4%;
+        font-size: 110%;
+    }
+
+
+
+
+.cover {
+width:100% ;
+height:530px ;
+margin:0 ;
+margin-right:auto ;
+margin-left:auto ; 
+background-image:url('../images/anoir-chafik-37957.jpg') ;
+background-position:center -80px ;
+background-repeat:no-repeat ;
+background-size:cover  ;
+background-attachment:fixed;
+}
+
+.cover2 {
+background-image:url('../images/robert-larsson-64550.jpg') ; 
+}
+
+
+
+.conver_content {
+width:100% ;
+height:100% ;
+margin:0 ;
+margin-right:auto ;
+margin-left:auto ;
+background-color:rgba(0,0,0,0.3) ;
+
+}
+
+.cover_title {
+margin:0 ;
+margin-right:auto ;
+margin-left:auto ;
+text-align:left ;
+padding-top:50px;
+padding-left:35px ;
+color:white ;
+text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
+font-family: 'Playfair Display SC', serif;
+font-size:350% ;
+}
+}
