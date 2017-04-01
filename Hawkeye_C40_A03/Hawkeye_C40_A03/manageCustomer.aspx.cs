@@ -30,8 +30,8 @@ namespace AYadollahibastani_C40A02
                 btnRemove.Visible = false;
             }
             changeState(false);
-            //temporary 
-
+            
+            //reset status notifiation 
             lblMsg.Text = "";
 
         }
@@ -40,7 +40,6 @@ namespace AYadollahibastani_C40A02
         protected void Page_PreRender(object sender, EventArgs e)
         {
             //set sessions
-
             if (Session["owner"] == null)
             {
                 newOwner = new Hvk.Owner();
