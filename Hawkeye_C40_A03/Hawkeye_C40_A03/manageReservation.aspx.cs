@@ -11,7 +11,7 @@ namespace AYadollahibastani_C40A02
     {
         Hvk.HvkPetReservation newReservation = null;
         Hvk.Owner newOwner = null ;
-        const int X = 0;
+        int X = 0;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -47,8 +47,8 @@ namespace AYadollahibastani_C40A02
             }
             else
             {
-                newReservation = ((Hvk.HvkPetReservation)Session["reservation"]);
-                newOwner = (Hvk.Owner)Session["owner"];
+                 Session["reservation"] = newReservation;
+                Session["owner"] = newOwner;
             }
 
             if (!IsPostBack)
@@ -57,25 +57,25 @@ namespace AYadollahibastani_C40A02
 
 
         //updating fields need to be change inroder to work with db
-        protected void updateFields()
+        protected void updateFields(int petIndex)
         {
-            newReservation.pet = new List<Hvk.PetReservation>();
-            newReservation.pet.Add(new Hvk.PetReservation());
-            newReservation.pet[X].pet = new Hvk.Pet();
-            newReservation.pet[X].pet.name = lbCurrentPets.Items[X].Text; 
-            newReservation.pet[X].name = lbCurrentPets.Items[X].Text;
-            newReservation.pet[X].note = Request.Form[txtResNote.UniqueID];
-            newReservation.pet[X].medication = new List<Hvk.Medication>();
-            newReservation.pet[X].medication.Add(new Hvk.Medication(100, Request.Form[txtMedication.UniqueID], Request.Form[txtMedDosage.UniqueID], Request.Form[txtMedicationNote.UniqueID], new DateTime(2017, 4, 3)));
+            //newReservation.pet = new List<Hvk.PetReservation>();
+            //newReservation.pet.Add(new Hvk.PetReservation());
+            //newReservation.pet[petIndex].pet = new Hvk.Pet();
+            newReservation.pet[petIndex].pet.name = lbCurrentPets.Items[petIndex].Text; 
+            newReservation.pet[petIndex].name = lbCurrentPets.Items[petIndex].Text;
+            newReservation.pet[petIndex].note = Request.Form[txtResNote.UniqueID];
+            newReservation.pet[petIndex].medication = new List<Hvk.Medication>();
+            newReservation.pet[petIndex].medication.Add(new Hvk.Medication(100, Request.Form[txtMedication.UniqueID], Request.Form[txtMedDosage.UniqueID], Request.Form[txtMedicationNote.UniqueID], new DateTime(2017, 4, 3)));
             // newReservation.reservaion.startDate = DateTime.ParseExact(Request.Form[txtStartDate.ID],"ddmmyyyy", CultureInfo.InvariantCulture);
             //newReservation.reservaion.endDate = DateTime.ParseExact(Request.Form[txtEndDate.ID],"dd/mm/yy", CultureInfo.InvariantCulture);
             //run info - get it from db
-            newReservation.pet[0].runAssigned = new Hvk.Run(100, 'L', 'c', 'D', 0);
-            newReservation.pet[0].service = new List<Hvk.ReservationService>();
+            newReservation.pet[petIndex].runAssigned = new Hvk.Run(100, 'L', 'c', 'D', 0);
+            newReservation.pet[petIndex].service = new List<Hvk.ReservationService>();
             Hvk.ReservationService service = new Hvk.ReservationService();
-            newReservation.pet[0].service.Add(service);
+            newReservation.pet[petIndex].service.Add(service);
             Hvk.PetFood food = new Hvk.PetFood(0, Request.Form[txtFoodQuantity.UniqueID], new Hvk.Food(100, ""));
-            newReservation.pet[0].petFood = food;
+            newReservation.pet[petIndex].petFood = food;
         }
 
 
@@ -114,8 +114,8 @@ namespace AYadollahibastani_C40A02
                     foreach (var item in newReservation.pet)
                     {
                         lbCurrentPets.Items.Add(item.pet.name);
-                        lbCurrentPets.Items[lbCurrentPets.Items.Count - 1].Value = item.petNumber.ToString();
-                        //newReservation.pet.Add();
+                        lbCurrentPets.Items[lbCurrentPets.Items.Count - 1].Value = item.petNumber.ToString(); 
+
                     }
                 }
 
@@ -202,7 +202,7 @@ namespace AYadollahibastani_C40A02
             if (valMedication.IsValid == true && valEndDate.IsValid == true && validationFlag == false )
                 {
                     btnEdit.Visible = true;
-                    updateFields();
+                    updateFields(X);
                     loadData();
                     changeState(false);
                 }
@@ -214,7 +214,16 @@ namespace AYadollahibastani_C40A02
 
         protected void ddlChoosePet_TextChanged(object sender, EventArgs e)
         {
-            changeState(validateReservationPetList()); 
+            bool validation = validateReservationPetList(); 
+            changeState(validation);
+            if (validation)
+            {
+                newReservation.pet.Add(new Hvk.PetReservation());
+                newReservation.pet[newReservation.pet.Count - 1].pet = new Hvk.Pet();
+                newReservation.pet[newReservation.pet.Count - 1].pet.name = ddlChoosePet.SelectedItem.ToString();
+            }
+                    //Add(newOwner.pet[lbCurrentPets.Items.Count - 1]);
+
         }
 
         protected void lbCurrentPets_SelectedIndexChanged(object sender, EventArgs e)
