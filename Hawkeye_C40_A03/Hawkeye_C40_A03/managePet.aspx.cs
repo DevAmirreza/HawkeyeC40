@@ -12,28 +12,36 @@ namespace AYadollahibastani_C40A02
         Hvk.PetReservation newPetReservation = new Hvk.PetReservation(new Hvk.PetFood(2, "250g", new Hvk.Food(100, "Ralston Purina")), new List<Hvk.Medication>(), new List<Hvk.ReservationService>(), new Hvk.Run(), new Hvk.Pet()); 
         Hvk.Owner newOwner = null ;
         //pet index 0 - handle multiple pets from a list using this index
-        const int x = 0;
+         int x = 0;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             editDisplay.Visible = true;
             addDisplay.Visible = false;
             viewDisplay.Visible = false;
-
             newOwner = (Hvk.Owner)Session["owner"];
-
+            if(Session["PetID"] != null)
+            x = (int)Session["PetID"]; 
         }
 
         protected void Page_PreRender(object sender, EventArgs e)
         {
             if (Session["owner"] == null )
-            {
                 newOwner = new Hvk.Owner();
-            }
             else
-            {
                 newOwner = ((Hvk.Owner)Session["owner"]);
-            }
+
+
+
+            if (Session["PetID"] == null)
+                x = 0;
+            else
+                x = (int)Session["PetID"]; 
+
+
+
+
+
 
             //loads data from objects into the fields
             if (!IsPostBack)

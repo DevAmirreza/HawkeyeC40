@@ -98,12 +98,15 @@ namespace AYadollahibastani_C40A02
             //loads pet list from object into dropdown
             if (!IsPostBack)
             {
+                //Hawkeye : newOwner.reservation.petReservation.pet 
                 foreach (var item in newOwner.pet)
                 {
                     ddlChoosePet.Items.Add(item.name);
+                    ddlChoosePet.Items[ddlChoosePet.Items.Count - 1].Value = item.petNumber.ToString(); 
                 }
             }
             // Multiple Pet - to be implemented here
+            //Hawkeye : newOwner.reservation.petReservation.pet.Count() 
                 if (newReservation.pet.Count() > 0)
             {
                 if (!IsPostBack)
@@ -111,6 +114,7 @@ namespace AYadollahibastani_C40A02
                     foreach (var item in newReservation.pet)
                     {
                         lbCurrentPets.Items.Add(item.pet.name);
+                        lbCurrentPets.Items[lbCurrentPets.Items.Count - 1].Value = item.petNumber.ToString(); 
                     }
                 }
 

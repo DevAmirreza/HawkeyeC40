@@ -12,6 +12,9 @@ namespace AYadollahibastani_C40A02
         //BLL objects goes here
         private Hvk.HvkPetReservation newReservation = null;
         private Hvk.Pet newPet = null ;
+        private Hvk.Pet newPet2 = null;
+        private Hvk.Pet newPet3 = null;
+
         private Hvk.Owner newOwner = null; 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -49,7 +52,15 @@ namespace AYadollahibastani_C40A02
             newOwner.address.postalCode = "J4B0B9";
             newOwner.phone = "4385566065";
 
+            //drop downs get populated automaticly just add more pets here
             newPet = new Hvk.Pet(100, "Puppy", 'M', 'F', "German", 'L', "He is alergic to yummy food", new List<Hvk.PetVaccination>(), "");
+            newPet2 = new Hvk.Pet(101, "Steve", 'M', 'F', "German", 'L', "He is alergic to yummy food", new List<Hvk.PetVaccination>(), "");
+            newPet3 = new Hvk.Pet(102, "BarB", 'M', 'F', "German", 'L', "He is alergic to yummy food", new List<Hvk.PetVaccination>(), "");
+            newOwner.pet.Add(newPet);
+            newOwner.pet.Add(newPet2);
+            newOwner.pet.Add(newPet3);
+
+
 
             //pet vaccination 
             newPet.vaccinations = new List<Hvk.PetVaccination>(); 
@@ -57,8 +68,7 @@ namespace AYadollahibastani_C40A02
             vacc.name = "example vaccination";
             vacc.expiry = new DateTime(2017, 2, 1);
             newPet.vaccinations.Add(vacc);
-            newOwner.pet.Add(newPet);
-
+           
           
             newReservation.pet = new List<Hvk.PetReservation>();
             newReservation.pet.Add(new Hvk.PetReservation());
