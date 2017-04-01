@@ -7,6 +7,20 @@
     <div class="page_title">
         <p>Manage Customer</p>
     </div>
+
+
+<%--    
+    Work in progress / will be added at the end
+    <asp:Wizard ID="wzRegistery" runat="server">
+        <WizardSteps>
+            <asp:WizardStep ID="Personalnformation" runat="server" Title="Personal Information"></asp:WizardStep>
+            <asp:WizardStep ID="PersonalContact" runat="server" Title="Personal Contact"></asp:WizardStep>
+            <asp:WizardStep ID="EmergencyContact" runat="server" Title="Emergency Contact"></asp:WizardStep>
+        </WizardSteps>
+    </asp:Wizard>
+    <br />
+    <br />
+    <br />--%>
     <div class="container">
         <div class="message">
             <asp:Label ID="lblMsg" runat="server" Text=""></asp:Label>

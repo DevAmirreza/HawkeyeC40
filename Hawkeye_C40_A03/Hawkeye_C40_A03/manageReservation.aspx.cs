@@ -184,6 +184,7 @@ namespace AYadollahibastani_C40A02
                 changeState(true);
      
                 }
+
             else if (txtMedication.Text == "" && txtMedDosage.Text != "")
             {
                 valMedication.IsValid = false;
