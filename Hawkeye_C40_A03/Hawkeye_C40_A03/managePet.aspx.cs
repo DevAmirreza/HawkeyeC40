@@ -19,7 +19,9 @@ namespace AYadollahibastani_C40A02
             editDisplay.Visible = true;
             addDisplay.Visible = false;
             viewDisplay.Visible = false;
+
             newOwner = (Hvk.Owner)Session["owner"];
+
         }
 
         protected void Page_PreRender(object sender, EventArgs e)
@@ -67,15 +69,15 @@ namespace AYadollahibastani_C40A02
             }
         }
 
-        protected void updateFields()
+        protected void updateFields(int petIndex)
         {
-            newOwner.pet[x].name = Request.Form[txtPetName.UniqueID];
-            newOwner.pet[x].breed = Request.Form[txtBreed.UniqueID];
+            newOwner.pet[petIndex].name = Request.Form[txtPetName.UniqueID];
+            newOwner.pet[petIndex].breed = Request.Form[txtBreed.UniqueID];
             if (Session["reservation"] != null)
             {
-                ((Hvk.HvkPetReservation)Session["reservation"]).pet[x].pet.name = newOwner.pet[x].name;
+                ((Hvk.HvkPetReservation)Session["reservation"]).pet[petIndex].pet.name = newOwner.pet[petIndex].name;
             }
-            newOwner.pet[x].note = Request.Form[txtSpecialNote.UniqueID];
+            newOwner.pet[petIndex].note = Request.Form[txtSpecialNote.UniqueID];
             //Populating vaccination drop down from db goes here
 
         }//update() 
@@ -133,11 +135,12 @@ namespace AYadollahibastani_C40A02
         protected void btnSave_Click1(object sender, EventArgs e)
         {
 
-            if (ddlVacc.SelectedValue != null) {
-                if (txtExpiry.Value == "")
-                    valVacDate.IsValid = false;
-                changeState(true); 
-            }
+            //To be removed kept in case it breaks something 
+            //if ((ddlVacc.SelectedValue != null)&& (txtExpiry.Value == "")) {
+            //    if (txtExpiry.Value == "")
+            //        valVacDate.IsValid = false;
+               changeState(true); 
+            //}
 
             ////is not working
             //int result = DateTime.ParseExact(txtExpiry.Value, "dd-mm-yyyy").CompareTo(DateTime.ParseExact(txtExpiry.Value, "dd-mm-yyyy").AddYears(10));
@@ -146,7 +149,7 @@ namespace AYadollahibastani_C40A02
 
             if (valVacDate.IsValid == true  && valCheckDate.IsValid == true)
             {
-                updateFields();
+                updateFields(x);
                 loadData();
                 changeState(false); 
             }
