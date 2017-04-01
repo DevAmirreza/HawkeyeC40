@@ -114,7 +114,8 @@ namespace AYadollahibastani_C40A02
                     foreach (var item in newReservation.pet)
                     {
                         lbCurrentPets.Items.Add(item.pet.name);
-                        lbCurrentPets.Items[lbCurrentPets.Items.Count - 1].Value = item.petNumber.ToString(); 
+                        lbCurrentPets.Items[lbCurrentPets.Items.Count - 1].Value = item.petNumber.ToString();
+                        //newReservation.pet.Add();
                     }
                 }
 
