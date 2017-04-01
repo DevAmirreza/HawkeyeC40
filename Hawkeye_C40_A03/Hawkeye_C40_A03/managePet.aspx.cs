@@ -58,34 +58,59 @@ namespace AYadollahibastani_C40A02
         //Load data into form
         protected void loadData()
         {
-            txtPetName.Text = newOwner.pet[x].name;
-            txtBreed.Text = newOwner.pet[x].breed;
+            try
+            {
+                txtPetName.Text = newOwner.pet[x].name;
+                txtBreed.Text = newOwner.pet[x].breed;
 
-            if (!IsPostBack)
-            {
-                ddlFood.Items.Add(newPetReservation.petFood.food.brand);
-                rdlPetSize.Items.FindByValue(selectSize(newOwner.pet[x].size)).Selected = true ;
-            }
-            txtSpecialNote.Value = newOwner.pet[x].note;
-            if (!IsPostBack)
-            {
-                foreach (var item in newOwner.pet[x].vaccinations)
+                if (!IsPostBack)
                 {
-                    ddlVacc.Items.Add(item.name);
-                    txtExpiry.Value = item.expiry.ToShortDateString();
+                    ddlFood.Items.Add(newPetReservation.petFood.food.brand);
+                    // rdlPetSize.Items.FindByValue(selectSize(newOwner.pet[x].size)).Selected = true ;
+                }
+                txtSpecialNote.Value = newOwner.pet[x].note;
+                if (!IsPostBack)
+                {
+                    foreach (var item in newOwner.pet[x].vaccinations)
+                    {
+                        ddlVacc.Items.Add(item.name);
+                        txtExpiry.Value = item.expiry.ToShortDateString();
+                    }
                 }
             }
+            catch
+            {
+                Console.Write("Exception catched in loadDataMethod"); 
+            }
+            
         }
 
-        protected void updateFields(int petIndex)
+        protected void updateFields()
         {
-            newOwner.pet[petIndex].name = Request.Form[txtPetName.UniqueID];
-            newOwner.pet[petIndex].breed = Request.Form[txtBreed.UniqueID];
-            if (Session["reservation"] != null)
+            if (Session["PetID"] == null)
             {
-                ((Hvk.HvkPetReservation)Session["reservation"]).pet[petIndex].pet.name = newOwner.pet[petIndex].name;
-            }
-            newOwner.pet[petIndex].note = Request.Form[txtSpecialNote.UniqueID];
+                newOwner.pet.Add(new Hvk.Pet(0, Request.Form[txtPetName.UniqueID], 'n', 'f'));
+                Session["PetID"] = newOwner.pet.Count - 1; 
+            } else {
+                int tempindex = (int)Session["PetID"]; 
+            newOwner.pet[tempindex].name = Request.Form[txtPetName.UniqueID];
+            newOwner.pet[tempindex].breed = Request.Form[txtBreed.UniqueID];
+        }
+           
+                try
+                {
+                if (Session["reservation"] != null)
+                {
+                    ((Hvk.HvkPetReservation)Session["reservation"]).pet[((int)Session["PetID"])].pet.name = newOwner.pet[(int)Session["PetID"]].name;
+                }
+                    newOwner.pet[(int)Session["PetID"]].note = Request.Form[txtSpecialNote.UniqueID];
+                }
+                catch
+                {
+                    //ignore
+                }
+
+           
             //Populating vaccination drop down from db goes here
 
         }//update() 
@@ -157,7 +182,7 @@ namespace AYadollahibastani_C40A02
 
             if (valVacDate.IsValid == true  && valCheckDate.IsValid == true)
             {
-                updateFields(x);
+                updateFields();
                 loadData();
                 changeState(false); 
             }
