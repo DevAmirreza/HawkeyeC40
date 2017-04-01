@@ -29,8 +29,6 @@ namespace AYadollahibastani_C40A02
                 Session["reservation"] = (Hvk.HvkPetReservation)Session["reservation"];
                 Session["owner"] = (Hvk.Owner)Session["owner"]; 
             }
-            
-
         }
 
 
@@ -89,9 +87,6 @@ namespace AYadollahibastani_C40A02
             service.description = "Daily Walk";
             newReservation.pet[0].service.Add(service);
         }
-
-
-
 
 
 

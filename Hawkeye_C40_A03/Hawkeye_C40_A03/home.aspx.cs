@@ -59,25 +59,14 @@ namespace AYadollahibastani_C40A02
                     }
                 }
 
-                ddlFood.Items.Add(newReservation.pet[0].petFood.food.brand);
-                txtFoodQuantity.Text = newReservation.pet[0].petFood.quantity;
+                
                 chWalk.Checked = true;
-                txtMedication.Text = newReservation.pet[0].medication[0].name;
-                txtMedDosage.Text = newReservation.pet[0].medication[0].dosage;
-                txtMedicationEndDate.Value = newReservation.pet[0].medication[0].endDate.ToShortDateString();
-                txtMedicationNote.Value = newReservation.pet[0].medication[0].specialNote;
                 txtResNote.Value = newReservation.pet[0].note;
             }
             else
             {
                 //clear fields
-                ddlFood.Items.Clear();
-                txtFoodQuantity.Text = "";
                 chWalk.Checked = false;
-                txtMedication.Text = "";
-                txtMedDosage.Text = "";
-                txtMedicationEndDate.Value = "";
-                txtMedicationNote.Value = "";
                 txtResNote.Value = "";
             }
         }
@@ -87,8 +76,6 @@ namespace AYadollahibastani_C40A02
             txtResNote.Disabled = ((State == false) ? true : false);
             txtStartDate.Disabled = ((State == false) ? true : false);
             txtEndDate.Disabled = ((State == false) ? true : false);
-            txtMedicationEndDate.Disabled = ((State == false) ? true : false);
-            txtMedicationNote.Disabled = ((State == false) ? true : false);
             txtEndDate.Disabled = ((State == false) ? true : false);
             clerkPanel.Enabled = State;
         }

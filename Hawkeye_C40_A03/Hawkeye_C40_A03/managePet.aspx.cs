@@ -55,7 +55,6 @@ namespace AYadollahibastani_C40A02
             {
                 ddlFood.Items.Add(newPetReservation.petFood.food.brand);
                 rdlPetSize.Items.FindByValue(selectSize(newOwner.pet[x].size)).Selected = true ;
-                ddlVet.Items.Add(newOwner.vet.name);
             }
             txtSpecialNote.Value = newOwner.pet[x].note;
             if (!IsPostBack)
