@@ -187,6 +187,10 @@ namespace AYadollahibastani_C40A02
             
         }
 
-    
+        protected void ddlVacc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lbCurrentVacc.Items.Add(ddlVacc.SelectedItem);
+            //adding vaccines to object here *****
+        }
     }
 }

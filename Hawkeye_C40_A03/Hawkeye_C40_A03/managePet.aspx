@@ -106,7 +106,7 @@
                     <div class="form-group">
                         <div class="col-sm-12">
                             <label class="label-control col-sm-2">Choose Your Vaccination</label>
-                            <asp:DropDownList CssClass="form-control medium" ID="ddlVacc" runat="server">
+                            <asp:DropDownList  AutoPostBack="true" CssClass="form-control medium" ID="ddlVacc" runat="server" OnSelectedIndexChanged="ddlVacc_SelectedIndexChanged">
                                 <asp:ListItem>Vac 1</asp:ListItem>
                                 <asp:ListItem>Vac 2</asp:ListItem>
                                 <asp:ListItem>Vac 3</asp:ListItem>
