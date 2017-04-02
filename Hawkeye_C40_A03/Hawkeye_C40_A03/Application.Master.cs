@@ -60,20 +60,17 @@ namespace AYadollahibastani_C40A02
             int clickedItem = CharUnicodeInfo.GetDecimalDigitValue(btnLink.ID[btnLink.ID.Length - 1]);
             switch (clickedItem) {
                 case 1://new customer
-                    
+                    Response.Redirect("home.aspx");
                     break;
                 case 2: // reservations
-                    if (Session["userType"].Equals("CLERK")) {
-                        Response.Redirect("home.aspx");
-                    }
-                    else {
+                    
                         if ((UserType)(Session["UserType"]) == UserType.Owner) {
                             Response.Redirect("managePet.aspx");
                         }
                         else {
                             Response.Redirect("managePet.aspx");// this will be changed when Owners.aspx is added
                         }
-                    }
+                    
                     break;
                 case 3:
                     Response.Redirect("manageCustomer.aspx");
