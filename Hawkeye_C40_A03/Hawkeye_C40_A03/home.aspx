@@ -102,8 +102,9 @@
             </tbody>
         </table>
     </div>
-    <asp:Panel runat="server" ID="detailPanel">
     <div class="row ">
+            <asp:Panel runat="server" ID="detailPanel">
+
         <div class="container whiteBackground">
 
             <asp:Panel ID="customerPanel" runat="server">
@@ -202,8 +203,9 @@
             </asp:Panel>
 
         </div>
+    </asp:Panel>
+
     </div>
 
-    </asp:Panel>
 
 </asp:Content>

@@ -76,15 +76,6 @@ namespace AYadollahibastani_C40A02 {
         protected global::System.Web.UI.WebControls.CheckBox CheckBox2;
         
         /// <summary>
-        /// lbtnEdit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbtnEdit;
-        
-        /// <summary>
         /// btnCancelReservation control.
         /// </summary>
         /// <remarks>
@@ -103,49 +94,22 @@ namespace AYadollahibastani_C40A02 {
         protected global::System.Web.UI.WebControls.Button btnMoreInfo;
         
         /// <summary>
-        /// CheckBox3 control.
+        /// lbtnEdit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckBox3;
+        protected global::System.Web.UI.WebControls.LinkButton lbtnEdit;
         
         /// <summary>
-        /// CheckBox4 control.
+        /// detailPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckBox4;
-        
-        /// <summary>
-        /// LinkButton1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
-        
-        /// <summary>
-        /// Button2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
-        
-        /// <summary>
-        /// Button3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button3;
+        protected global::System.Web.UI.WebControls.Panel detailPanel;
         
         /// <summary>
         /// customerPanel control.

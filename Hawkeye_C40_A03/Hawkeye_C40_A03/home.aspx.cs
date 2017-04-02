@@ -28,6 +28,7 @@ namespace AYadollahibastani_C40A02
                 customerPanel.Visible = false;
                 searchPanel.Visible = true; 
             }
+            detailPanel.Visible = false;
         }
 
 
@@ -82,6 +83,7 @@ namespace AYadollahibastani_C40A02
 
         protected void chReservationSelect_CheckedChanged(object sender, EventArgs e)
         {
+            detailPanel.Visible = true;
             if (newReservation != null)
             loadData();
         }
