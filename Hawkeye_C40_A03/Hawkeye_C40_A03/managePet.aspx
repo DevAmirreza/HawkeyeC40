@@ -106,7 +106,13 @@
                     <div class="form-group">
                         <div class="col-sm-12">
                             <label class="label-control col-sm-2">Choose Your Vaccination</label>
-                            <asp:DropDownList CssClass="form-control medium" ID="ddlVacc" runat="server"></asp:DropDownList>
+                            <asp:DropDownList CssClass="form-control medium" ID="ddlVacc" runat="server">
+                                <asp:ListItem>Vac 1</asp:ListItem>
+                                <asp:ListItem>Vac 2</asp:ListItem>
+                                <asp:ListItem>Vac 3</asp:ListItem>
+                                <asp:ListItem>Vac 4</asp:ListItem>
+
+                            </asp:DropDownList>
                         </div>
                         <div class="col-sm-12" style="font-family: sans-serif">
 
@@ -117,6 +123,13 @@
                             <asp:CustomValidator ID="valCheckDate" runat="server" ControlToValidate="txtExpiry" ErrorMessage="Please eneter a valid date"></asp:CustomValidator>
                             <asp:CustomValidator ID="valVacDate" runat="server" ControlToValidate="txtExpiry" ErrorMessage="Please enter your expiry date"></asp:CustomValidator>
                         </div>
+                        <div class="col-sm-12" style="font-family: sans-serif">
+
+                            <label class="label-control col-sm-2">Current Vaccines</label>
+                            <asp:ListBox ID="lbCurrentVacc" runat="server"></asp:ListBox>
+                        </div>
+
+
                     </div>
                 </div>
 

@@ -92,42 +92,50 @@ namespace AYadollahibastani_C40A02
         }
 
         protected void loadData()
-        {            
+        {
+            try
+            {
                 txtStartDate.Value = newReservation.reservaion.startDate.ToShortDateString();
                 txtEndDate.Value = newReservation.reservaion.endDate.ToShortDateString();
-            //loads pet list from object into dropdown
-            if (!IsPostBack)
-            {
-                //Hawkeye : newOwner.reservation.petReservation.pet 
-                foreach (var item in newOwner.pet)
-                {
-                    ddlChoosePet.Items.Add(item.name);
-                    ddlChoosePet.Items[ddlChoosePet.Items.Count - 1].Value = item.petNumber.ToString(); 
-                }
-            }
-            // Multiple Pet - to be implemented here
-            //Hawkeye : newOwner.reservation.petReservation.pet.Count() 
-                if (newReservation.pet.Count() > 0)
-            {
+                //loads pet list from object into dropdown
                 if (!IsPostBack)
                 {
-                    foreach (var item in newReservation.pet)
+                    //Hawkeye : newOwner.reservation.petReservation.pet 
+                    foreach (var item in newOwner.pet)
                     {
-                        lbCurrentPets.Items.Add(item.pet.name);
-                        lbCurrentPets.Items[lbCurrentPets.Items.Count - 1].Value = item.petNumber.ToString(); 
-
+                        ddlChoosePet.Items.Add(item.name);
+                        ddlChoosePet.Items[ddlChoosePet.Items.Count - 1].Value = item.petNumber.ToString();
                     }
                 }
+                // Multiple Pet - to be implemented here
+                //Hawkeye : newOwner.reservation.petReservation.pet.Count() 
+                if (newReservation.pet.Count() > 0)
+                {
+                    if (!IsPostBack)
+                    {
+                        foreach (var item in newReservation.pet)
+                        {
+                            lbCurrentPets.Items.Add(item.pet.name);
+                            lbCurrentPets.Items[lbCurrentPets.Items.Count - 1].Value = item.petNumber.ToString();
 
-                chWalk.Checked = true;
-                txtResNote.Value = newReservation.pet[0].note;
+                        }
+                    }
+
+                    chWalk.Checked = true;
+                    txtResNote.Value = newReservation.pet[(int)Session["PetID"]].note;
+                }
+                else
+                {
+                    //clear fields
+                    chWalk.Checked = false;
+                    txtResNote.Value = "";
+                }
             }
-            else
+            catch
             {
-                //clear fields
-                chWalk.Checked = false;
-                txtResNote.Value = "";
+                Console.Write("Error - Exception catched in  load file in manage reservation ! ");
             }
+                
         }//load info into fields 
 
 

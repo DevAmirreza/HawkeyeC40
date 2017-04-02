@@ -40,9 +40,6 @@ namespace AYadollahibastani_C40A02
 
 
 
-
-
-
             //loads data from objects into the fields
             if (!IsPostBack)
                 loadData();
@@ -60,18 +57,19 @@ namespace AYadollahibastani_C40A02
         {
             try
             {
-                txtPetName.Text = newOwner.pet[x].name;
-                txtBreed.Text = newOwner.pet[x].breed;
+                int petIndex = (int)Session["PetID"];
+                txtPetName.Text = newOwner.pet[petIndex].name;
+                txtBreed.Text = newOwner.pet[petIndex].breed;
 
                 if (!IsPostBack)
                 {
                     ddlFood.Items.Add(newPetReservation.petFood.food.brand);
-                    // rdlPetSize.Items.FindByValue(selectSize(newOwner.pet[x].size)).Selected = true ;
+                    rdlPetSize.Items.FindByValue(selectSize(newOwner.pet[petIndex].size)).Selected = true ;
                 }
-                txtSpecialNote.Value = newOwner.pet[x].note;
+                txtSpecialNote.Value = newOwner.pet[petIndex].note;
                 if (!IsPostBack)
                 {
-                    foreach (var item in newOwner.pet[x].vaccinations)
+                    foreach (var item in newOwner.pet[petIndex].vaccinations)
                     {
                         ddlVacc.Items.Add(item.name);
                         txtExpiry.Value = item.expiry.ToShortDateString();
