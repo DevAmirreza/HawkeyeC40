@@ -9,7 +9,7 @@ namespace AYadollahibastani_C40A02
 {
     public partial class managePet : System.Web.UI.Page
     {
-        Hvk.PetReservation newPetReservation = new Hvk.PetReservation(new Hvk.PetFood(2, "250g", new Hvk.Food(100, "Ralston Purina")), new List<Hvk.Medication>(), new List<Hvk.ReservationService>(), new Hvk.Run(), new Hvk.Pet()); 
+        Hvk.PetReservation newPetReservation = new Hvk.PetReservation(new Hvk.PetFood(), new List<Hvk.Medication>(), new List<Hvk.ReservationService>(), new Hvk.Run(), new Hvk.Pet()); 
         Hvk.Owner newOwner = null ;
         //pet index 0 - handle multiple pets from a list using this index
          int x = 0;
@@ -63,7 +63,6 @@ namespace AYadollahibastani_C40A02
 
                 if (!IsPostBack)
                 {
-                    ddlFood.Items.Add(newPetReservation.petFood.food.brand);
                     rdlPetSize.Items.FindByValue(selectSize(newOwner.pet[petIndex].size)).Selected = true ;
                 }
                 txtSpecialNote.Value = newOwner.pet[petIndex].note;
@@ -121,7 +120,6 @@ namespace AYadollahibastani_C40A02
             txtPetName.Text = "";
             txtSpecialNote.Value = "";
             ddlVacc.ClearSelection();
-            ddlVet.ClearSelection();
             changeState(true);
         }//reset 
 
