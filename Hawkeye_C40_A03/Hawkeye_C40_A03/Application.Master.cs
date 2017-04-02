@@ -34,8 +34,9 @@ namespace AYadollahibastani_C40A02
                 //setDummyData reservation if its not a clerk
                 if ((UserType)(Session["UserType"]) == UserType.Owner) {
                     Session["reservation"] = newReservation;
-                    setDummyData();
                     Session["owner"] = newOwner;
+
+                    setDummyData();
                 }
                 else {
                     

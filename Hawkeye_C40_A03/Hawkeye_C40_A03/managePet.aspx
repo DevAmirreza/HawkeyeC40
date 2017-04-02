@@ -73,13 +73,6 @@
 
 
                     </div>
-
-                    <div class="form-group">
-                        <div class="col-sm-12">
-                            <label class="label-control col-sm-2">Food Preference</label>
-                            <asp:DropDownList CssClass="form-control medium" ID="ddlFood" runat="server"></asp:DropDownList>
-                        </div>
-                    </div>
                     <div class="form-group">
                         <div class="col-sm-12">
                             <label class="label-control col-sm-2">
@@ -94,12 +87,6 @@
                             <div class="error_msg label-control col-sm-6">
                                 <asp:RequiredFieldValidator ID="valReqPetSize" runat="server" ControlToValidate="rdlPetSize" Display="Dynamic" ErrorMessage="Please select your pet's size"></asp:RequiredFieldValidator>
                             </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-12">
-                            <label class="label-control col-sm-2">Vet</label>
-                            <asp:DropDownList CssClass="form-control medium" ID="ddlVet" runat="server"></asp:DropDownList>
                         </div>
                     </div>
 
