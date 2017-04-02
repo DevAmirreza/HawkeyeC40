@@ -27,14 +27,31 @@ namespace AYadollahibastani_C40A02
             if (Session["owner"] == null)
             {
                 newReservation = new Hvk.HvkPetReservation();
-                newOwner = new Hvk.Owner();
-                setDummyData();
+                
+                
                 //setting reservation & owner session
-                Session["owner"] = newOwner;
+                
                 //setDummyData reservation if its not a clerk
                 if ((UserType)(Session["UserType"]) == UserType.Owner) {
                     Session["reservation"] = newReservation;
-                }    
+                    setDummyData();
+                    Session["owner"] = newOwner;
+                }
+                else {
+                    newOwner = new Hvk.Owner();
+                    newOwner.firstName = "Jim";
+                    newOwner.lastName = "Reed";
+                    newOwner.email = "Reed@hvk.ca";
+                    newOwner.emgFirstName = "steve";
+                    newOwner.emgLastName = "jobs";
+                    newOwner.emgPhoneNumber = "432455455";
+                    newOwner.address.city = "Chelsea";
+                    newOwner.address.province = 'Q';
+                    newOwner.address.street = "123 scott road";
+                    newOwner.address.postalCode = "J9b 2p8";
+                    newOwner.phone = "4385566065";
+                    Session["owner"] = newOwner;
+                }
             }
             else
             {
