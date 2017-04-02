@@ -133,7 +133,7 @@ namespace AYadollahibastani_C40A02
             }
             catch
             {
-                Console.Write("Error - Exception catched in  load file in manage reservation ! ");
+                Console.Write("Error - Exception catched => load file => manage reservation ! ");
             }
                 
         }//load info into fields 
@@ -226,19 +226,19 @@ namespace AYadollahibastani_C40A02
             changeState(validation);
             if (validation)
             {
+                //Add the pet to reservation 
                 newReservation.pet.Add(new Hvk.PetReservation());
                 newReservation.pet[newReservation.pet.Count - 1].pet = new Hvk.Pet();
                 newReservation.pet[newReservation.pet.Count - 1].pet.name = ddlChoosePet.SelectedItem.ToString();
             }
-                    //Add(newOwner.pet[lbCurrentPets.Items.Count - 1]);
 
         }
 
         protected void lbCurrentPets_SelectedIndexChanged(object sender, EventArgs e)
         {
             lblSelectedPet.Text = lbCurrentPets.SelectedItem.Text;
-            ddlChoosePet.SelectedIndex = 0; 
-            changeState(true);
+            ddlChoosePet.SelectedIndex = 0; //reset  
+            changeState(true);//reset 
         }
     }
 
