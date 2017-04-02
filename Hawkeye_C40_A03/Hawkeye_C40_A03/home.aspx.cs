@@ -82,7 +82,7 @@ namespace AYadollahibastani_C40A02
 
         protected void chReservationSelect_CheckedChanged(object sender, EventArgs e)
         {
-            if(newReservation != null)
+            if (newReservation != null)
             loadData();
         }
 
