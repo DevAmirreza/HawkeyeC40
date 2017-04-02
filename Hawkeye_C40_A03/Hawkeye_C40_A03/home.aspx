@@ -173,41 +173,12 @@
                                 <div class="col-sm-6">
                                     <asp:CheckBox ID="chWalk" runat="server" Text="Daily Walk" CssClass="" /><br />
                                     <asp:CheckBox ID="chPalytime" runat="server" Text="Daily Playtime" CssClass="" /><br />
-                                    <asp:CheckBox ID="chGrooming" runat="server" Text="Grooming" CssClass="" /><br />
-                                    <asp:TextBox ID="txtGrooming" TextMode="Number" runat="server" min="0" max="2" step="1" CssClass="form-control  col-sm-8" Text="0" />
-                                    <asp:RequiredFieldValidator ID="valReqGrooming" runat="server" ControlToValidate="txtGrooming" ErrorMessage="Please enter frequency for grooming"> <span class="glyphicon glyphicon-exclamation-sign red"></span></asp:RequiredFieldValidator>
+                                    <br />
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <label class="label-control col-sm-4">Medication</label>
-                            <asp:TextBox placeholder="Your pet's medication" ID="txtMedication" runat="server" CssClass="form-control col-md-4"></asp:TextBox>
-                            <asp:CustomValidator ID="valMedication" runat="server" ErrorMessage="Please Complete your medication information" ControlToValidate="txtMedication"> <span class="glyphicon glyphicon-exclamation-sign red"></span></asp:CustomValidator>
-
-                            <asp:RegularExpressionValidator ID="valMedExpress" runat="server" ErrorMessage="Please enter a valid medication" ControlToValidate="txtMedication" ValidationExpression="^[a-zA-Z0-9]+$"><span class="glyphicon glyphicon-exclamation-sign red"></span></asp:RegularExpressionValidator>
-                            <label class="label-control col-sm-4">Dosage</label>
-                            <asp:TextBox ID="txtMedDosage" runat="server" CssClass="form-control col-md-6"></asp:TextBox>
-
-                            <label class="label-control col-sm-4">Expiry Date</label>
-                            <input name="medicationEndDate" id="txtMedicationEndDate" runat="server" class="form-control datepicker" />
-
-                            <label class="label-control col-sm-4">Medication Note</label>
-                            <textarea id="txtMedicationNote" runat="server" cols="20" rows="2" class=" form-control"></textarea>
-                            <div class="right">
-                                <asp:HyperLink ID="btnAddMedic" runat="server">Add Medication + </asp:HyperLink>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label class="label-control col-sm-4">Choose Your Food</label>
-                            <asp:DropDownList ID="ddlFood" runat="server" CssClass="form-control"></asp:DropDownList>
-                            <label class="label-control col-sm-4">Frequency</label>
-                            <asp:RadioButtonList ID="rdOnce" runat="server">
-                                <asp:ListItem Value="once"></asp:ListItem>
-                                <asp:ListItem Value="twice"></asp:ListItem>
-                            </asp:RadioButtonList>
-                            <label class="label-control col-sm-4">Food Quantity</label>
-                            <asp:TextBox ID="txtFoodQuantity" runat="server" CssClass="form-control short col-md-6"></asp:TextBox>
-                        </div>
+                        
+                        
                         <div class="col-md-6">
                             <label class="label-control col-sm-4">Reservation Note</label>
                             <textarea id="txtResNote" runat="server" cols="20" rows="2" class=" form-control"></textarea>

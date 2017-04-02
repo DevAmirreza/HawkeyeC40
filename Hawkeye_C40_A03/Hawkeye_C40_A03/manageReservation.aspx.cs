@@ -11,7 +11,7 @@ namespace AYadollahibastani_C40A02
     {
         Hvk.HvkPetReservation newReservation = null;
         Hvk.Owner newOwner = null ;
-        int X = 0;
+        int X = -1;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -59,23 +59,23 @@ namespace AYadollahibastani_C40A02
         //updating fields need to be change inroder to work with db
         protected void updateFields(int petIndex)
         {
-            //newReservation.pet = new List<Hvk.PetReservation>();
-            //newReservation.pet.Add(new Hvk.PetReservation());
-            //newReservation.pet[petIndex].pet = new Hvk.Pet();
-            newReservation.pet[petIndex].pet.name = lbCurrentPets.Items[petIndex].Text; 
-            newReservation.pet[petIndex].name = lbCurrentPets.Items[petIndex].Text;
-            newReservation.pet[petIndex].note = Request.Form[txtResNote.UniqueID];
-            newReservation.pet[petIndex].medication = new List<Hvk.Medication>();
-            newReservation.pet[petIndex].medication.Add(new Hvk.Medication(100, Request.Form[txtMedication.UniqueID], Request.Form[txtMedDosage.UniqueID], Request.Form[txtMedicationNote.UniqueID], new DateTime(2017, 4, 3)));
-            // newReservation.reservaion.startDate = DateTime.ParseExact(Request.Form[txtStartDate.ID],"ddmmyyyy", CultureInfo.InvariantCulture);
-            //newReservation.reservaion.endDate = DateTime.ParseExact(Request.Form[txtEndDate.ID],"dd/mm/yy", CultureInfo.InvariantCulture);
-            //run info - get it from db
-            newReservation.pet[petIndex].runAssigned = new Hvk.Run(100, 'L', 'c', 'D', 0);
-            newReservation.pet[petIndex].service = new List<Hvk.ReservationService>();
-            Hvk.ReservationService service = new Hvk.ReservationService();
-            newReservation.pet[petIndex].service.Add(service);
-            Hvk.PetFood food = new Hvk.PetFood(0, Request.Form[txtFoodQuantity.UniqueID], new Hvk.Food(100, ""));
-            newReservation.pet[petIndex].petFood = food;
+                //newReservation.pet = new List<Hvk.PetReservation>();
+                //newReservation.pet.Add(new Hvk.PetReservation());
+                //newReservation.pet[petIndex].pet = new Hvk.Pet();
+                newReservation.pet[petIndex].pet.name = lbCurrentPets.Items[petIndex].Text;
+                newReservation.pet[petIndex].name = lbCurrentPets.Items[petIndex].Text;
+                newReservation.pet[petIndex].note = Request.Form[txtResNote.UniqueID];
+                newReservation.pet[petIndex].medication = new List<Hvk.Medication>();
+                // newReservation.reservaion.startDate = DateTime.ParseExact(Request.Form[txtStartDate.ID],"ddmmyyyy", CultureInfo.InvariantCulture);
+                //newReservation.reservaion.endDate = DateTime.ParseExact(Request.Form[txtEndDate.ID],"dd/mm/yy", CultureInfo.InvariantCulture);
+                //run info - get it from db
+                newReservation.pet[petIndex].runAssigned = new Hvk.Run(100, 'L', 'c', 'D', 0);
+                newReservation.pet[petIndex].service = new List<Hvk.ReservationService>();
+                Hvk.ReservationService service = new Hvk.ReservationService();
+                newReservation.pet[petIndex].service.Add(service);
+
+            
+            
         }
 
 
@@ -85,8 +85,6 @@ namespace AYadollahibastani_C40A02
             txtResNote.Disabled = ((State == false) ? true : false);
             txtStartDate.Disabled = ((State == false) ? true : false);
             txtEndDate.Disabled = ((State == false) ? true : false);
-            txtMedicationEndDate.Disabled = ((State == false) ? true : false);
-            txtMedicationNote.Disabled = ((State == false) ? true : false);
             txtEndDate.Disabled = ((State == false) ? true : false);
             reservationPanel.Enabled = State;
         }
@@ -133,7 +131,7 @@ namespace AYadollahibastani_C40A02
             }
             catch
             {
-                Console.Write("Error - Exception catched in  load file in manage reservation ! ");
+                Console.Write("Error - Exception catched => load file => manage reservation ! ");
             }
                 
         }//load info into fields 
@@ -191,31 +189,20 @@ namespace AYadollahibastani_C40A02
 
         protected void btnBook_Click(object sender, EventArgs e)
         {
-                if (txtMedication.Text != "" && txtMedDosage.Text == "")
-                {
-                valMedication.IsValid = false;
-                changeState(true);
-     
-                }
-
-            else if (txtMedication.Text == "" && txtMedDosage.Text != "")
-            {
-                valMedication.IsValid = false;
-                changeState(true);
-            }
-
 
             Boolean validationFlag = validateReservationPetList() ; 
 
-            if (valMedication.IsValid == true && valEndDate.IsValid == true && validationFlag == false )
+            if (valEndDate.IsValid == true && validationFlag == false )
                 {
                     btnEdit.Visible = true;
+                if (X >= 0)
                     updateFields(X);
+                else
+                    validationFlag = false;
                     loadData();
                     changeState(false);
                 }
-            if (validationFlag)
-                changeState(true);
+                changeState(validationFlag);
 
          }
 
@@ -226,19 +213,19 @@ namespace AYadollahibastani_C40A02
             changeState(validation);
             if (validation)
             {
+                //Add the pet to reservation 
                 newReservation.pet.Add(new Hvk.PetReservation());
                 newReservation.pet[newReservation.pet.Count - 1].pet = new Hvk.Pet();
                 newReservation.pet[newReservation.pet.Count - 1].pet.name = ddlChoosePet.SelectedItem.ToString();
             }
-                    //Add(newOwner.pet[lbCurrentPets.Items.Count - 1]);
 
         }
 
         protected void lbCurrentPets_SelectedIndexChanged(object sender, EventArgs e)
         {
             lblSelectedPet.Text = lbCurrentPets.SelectedItem.Text;
-            ddlChoosePet.SelectedIndex = 0; 
-            changeState(true);
+            ddlChoosePet.SelectedIndex = 0; //reset  
+            changeState(true);//reset 
         }
     }
 

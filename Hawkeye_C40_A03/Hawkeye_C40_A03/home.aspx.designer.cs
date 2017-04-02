@@ -283,24 +283,6 @@ namespace AYadollahibastani_C40A02 {
         protected global::System.Web.UI.WebControls.CheckBox chPalytime;
         
         /// <summary>
-        /// chGrooming control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chGrooming;
-        
-        /// <summary>
-        /// txtGrooming control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtGrooming;
-        
-        /// <summary>
         /// valReqGrooming control.
         /// </summary>
         /// <remarks>
@@ -308,96 +290,6 @@ namespace AYadollahibastani_C40A02 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator valReqGrooming;
-        
-        /// <summary>
-        /// txtMedication control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMedication;
-        
-        /// <summary>
-        /// valMedication control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator valMedication;
-        
-        /// <summary>
-        /// valMedExpress control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator valMedExpress;
-        
-        /// <summary>
-        /// txtMedDosage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMedDosage;
-        
-        /// <summary>
-        /// txtMedicationEndDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtMedicationEndDate;
-        
-        /// <summary>
-        /// txtMedicationNote control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtMedicationNote;
-        
-        /// <summary>
-        /// btnAddMedic control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink btnAddMedic;
-        
-        /// <summary>
-        /// ddlFood control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlFood;
-        
-        /// <summary>
-        /// rdOnce control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rdOnce;
-        
-        /// <summary>
-        /// txtFoodQuantity control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFoodQuantity;
         
         /// <summary>
         /// txtResNote control.
