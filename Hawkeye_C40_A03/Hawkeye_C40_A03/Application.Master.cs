@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -15,7 +16,12 @@ namespace AYadollahibastani_C40A02
         private Hvk.Pet newPet2 = null;
         private Hvk.Pet newPet3 = null;
 
-        private Hvk.Owner newOwner = null; 
+        private Hvk.Owner newOwner = null;
+
+        enum UserType {
+            Clerk,
+            Owner
+        };
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["owner"] == null)
@@ -24,16 +30,56 @@ namespace AYadollahibastani_C40A02
                 newOwner = new Hvk.Owner();
                 setDummyData();
                 //setting reservation & owner session
-                Session["reservation"] = newReservation;
-                Session["owner"] = newOwner; 
+                Session["owner"] = newOwner;
+                //setDummyData reservation if its not a clerk
+                if ((UserType)(Session["UserType"]) == UserType.Owner) {
+                    Session["reservation"] = newReservation;
+                }    
             }
             else
             {
-                Session["reservation"] = (Hvk.HvkPetReservation)Session["reservation"];
+                if ((UserType)(Session["UserType"]) == UserType.Owner) {
+                    Session["reservation"] = (Hvk.HvkPetReservation)Session["reservation"];
+                }
                 Session["owner"] = (Hvk.Owner)Session["owner"]; 
             }
-        }
 
+            //set Nav based on type of user
+            btnNav1.Text = "Home";
+            btnNav3.Text = "Profile";
+            if ((UserType)(Session["UserType"]) == UserType.Owner) {
+                btnNav2.Text = "Pets";
+            }
+            else {
+                btnNav2.Text = "Owners";
+            }
+
+        }
+        public void navClick(object sender, EventArgs e) {
+            LinkButton btnLink = (LinkButton)sender;
+            int clickedItem = CharUnicodeInfo.GetDecimalDigitValue(btnLink.ID[btnLink.ID.Length - 1]);
+            switch (clickedItem) {
+                case 1://new customer
+                    
+                    break;
+                case 2: // reservations
+                    if (Session["userType"].Equals("CLERK")) {
+                        Response.Redirect("home.aspx");
+                    }
+                    else {
+                        if ((UserType)(Session["UserType"]) == UserType.Owner) {
+                            Response.Redirect("managePet.aspx");
+                        }
+                        else {
+                            Response.Redirect("managePet.aspx");// this will be changed when Owners.aspx is added
+                        }
+                    }
+                    break;
+                case 3:
+                    Response.Redirect("manageCustomer.aspx");
+                    break;
+            }
+        }
 
         protected void setDummyData()
         {
