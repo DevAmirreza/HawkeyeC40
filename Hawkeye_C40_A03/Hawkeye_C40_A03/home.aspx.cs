@@ -106,5 +106,11 @@ namespace AYadollahibastani_C40A02
                 loadReservationData();
         }
 
+        protected void btnMoreInfo_Click(object sender, EventArgs e)
+        {
+            detailPanel.Visible = true;
+            if (newReservation != null)
+                loadData();
+        }
     }
 }

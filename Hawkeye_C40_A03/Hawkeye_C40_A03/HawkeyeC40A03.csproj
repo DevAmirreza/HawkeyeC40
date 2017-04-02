@@ -104,6 +104,7 @@
     <Content Include="manageCustomer.aspx" />
     <Content Include="managePet.aspx" />
     <Content Include="manageReservation.aspx" />
+    <Content Include="owner.aspx" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -188,6 +189,13 @@
     </Compile>
     <Compile Include="manageReservation.aspx.designer.cs">
       <DependentUpon>manageReservation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="owner.aspx.cs">
+      <DependentUpon>owner.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="owner.aspx.designer.cs">
+      <DependentUpon>owner.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

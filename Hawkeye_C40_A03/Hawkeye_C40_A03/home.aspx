@@ -72,7 +72,7 @@
 
                     </td>
                     <td>
-                        <asp:Button ID="btnMoreInfo" runat="server" Text="More Info" CausesValidation="false" CssClass="btn btn-primary" />
+                        <asp:Button ID="btnMoreInfo" runat="server" Text="More Info" CausesValidation="false" CssClass="btn btn-primary" OnClick="btnMoreInfo_Click" />
                                             <asp:LinkButton ID="lbtnEdit" href="manageReservation.aspx" CssClass="btn btn-secondary" runat="server">Edit</asp:LinkButton>
 
                     </td>
