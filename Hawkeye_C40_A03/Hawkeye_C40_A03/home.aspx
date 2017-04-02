@@ -36,6 +36,7 @@
                     </th>
                     <th>Vaccine Valid
                     </th>
+                    <th>Status</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -57,17 +58,26 @@
                     <td>
                         <asp:CheckBox ID="CheckBox2" runat="server" />
                     </td>
+              
+                    <td>  Avaialble  </td>
+                             <td>
+                        <asp:Button  runat="server" Text="Start" CssClass="btn btn-success"  />
+                    </td>
+                       <td>
+                        <asp:Button runat="server" Text="End" CssClass="btn btn-success" />
+                    </td>
                     <td>
 
-                        <asp:LinkButton ID="lbtnEdit" href="manageReservation.aspx" CssClass="btn btn-secondary" runat="server">Edit</asp:LinkButton>
                         <asp:Button ID="btnCancelReservation" runat="server" Text="Cancel" CausesValidation="false" CssClass="btn btn-danger" />
 
                     </td>
                     <td>
                         <asp:Button ID="btnMoreInfo" runat="server" Text="More Info" CausesValidation="false" CssClass="btn btn-primary" />
+                                            <asp:LinkButton ID="lbtnEdit" href="manageReservation.aspx" CssClass="btn btn-secondary" runat="server">Edit</asp:LinkButton>
+
                     </td>
                 </tr>
-                <tr>
+                <%--<tr>
                     <td>
                         <asp:CheckBox ID="CheckBox3" runat="server" />
                     </td>
@@ -88,12 +98,13 @@
                     <td>
                         <asp:Button ID="Button3" runat="server" Text="More Info" CausesValidation="false" CssClass="btn btn-primary" />
                     </td>
-                </tr>
+                </tr>--%>
             </tbody>
         </table>
     </div>
-
     <div class="row ">
+            <asp:Panel runat="server" ID="detailPanel">
+
         <div class="container whiteBackground">
 
             <asp:Panel ID="customerPanel" runat="server">
@@ -192,6 +203,26 @@
             </asp:Panel>
 
         </div>
-    </div>
+    </asp:Panel>
+        <br />
+<div class="container">
+     <div class="col-sm-6">
+                        <h4>Notifications</h4>
+                        <br />
+                        <br />
+                        <%--                        Content Goes Here--%>
+                        <br />
+                        <br />
+                    </div>
+                    <div class="col-sm-6">
+                        <h4>Kennel Log</h4>
+                        <br />
+                        <br />
+                        <%--                        Content Goes Here--%>
+                        <br />
+                        <br />
+                    </div>
+</div>
+
 
 </asp:Content>

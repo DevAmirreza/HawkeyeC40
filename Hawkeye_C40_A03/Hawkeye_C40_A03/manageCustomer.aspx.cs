@@ -22,12 +22,10 @@ namespace AYadollahibastani_C40A02
             if (clerk == true)
             {
                 btnAdd.Visible = true;
-                btnRemove.Visible = true;
             }
             else
             {
                 btnAdd.Visible = false;
-                btnRemove.Visible = false;
             }
             changeState(false);
             
@@ -155,7 +153,6 @@ namespace AYadollahibastani_C40A02
                 changeState(true);
                 //form1.Disabled = false;
                 btnAdd.Visible = true;
-                btnRemove.Visible = false;
                 btnPassdEdit.Visible = false;
                 btnEdit.Visible = false;
                 loadData();

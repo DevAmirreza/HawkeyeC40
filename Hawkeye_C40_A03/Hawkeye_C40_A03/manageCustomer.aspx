@@ -175,7 +175,7 @@
                         <asp:LinkButton ID="lbtnClear" runat="server" OnClick="lbtnClear_Click" CausesValidation="false">Clear</asp:LinkButton>
                         <div class="right-wrap">
                             <asp:Button CssClass="btn btn-default" ID="btnPassdEdit" runat="server" Text="Edit My Password" />
-                            <asp:HyperLink CssClass="btn btn-danger" ID="btnRemove" runat="server">Remove This Account <span class="glyphicon glyphicon-trash"></span> </asp:HyperLink>
+                            
 
                         </div>
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -15,25 +16,84 @@ namespace AYadollahibastani_C40A02
         private Hvk.Pet newPet2 = null;
         private Hvk.Pet newPet3 = null;
 
-        private Hvk.Owner newOwner = null; 
+        private Hvk.Owner newOwner = null;
+
+        enum UserType {
+            Clerk,
+            Owner
+        };
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["owner"] == null)
             {
                 newReservation = new Hvk.HvkPetReservation();
-                newOwner = new Hvk.Owner();
-                setDummyData();
+                
+                
                 //setting reservation & owner session
-                Session["reservation"] = newReservation;
-                Session["owner"] = newOwner; 
+                
+                //setDummyData reservation if its not a clerk
+                if ((UserType)(Session["UserType"]) == UserType.Owner) {
+                    Session["reservation"] = newReservation;
+                    setDummyData();
+                    Session["owner"] = newOwner;
+                }
+                else {
+                    newOwner = new Hvk.Owner();
+                    newOwner.firstName = "Jim";
+                    newOwner.lastName = "Reed";
+                    newOwner.email = "Reed@hvk.ca";
+                    newOwner.emgFirstName = "steve";
+                    newOwner.emgLastName = "jobs";
+                    newOwner.emgPhoneNumber = "432455455";
+                    newOwner.address.city = "Chelsea";
+                    newOwner.address.province = 'Q';
+                    newOwner.address.street = "123 scott road";
+                    newOwner.address.postalCode = "J9b 2p8";
+                    newOwner.phone = "4385566065";
+                    Session["owner"] = newOwner;
+                }
             }
             else
             {
-                Session["reservation"] = (Hvk.HvkPetReservation)Session["reservation"];
+                if ((UserType)(Session["UserType"]) == UserType.Owner) {
+                    Session["reservation"] = (Hvk.HvkPetReservation)Session["reservation"];
+                }
                 Session["owner"] = (Hvk.Owner)Session["owner"]; 
             }
-        }
 
+            //set Nav based on type of user
+            btnNav1.Text = "Home";
+            btnNav3.Text = "Profile";
+            if ((UserType)(Session["UserType"]) == UserType.Owner) {
+                btnNav2.Text = "Pets";
+            }
+            else {
+                btnNav2.Text = "Owners";
+            }
+
+        }
+        public void navClick(object sender, EventArgs e) {
+            LinkButton btnLink = (LinkButton)sender;
+            int clickedItem = CharUnicodeInfo.GetDecimalDigitValue(btnLink.ID[btnLink.ID.Length - 1]);
+            switch (clickedItem) {
+                case 1://new customer
+                    Response.Redirect("home.aspx");
+                    break;
+                case 2: // reservations
+                    
+                        if ((UserType)(Session["UserType"]) == UserType.Owner) {
+                            Response.Redirect("managePet.aspx");
+                        }
+                        else {
+                            Response.Redirect("managePet.aspx");// this will be changed when Owners.aspx is added
+                        }
+                    
+                    break;
+                case 3:
+                    Response.Redirect("manageCustomer.aspx");
+                    break;
+            }
+        }
 
         protected void setDummyData()
         {

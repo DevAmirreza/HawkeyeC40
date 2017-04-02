@@ -10,30 +10,19 @@
                 <div class="col-md-6">
                     
                     <div class="banner align-left">
-                                                <asp:Button CssClass="btn btn-default" ID="btnClerk" runat="server" Text="Clerk" OnClick="btnClerk_Click" />
-                        <asp:Button CssClass="btn btn-default" ID="btnCustomer" runat="server" Text="Customer" OnClick="btnCustomer_Click" />
-                                                <asp:Panel ID="clerkLogin" runat="server">
-                                                    <h4>Login Clerk</h4>
-                        <asp:Label ID="Label1" runat="server" Text="Email or Phone Number" CssClass="label-control"></asp:Label>
-                        <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control"></asp:TextBox>
-                        <asp:Label ID="Label2" runat="server" Text="Password" CssClass="label-control"></asp:Label>
-                        <asp:TextBox ID="TextBox2" runat="server" CssClass="form-control"></asp:TextBox>
-                        <asp:CheckBox ID="CheckBox1" runat="server" Text="keep me login" />
-                        <br />
-
-                        </asp:Panel>
-
+                         
                         <asp:Panel ID="customerLogin" runat="server">
-                                                    <h4>Login Customer</h4>
-                        <asp:Label ID="lblUsername" runat="server" Text="Email or Phone Number" CssClass="label-control"></asp:Label>
+                                                    <h2>Login </h2>
+                            <asp:Label ID="lblErrors" runat="server" Text=""></asp:Label><br />
+                        <asp:Label ID="lblUsername" runat="server" Text="Email" CssClass="label-control"></asp:Label>
                         <asp:TextBox ID="txtUsername" runat="server" CssClass="form-control"></asp:TextBox>
                         <asp:Label ID="lblPass" runat="server" Text="Password" CssClass="label-control"></asp:Label>
                         <asp:TextBox ID="txtPass" runat="server" CssClass="form-control"></asp:TextBox>
-                        <asp:CheckBox ID="chKeepLogin" runat="server" Text="keep me login" />
+                        <asp:CheckBox ID="chKeepLogin" runat="server" Text="&nbsp Keep me loged in" />
                         <br />
 
                         </asp:Panel>
-                        <asp:Button CssClass="btn btn-primary" ID="btnLogin" runat="server" Text="Login" />
+                        <asp:Button CssClass="btn btn-primary" ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click" />
                     </div>
 
                 </div>
@@ -53,7 +42,14 @@
             <span class="glyphicon glyphicon-option-horizontal continue"></span>   
 
     <div class="container">
-        <h2>FAQ</h2>
-        <p>You have problem loging to your account <br /> Please contact our customer service at 1-819-456-5678</p>
+        <h2>Help</h2>
+        <p>You have problem loging to your account <br /> Please contact our customer service at 1-819-456-5678
+            
+        </p>
     </div>
+    <asp:SqlDataSource ID="dsOwnerEmails" runat="server" 
+        ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
+        ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" 
+        SelectCommand="SELECT OWNER_EMAIL FROM HVK_OWNER"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
 </asp:Content>

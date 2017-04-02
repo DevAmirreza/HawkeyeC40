@@ -99,6 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="home.aspx" />
+    <Content Include="images\HVKLogo.ico" />
     <Content Include="images\profile.jpg" />
     <Content Include="manageCustomer.aspx" />
     <Content Include="managePet.aspx" />

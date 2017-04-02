@@ -6,7 +6,7 @@
 <head runat="server">
     <title></title>
     <asp:ContentPlaceHolder ID="head" runat="server">
-
+    <link rel="shortcut icon" type="image/x-icon" href="~/ows.ico" />
     </asp:ContentPlaceHolder>
         <!-- Latest compiled and minified CSS -->
 <%--       <!-- jQuery library -->
@@ -36,9 +36,9 @@
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="home.aspx">Home</a></li>
-                        <li><a href="/managePet.aspx">Pet</a></li>
-                        <li><a href="/manageCustomer.aspx">Profile</a></li>
+                        <li><asp:LinkButton ID="btnNav1" runat="server" OnClick="navClick" CausesValidation="False">Home</asp:LinkButton></li>
+                        <li><asp:LinkButton ID="btnNav2" runat="server" OnClick="navClick" CausesValidation="False">Pet</asp:LinkButton></li>
+                        <li><asp:LinkButton ID="btnNav3" runat="server" OnClick="navClick" CausesValidation="False">Profile</asp:LinkButton></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                        
