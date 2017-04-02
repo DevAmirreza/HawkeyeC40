@@ -204,8 +204,25 @@
 
         </div>
     </asp:Panel>
-
-    </div>
+        <br />
+<div class="container">
+     <div class="col-sm-6">
+                        <h4>Notifications</h4>
+                        <br />
+                        <br />
+                        <%--                        Content Goes Here--%>
+                        <br />
+                        <br />
+                    </div>
+                    <div class="col-sm-6">
+                        <h4>Kennel Log</h4>
+                        <br />
+                        <br />
+                        <%--                        Content Goes Here--%>
+                        <br />
+                        <br />
+                    </div>
+</div>
 
 
 </asp:Content>
