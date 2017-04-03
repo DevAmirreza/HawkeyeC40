@@ -3,6 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
+    <div class="page_title">Home Page - Welcome </div>
     <div class="container">
         <div class="row">
             <asp:Panel ID="searchPanel" runat="server">
