@@ -4,13 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using HawkeyehvkBLL;
 
 namespace AYadollahibastani_C40A02
 {
     public partial class homePage : System.Web.UI.Page
     {
-        Hvk.HvkPetReservation newReservation = null;
-        Hvk.Owner newOwner = null;
+        Owner owner;
+        List<Reservation> resList;
         enum UserType
         {
             Clerk,
@@ -18,13 +19,9 @@ namespace AYadollahibastani_C40A02
         };
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-            bool clerk = true;
             changeState(false);
             searchPanel.Visible = false;
-            newReservation = ((Hvk.HvkPetReservation)Session["reservation"]);
-            newOwner = (Hvk.Owner)Session["owner"];
-            
+            owner = (Owner)Session["owner"];        
             if ((UserType)(Session["UserType"]) != UserType.Clerk)
             {
                 clerkPanel.Visible = false;
@@ -98,18 +95,25 @@ namespace AYadollahibastani_C40A02
         protected void Page_PreRender(object sender, EventArgs e)
         {
 
-            if (Session["reservation"] == null)
-            {
-                newReservation = new Hvk.HvkPetReservation();
-            }
-            else
-            {
-                newReservation = ((Hvk.HvkPetReservation)Session["reservation"]);
-                newOwner = (Hvk.Owner)Session["owner"];
-            }
+            //if (Session["reservation"] == null)
+            //{
+            //    newReservation = new Hvk.HvkPetReservation();
+            //}
+            //else
+            //{
+            //    newReservation = ((Hvk.HvkPetReservation)Session["reservation"]);
+            //    newOwner = (Hvk.Owner)Session["owner"];
+            //}
 
-            if (!IsPostBack)
-                loadReservationData();
+            //if (!IsPostBack)
+            //    loadReservationData();
+            if ((UserType)Session["UserType"] == UserType.Clerk)
+            {
+
+            } else
+            {
+
+            }
         }
 
         protected void btnMoreInfo_Click(object sender, EventArgs e)
