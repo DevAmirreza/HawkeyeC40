@@ -70,6 +70,7 @@ namespace AYadollahibastani_C40A02
             }
             else {
                 btnNav2.Text = "Owners";
+                btnNav2.Attributes["href"] = "/owners.aspx"; 
             }
 
         }
@@ -86,7 +87,7 @@ namespace AYadollahibastani_C40A02
                             Response.Redirect("managePet.aspx");
                         }
                         else {
-                            Response.Redirect("managePet.aspx");// this will be changed when Owners.aspx is added
+                            Response.Redirect("owners.aspx");// this will be changed when Owners.aspx is added
                         }
                     
                     break;
