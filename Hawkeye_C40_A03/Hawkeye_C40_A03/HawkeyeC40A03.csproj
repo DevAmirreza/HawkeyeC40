@@ -98,7 +98,9 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CalendarControl.ascx" />
     <Content Include="home.aspx" />
+    <Content Include="images\Calendar.png" />
     <Content Include="images\HVKLogo.ico" />
     <Content Include="images\profile.jpg" />
     <Content Include="manageCustomer.aspx" />
@@ -140,6 +142,13 @@
     </Compile>
     <Compile Include="Application.Master.designer.cs">
       <DependentUpon>Application.Master</DependentUpon>
+    </Compile>
+    <Compile Include="CalendarControl.ascx.cs">
+      <DependentUpon>CalendarControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CalendarControl.ascx.designer.cs">
+      <DependentUpon>CalendarControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="home.aspx.cs">
       <DependentUpon>home.aspx</DependentUpon>

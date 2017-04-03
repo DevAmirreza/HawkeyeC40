@@ -6,7 +6,7 @@
 <head runat="server">
     <title></title>
     <asp:ContentPlaceHolder ID="head" runat="server">
-    <link rel="shortcut icon" type="image/x-icon" href="~/ows.ico" />
+    <link rel="shortcut icon" href="images/HVKLogo.ico"/>
     </asp:ContentPlaceHolder>
         <!-- Latest compiled and minified CSS -->
 <%--       <!-- jQuery library -->

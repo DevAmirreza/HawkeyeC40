@@ -28,9 +28,9 @@ namespace AYadollahibastani_C40A02
             {
                 newReservation = new Hvk.HvkPetReservation();
                 newOwner = new Hvk.Owner();
-                
+
                 //setting reservation & owner session
-                
+
                 //setDummyData reservation if its not a clerk
                 if ((UserType)(Session["UserType"]) == UserType.Owner) {
                     Session["reservation"] = newReservation;
@@ -39,7 +39,7 @@ namespace AYadollahibastani_C40A02
                     setDummyData();
                 }
                 else {
-                    newOwner = new Hvk.Owner();
+                    
                     newOwner.firstName = "Jim";
                     newOwner.lastName = "Reed";
                     newOwner.email = "Reed@hvk.ca";
