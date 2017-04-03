@@ -11,12 +11,22 @@ namespace AYadollahibastani_C40A02
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            editDisplay.Visible = false; 
         }
 
         protected void customerEdit_Click(object sender, EventArgs e)
         {
             
+        }
+
+        protected void cdOwnerSelected_CheckedChanged(object sender, EventArgs e)
+        {
+            //selects the owner id here
+
+            if (cdOwnerSelected.Checked)
+                editDisplay.Visible = true;
+            else
+                editDisplay.Visible = false;
         }
     }
 }
