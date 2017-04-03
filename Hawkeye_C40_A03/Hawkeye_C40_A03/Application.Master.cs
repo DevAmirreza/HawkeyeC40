@@ -24,6 +24,23 @@ namespace AYadollahibastani_C40A02
         };
         protected void Page_Load(object sender, EventArgs e)
         {
+            //on load set the active page to active
+            string file = HttpContext.Current.Request.Url.AbsolutePath;
+            switch (file) {
+                case "/home.aspx":
+                    li1.Attributes["class"] = "active";
+                    break;
+                case "/managePet.aspx":
+                    li2.Attributes["class"] = "active";
+                    break;
+                case "/owners.aspx":
+                    li2.Attributes["class"] = "active";
+                    break;
+                case "/manageCustomer.aspx":
+                    li3.Attributes["class"] = "active";
+                    break;
+            }
+
             if (Session["owner"] == null)
             {
                 newReservation = new Hvk.HvkPetReservation();
