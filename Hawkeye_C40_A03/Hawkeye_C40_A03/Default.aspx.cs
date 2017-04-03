@@ -1,5 +1,4 @@
-﻿using Hvk;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
@@ -7,12 +6,14 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using HawkeyehvkBLL;
 
 namespace AYadollahibastani_C40A02
 {
     public partial class Login : System.Web.UI.Page {
-        protected void Page_Load(object sender, EventArgs e) {
 
+        Owner owner;
+        protected void Page_Load(object sender, EventArgs e) {
         }
         private void invalidInfo() {
             txtPass.BorderColor = Color.DarkRed;
@@ -50,26 +51,36 @@ namespace AYadollahibastani_C40A02
                 }
             }
             else {
-                DataSourceSelectArguments args = new DataSourceSelectArguments();
-                DataView view = (DataView)dsOwnerEmails.Select(args);
-                DataTable dt = view.ToTable();
-                int columnNumber = 0;
-                bool isTrue = false;
-                // checks all emails in database for the entered email
-                for (int i = 0; i < dt.Rows.Count; i++) {
-                    if (email == (dt.Rows[i][columnNumber].ToString())) {
-                        isTrue = true;
-                    }
-                }
-                if (isTrue) {
-                    //set sessions for that owner
-                    setUserType("owner");
-                    // the sessions with objects are loaded from the master page used for application pages
-                    Response.Redirect("home.aspx");
-                }
-                else {
-                    //invalid info
+                //DataSourceSelectArguments args = new DataSourceSelectArguments();
+                //DataView view = (DataView)dsOwnerEmails.Select(args);
+                //DataTable dt = view.ToTable();
+                //int columnNumber = 0;
+                //bool isTrue = false;
+                //// checks all emails in database for the entered email
+                //for (int i = 0; i < dt.Rows.Count; i++) {
+                //    if (email == (dt.Rows[i][columnNumber].ToString())) {
+                //        isTrue = true;
+                //    }
+                //}
+                //if (isTrue) {
+                //    //set sessions for that owner
+                //    setUserType("owner");
+                //    // the sessions with objects are loaded from the master page used for application pages
+                //    Response.Redirect("home.aspx");
+                //}
+                //else {
+                //    //invalid info
+                //    invalidInfo();
+                //}
+                owner = Owner.getFullOwner(email);
+                if (owner == null)
+                {
                     invalidInfo();
+                } else
+                {
+                    setUserType("owner");
+                    Session["owner"] = owner;
+                    Response.Redirect("home.aspx");
                 }
             }
         }

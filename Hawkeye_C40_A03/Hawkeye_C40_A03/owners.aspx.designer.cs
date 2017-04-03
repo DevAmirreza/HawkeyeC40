@@ -10,7 +10,7 @@
 namespace AYadollahibastani_C40A02 {
     
     
-    public partial class owner {
+    public partial class owners {
         
         /// <summary>
         /// btnAddNew control.

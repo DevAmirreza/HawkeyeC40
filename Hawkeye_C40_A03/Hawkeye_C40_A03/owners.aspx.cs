@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace AYadollahibastani_C40A02
 {
-    public partial class owner : System.Web.UI.Page
+    public partial class owners : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
