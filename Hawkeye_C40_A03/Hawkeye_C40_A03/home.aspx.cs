@@ -11,6 +11,11 @@ namespace AYadollahibastani_C40A02
     {
         Hvk.HvkPetReservation newReservation = null;
         Hvk.Owner newOwner = null;
+        enum UserType
+        {
+            Clerk,
+            Owner
+        };
         protected void Page_Load(object sender, EventArgs e)
         {
             bool clerk = true;
@@ -18,8 +23,8 @@ namespace AYadollahibastani_C40A02
             searchPanel.Visible = false;
             newReservation = ((Hvk.HvkPetReservation)Session["reservation"]);
             newOwner = (Hvk.Owner)Session["owner"];
-
-            if (clerk == false)
+            
+            if ((UserType)(Session["UserType"]) != UserType.Clerk)
             {
                 clerkPanel.Visible = false;
             }

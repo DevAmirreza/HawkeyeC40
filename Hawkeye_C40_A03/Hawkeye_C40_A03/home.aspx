@@ -73,8 +73,7 @@
                     </td>
                     <td>
                         <asp:Button ID="btnMoreInfo" runat="server" Text="More Info" CausesValidation="false" CssClass="btn btn-primary" OnClick="btnMoreInfo_Click" />
-                                            <asp:LinkButton ID="lbtnEdit" href="manageReservation.aspx" CssClass="btn btn-secondary" runat="server">Edit</asp:LinkButton>
-
+                        <asp:LinkButton ID="lbtnEdit" href="manageReservation.aspx" CssClass="btn btn-secondary" runat="server">Edit</asp:LinkButton>
                     </td>
                 </tr>
                 <%--<tr>
@@ -200,12 +199,13 @@
 
 
                 </div>
-            </asp:Panel>
+                
 
-        </div>
-    </asp:Panel>
+            </asp:Panel>
+            </div>
+                </asp:Panel>
         <br />
-<div class="container">
+        <div class="container">
      <div class="col-sm-6">
                         <h4>Notifications</h4>
                         <br />
@@ -223,6 +223,9 @@
                         <br />
                     </div>
 </div>
+        </div>
+                
+        
 
 
 </asp:Content>
