@@ -124,7 +124,7 @@ namespace AYadollahibastani_C40A02
         }
 
 
-        protected void clear()
+        public void clear()
         {
             txtfName.Text = "";
             txtlName.Text = "";

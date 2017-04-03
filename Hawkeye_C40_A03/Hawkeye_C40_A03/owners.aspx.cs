@@ -11,7 +11,8 @@ namespace AYadollahibastani_C40A02
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            editDisplay.Visible = false; 
+            editDisplay.Visible = false;
+            viewPet.Visible = false; 
         }
 
         protected void customerEdit_Click(object sender, EventArgs e)
@@ -28,5 +29,27 @@ namespace AYadollahibastani_C40A02
             else
                 editDisplay.Visible = false;
         }
+
+        protected void btnAddNew_Click(object sender, EventArgs e)
+        {
+            //ManageCustomer customer = new ManageCustomer();
+            //customer.clear();
+            Session["owner"] = null; 
+        }
+
+        protected void btnViewPet_Click(object sender, EventArgs e)
+        {
+
+            if (viewPet.Visible)
+            {
+                viewPet.Visible = false;
+                btnViewPet.Text = "Hide List of pets ";
+            }
+            else
+            {
+                viewPet.Visible = true;
+                btnViewPet.Text = "View List of pets ";
+            }
+            }
     }
 }

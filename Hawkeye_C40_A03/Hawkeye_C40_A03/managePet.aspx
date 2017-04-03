@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="Manage Pet" Language="C#" MasterPageFile="~/Application.Master" AutoEventWireup="true" CodeBehind="managePet.aspx.cs" Inherits="AYadollahibastani_C40A02.managePet" %>
 <%@ Register Src="~/CalendarControl.ascx" TagPrefix="uc1" TagName="CalendarControl" %>
+<%@ Register Src="~/listPets.ascx" TagPrefix="uc1" TagName="listPets" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
@@ -137,7 +139,7 @@
                     -->
             <!--Pet List gets repeated for list of all pets -->
             <h2>List Of All Pets</h2>
-            <div class="listOfAllPets">
+     <%--       <div class="listOfAllPets">
                 <div class="petList">
                     <div class="col-md-8  ">
                         <div class="form-group">
@@ -188,7 +190,9 @@
                         <div id="" class="petProfileImage" style="background-image: url('images/profile.jpg')"></div>
                     </div>
                 </div>
-            </div>
+            </div>--%>
+
+            <uc1:listPets runat="server" ID="listPets" />
             <br />
             <asp:Button CausesValidation="false" CssClass="btn btn-default" ID="btnAdd" Text="Add A New Pet + " OnClick="btnAdd_Click" runat="server" />
 

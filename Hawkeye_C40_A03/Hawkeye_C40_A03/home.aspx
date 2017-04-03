@@ -64,12 +64,14 @@
                     </td>
               
                     <td>  Avaialble  </td>
+                    <asp:Panel runat="server" ID="noCustomer"> 
                              <td>
-                        <asp:Button  runat="server" Text="Start" CssClass="btn btn-success"  />
+                        <asp:Button  runat="server" Text="Start" CssClass="btn btn-success clerkOnly "  />
                     </td>
                        <td>
-                        <asp:Button runat="server" Text="End" CssClass="btn btn-success" />
+                        <asp:Button runat="server" Text="End" CssClass="btn btn-success clerkOnly " />
                     </td>
+                        </asp:Panel>
                     <td>
 
                         <asp:Button ID="btnCancelReservation" runat="server" Text="Cancel" CausesValidation="false" CssClass="btn btn-danger" />

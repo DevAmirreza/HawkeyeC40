@@ -1,5 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Application.Master" AutoEventWireup="true" CodeBehind="owners.aspx.cs" Inherits="AYadollahibastani_C40A02.owner" %>
 
+<%@ Register Src="~/listPets.ascx" TagPrefix="uc1" TagName="listPets" %>
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
@@ -8,7 +11,7 @@
     </div>
     <div class="row">
         <div class="container">
-            <asp:LinkButton ID="btnAddNew" href="/manageCustomer.aspx" runat="server" CssClass="btn btn-default">Add a new customer </asp:LinkButton>
+            <asp:LinkButton ID="btnAddNew" href="/manageCustomer.aspx" runat="server" CssClass="btn btn-default" OnClick="btnAddNew_Click">Add a new customer </asp:LinkButton>
             <h3>Search</h3>
             <div class="col-sm-12">
                 <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control col-sm-6"></asp:TextBox>
@@ -51,8 +54,12 @@
                 <asp:Panel runat="server" ID="editDisplay" >
                     <asp:LinkButton ID="btnBookNewReservation" href="/managePet.aspx" runat="server" CssClass="btn btn-default">Book a new reservation </asp:LinkButton>
                     <asp:LinkButton ID="btnAddPet" href="/managePet.aspx" runat="server" CssClass="btn btn-default">Add a new Pet </asp:LinkButton>
-                    <asp:LinkButton ID="btnViewPet" href="/managePet.aspx" runat="server" CssClass="btn btn-default">Add a new Pet </asp:LinkButton>
+                    <asp:LinkButton ID="btnViewPet" runat="server" CssClass="btn btn-default" OnClick="btnViewPet_Click">Vew Pet List </asp:LinkButton>
 
+                </asp:Panel>
+
+                <asp:Panel runat="server" ID="viewPet">
+                    <uc1:listPets runat="server" ID="listPets" />
                 </asp:Panel>
 
             </div>
