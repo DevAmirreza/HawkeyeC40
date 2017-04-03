@@ -51,5 +51,4 @@
         ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
         ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" 
         SelectCommand="SELECT OWNER_EMAIL FROM HVK_OWNER"></asp:SqlDataSource>
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
 </asp:Content>

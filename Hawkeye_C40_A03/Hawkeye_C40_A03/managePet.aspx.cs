@@ -48,7 +48,7 @@ namespace AYadollahibastani_C40A02
         protected void changeState(bool State)
         {
             editPanel.Enabled = State;
-            txtExpiry.Disabled = ((State == false) ? true : false);
+            ((TextBox)UCexpDate.FindControl("txtDate")).Enabled = State;
             txtSpecialNote.Disabled = ((State == false) ? true : false);
         }
 
@@ -71,7 +71,7 @@ namespace AYadollahibastani_C40A02
                     foreach (var item in newOwner.pet[petIndex].vaccinations)
                     {
                         ddlVacc.Items.Add(item.name);
-                        txtExpiry.Value = item.expiry.ToShortDateString();
+                        ((TextBox)UCexpDate.FindControl("txtDate")).Text = item.expiry.ToShortDateString();
                     }
                 }
             }
@@ -116,7 +116,7 @@ namespace AYadollahibastani_C40A02
         protected void clear()
         {
             txtBreed.Text = "";
-            txtExpiry.Value = "";
+            ((TextBox)UCexpDate.FindControl("txtDate")).Text = "";
             txtPetName.Text = "";
             txtSpecialNote.Value = "";
             ddlVacc.ClearSelection();

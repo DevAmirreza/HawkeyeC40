@@ -13,5 +13,9 @@ namespace AYadollahibastani_C40A02
         {
 
         }
+
+        protected void logo_Click(object sender, EventArgs e) {
+            Response.Redirect("main.aspx");
+        }
     }
 }

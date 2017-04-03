@@ -456,3 +456,12 @@ font-family: 'Playfair Display SC', serif;
 font-size:350% ;
 }
 }
+.datepickerUC {
+width: 105px !important;
+display: inline-block !important;
+}
+.calendarFixed{
+    display: inline-block;
+    width: 240px;
+    height: auto;
+}

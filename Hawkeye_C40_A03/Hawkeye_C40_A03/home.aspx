@@ -1,5 +1,8 @@
 ﻿<%@ Page Title="Home" Language="C#" MasterPageFile="~/Application.Master" AutoEventWireup="true" CodeBehind="home.aspx.cs" Inherits="AYadollahibastani_C40A02.homePage" %>
 
+<%@ Register Src="~/CalendarControl.ascx" TagPrefix="uc1" TagName="CalendarControl" %>
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
@@ -136,21 +139,21 @@
                             <label class="label-control col-sm-4">
                                 Start Date
                             </label>
-                            <input name="startDate" runat="server" id="txtStartDate" class="form-control datepicker" />
+                            <uc1:CalendarControl runat="server" id="UCstartDate" />
                             <div class="error_msg label-control col-sm-6 oneSixity">
                                 &nbsp;&nbsp;&nbsp;
-                            <asp:RequiredFieldValidator ID="valRequired" runat="server" ControlToValidate="txtStartDate" Display="Dynamic" ErrorMessage="Please select a start date "></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="valRequired" runat="server" ControlToValidate="UCstartDate$txtDate" Display="Dynamic" ErrorMessage="Please select a start date "></asp:RequiredFieldValidator>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <label class="label-control col-sm-4">
                                 End Date
                             </label>
-                            <input name="endDate" runat="server" id="txtEndDate" class="form-control datepicker" />
+                            <uc1:CalendarControl runat="server" ID="UCendDate" Name="UCendDate"/>
                             <div class="error_msg label-control col-sm-6 oneSixity">
                                 &nbsp;&nbsp;&nbsp;
-                           <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtEndDate" ErrorMessage="Please select an end date"></asp:RequiredFieldValidator>
-                                <asp:CustomValidator ID="valEndDate" runat="server" ErrorMessage="Your end must be after your start date" ControlToValidate="txtEndDate"></asp:CustomValidator>
+                           <asp:RequiredFieldValidator ID="valRequired2" runat="server" ControlToValidate="UCendDate$txtDate" ErrorMessage="Please select an end date"></asp:RequiredFieldValidator>
+                                <asp:CustomValidator ID="valEndDate" runat="server" ErrorMessage="Your end must be after your start date" ControlToValidate="UCendDate$txtDate"></asp:CustomValidator>
                             </div>
 
                         </div>

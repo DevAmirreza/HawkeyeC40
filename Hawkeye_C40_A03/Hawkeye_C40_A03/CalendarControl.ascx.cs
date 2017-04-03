@@ -22,7 +22,7 @@ namespace AYadollahibastani_C40A02 {
 
         protected void calControl_SelectionChanged(object sender, EventArgs e) {
             calControl.Visible = false;
-            txtDate.Value = calControl.SelectedDate.ToShortDateString();
+            txtDate.Text = calControl.SelectedDate.ToShortDateString();
         }
 
         protected void calControl_VisibleMonthChanged(object sender, MonthChangedEventArgs e) {

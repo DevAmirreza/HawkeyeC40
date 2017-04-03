@@ -130,13 +130,13 @@ namespace AYadollahibastani_C40A02 {
         protected global::System.Web.UI.WebControls.Panel clerkPanel;
         
         /// <summary>
-        /// txtStartDate control.
+        /// UCstartDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtStartDate;
+        protected global::AYadollahibastani_C40A02.CalendarControl UCstartDate;
         
         /// <summary>
         /// valRequired control.
@@ -148,22 +148,22 @@ namespace AYadollahibastani_C40A02 {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator valRequired;
         
         /// <summary>
-        /// txtEndDate control.
+        /// UCendDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtEndDate;
+        protected global::AYadollahibastani_C40A02.CalendarControl UCendDate;
         
         /// <summary>
-        /// RequiredFieldValidator2 control.
+        /// valRequired2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator valRequired2;
         
         /// <summary>
         /// valEndDate control.

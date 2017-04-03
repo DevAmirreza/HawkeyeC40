@@ -21,7 +21,9 @@ namespace AYadollahibastani_C40A02
             lblChooseRun.Visible = false;
             searchPanel.Visible = false;
             noReservationPanel.Visible = false;
-            changeState(false);
+            if (!IsPostBack) {
+                changeState(false);
+            }
             newOwner = (Hvk.Owner)Session["owner"];
             newReservation = (Hvk.HvkPetReservation)Session["reservation"];
 
@@ -83,9 +85,8 @@ namespace AYadollahibastani_C40A02
         protected void changeState(Boolean State)
         {
             txtResNote.Disabled = ((State == false) ? true : false);
-            txtStartDate.Disabled = ((State == false) ? true : false);
-            txtEndDate.Disabled = ((State == false) ? true : false);
-            txtEndDate.Disabled = ((State == false) ? true : false);
+            ((TextBox)UCstartDate.FindControl("txtDate")).Enabled = State;
+            ((TextBox)UCendDate.FindControl("txtDate")).Enabled = State;
             reservationPanel.Enabled = State;
         }
 
@@ -93,8 +94,8 @@ namespace AYadollahibastani_C40A02
         {
             try
             {
-                txtStartDate.Value = newReservation.reservaion.startDate.ToShortDateString();
-                txtEndDate.Value = newReservation.reservaion.endDate.ToShortDateString();
+                ((TextBox)UCstartDate.FindControl("txtDate")).Text = newReservation.reservaion.startDate.ToShortDateString();
+                ((TextBox)UCendDate.FindControl("txtDate")).Text = newReservation.reservaion.endDate.ToShortDateString();
                 //loads pet list from object into dropdown
                 if (!IsPostBack)
                 {
@@ -179,8 +180,8 @@ namespace AYadollahibastani_C40A02
                 changeState(true);
                 btnEdit.Visible = false;
                 loadData();
-                txtStartDate.Value = "";
-                txtEndDate.Value = "";
+                ((TextBox)UCstartDate.FindControl("txtDate")).Text = "";
+                ((TextBox)UCendDate.FindControl("txtDate")).Text = "";
                 lbCurrentPets.Items.Clear();
             }
 

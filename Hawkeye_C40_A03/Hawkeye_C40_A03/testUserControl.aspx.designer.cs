@@ -10,16 +10,7 @@
 namespace AYadollahibastani_C40A02 {
     
     
-    public partial class HomePage {
-        
-        /// <summary>
-        /// head control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+    public partial class testUserControl {
         
         /// <summary>
         /// form1 control.
@@ -31,21 +22,21 @@ namespace AYadollahibastani_C40A02 {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// logo control.
+        /// CalendarControl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton logo;
+        protected global::AYadollahibastani_C40A02.CalendarControl CalendarControl;
         
         /// <summary>
-        /// ContentPlaceHolder1 control.
+        /// lbl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
+        protected global::System.Web.UI.WebControls.Label lbl;
     }
 }

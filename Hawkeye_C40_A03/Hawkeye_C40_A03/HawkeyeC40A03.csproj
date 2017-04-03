@@ -130,6 +130,7 @@
     <Content Include="Default.aspx" />
     <Content Include="scripts\JavaScript.js" />
     <Content Include="styles\style.css" />
+    <Content Include="testUserControl.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -199,6 +200,13 @@
       <DependentUpon>manageReservation.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="testUserControl.aspx.cs">
+      <DependentUpon>testUserControl.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="testUserControl.aspx.designer.cs">
+      <DependentUpon>testUserControl.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

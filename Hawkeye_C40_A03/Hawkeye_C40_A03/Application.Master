@@ -6,7 +6,7 @@
 <head runat="server">
     <title></title>
     <asp:ContentPlaceHolder ID="head" runat="server">
-    <link rel="shortcut icon" href="images/HVKLogo.ico"/>
+        <link rel="shortcut icon" href="images/HVKLogo.ico"/>
     </asp:ContentPlaceHolder>
         <!-- Latest compiled and minified CSS -->
 <%--       <!-- jQuery library -->
@@ -32,7 +32,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/">Happy Valley Kennel</a>
+                    <asp:LinkButton ID="logo" runat="server" class="navbar-brand" href="/" OnClick="logo_Click">Happy Valley Kennel</asp:LinkButton>
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
@@ -55,7 +55,7 @@
  
 
     <footer>
-        <p class="copyright">Copyright 2017 - Happy Valley Kennel </p>
+        <p class="copyright">Copyright 2017 - Happy Valley Kennel 
 
     </footer>
 </body>

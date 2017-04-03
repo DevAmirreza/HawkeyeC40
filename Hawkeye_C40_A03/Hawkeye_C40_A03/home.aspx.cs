@@ -13,6 +13,7 @@ namespace AYadollahibastani_C40A02
         Hvk.Owner newOwner = null;
         protected void Page_Load(object sender, EventArgs e)
         {
+            
             bool clerk = true;
             changeState(false);
             searchPanel.Visible = false;
@@ -29,6 +30,7 @@ namespace AYadollahibastani_C40A02
                 searchPanel.Visible = true; 
             }
             detailPanel.Visible = false;
+            
         }
 
 
@@ -45,8 +47,8 @@ namespace AYadollahibastani_C40A02
 
         protected void loadData()
         {
-            txtStartDate.Value = newReservation.reservaion.startDate.ToShortDateString();
-            txtEndDate.Value = newReservation.reservaion.endDate.ToShortDateString();
+            ((TextBox)UCstartDate.FindControl("txtDate")).Text = newReservation.reservaion.startDate.ToShortDateString();
+            ((TextBox)UCendDate.FindControl("txtDate")).Text = newReservation.reservaion.endDate.ToShortDateString();
             //loads pet list from object into dropdown
       
             if (newReservation.pet.Count() > 0)
@@ -75,9 +77,8 @@ namespace AYadollahibastani_C40A02
         protected void changeState(Boolean State)
         {
             txtResNote.Disabled = ((State == false) ? true : false);
-            txtStartDate.Disabled = ((State == false) ? true : false);
-            txtEndDate.Disabled = ((State == false) ? true : false);
-            txtEndDate.Disabled = ((State == false) ? true : false);
+            ((TextBox)UCstartDate.FindControl("txtDate")).Enabled = ((State == false) ? true : false);
+            ((TextBox)UCstartDate.FindControl("txtDate")).Enabled = ((State == false) ? true : false);
             clerkPanel.Enabled = State;
         }
 

@@ -85,6 +85,15 @@ namespace AYadollahibastani_C40A02 {
         protected global::System.Web.UI.WebControls.Button btnLogin;
         
         /// <summary>
+        /// CalendarControl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AYadollahibastani_C40A02.CalendarControl CalendarControl;
+        
+        /// <summary>
         /// btnBookNow control.
         /// </summary>
         /// <remarks>
@@ -101,14 +110,5 @@ namespace AYadollahibastani_C40A02 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource dsOwnerEmails;
-        
-        /// <summary>
-        /// SqlDataSource1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
     }
 }
