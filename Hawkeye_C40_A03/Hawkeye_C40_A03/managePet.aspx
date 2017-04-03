@@ -112,7 +112,7 @@
                         <div class="col-sm-12" style="font-family: sans-serif">
 
                             <label class="label-control col-sm-2">Current Vaccines</label>
-                            <asp:ListBox ID="lbCurrentVacc" runat="server" OnSelectedIndexChanged="lbCurrentVacc_SelectedIndexChanged" SelectionMode="Multiple">
+                            <asp:ListBox ID="lbCurrentVacc" runat="server" OnSelectedIndexChanged="lbCurrentVacc_SelectedIndexChanged" SelectionMode="Multiple" AutoPostBack="True">
                                 <asp:ListItem></asp:ListItem>
                             </asp:ListBox>
                         </div>
@@ -137,7 +137,7 @@
                     -->
             <!--Pet List gets repeated for list of all pets -->
             <h2>List Of All Pets</h2>
-            <div class="listOfAllPets">
+            <div class="listOfAllPets" id="listOfPets">
                 <div class="petList">
                     <div class="col-md-8  ">
                         <div class="form-group">

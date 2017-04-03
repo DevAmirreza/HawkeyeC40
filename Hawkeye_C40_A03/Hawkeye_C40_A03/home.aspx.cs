@@ -19,7 +19,6 @@ namespace AYadollahibastani_C40A02
         protected void Page_Load(object sender, EventArgs e)
         {
             
-            bool clerk = true;
             changeState(false);
             searchPanel.Visible = false;
             newReservation = ((Hvk.HvkPetReservation)Session["reservation"]);

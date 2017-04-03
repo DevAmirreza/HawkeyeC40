@@ -20,7 +20,8 @@ namespace AYadollahibastani_C40A02
 
         enum UserType {
             Clerk,
-            Owner
+            Owner,
+            NewOwner
         };
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -41,7 +42,7 @@ namespace AYadollahibastani_C40A02
                     break;
             }
 
-            if (Session["owner"] == null)
+            if (Session["owner"] == null && (UserType)(Session["UserType"]) == UserType.Owner)
             {
                 newReservation = new Hvk.HvkPetReservation();
                 newOwner = new Hvk.Owner();
@@ -62,12 +63,12 @@ namespace AYadollahibastani_C40A02
                     newOwner.email = "Reed@hvk.ca";
                     newOwner.emgFirstName = "steve";
                     newOwner.emgLastName = "jobs";
-                    newOwner.emgPhoneNumber = "432455455";
+                    newOwner.emgPhoneNumber = "432-455-6455";
                     newOwner.address.city = "Chelsea";
                     newOwner.address.province = 'Q';
                     newOwner.address.street = "123 scott road";
                     newOwner.address.postalCode = "J9b 2p8";
-                    newOwner.phone = "4385566065";
+                    newOwner.phone = "438-556-6065";
                     Session["owner"] = newOwner;
                 }
             }
@@ -83,11 +84,21 @@ namespace AYadollahibastani_C40A02
             btnNav1.Text = "Home";
             btnNav3.Text = "Profile";
             if ((UserType)(Session["UserType"]) == UserType.Owner) {
+                btnNav1.Visible = true;
+                btnNav2.Visible = true;
                 btnNav2.Text = "Pets";
             }
-            else {
+            else if((UserType)(Session["UserType"]) == UserType.Clerk)
+            {
+                btnNav1.Visible = true;
+                btnNav2.Visible = true;
                 btnNav2.Text = "Owners";
                 btnNav2.Attributes["href"] = "/owners.aspx"; 
+            }
+            else
+            {
+                btnNav1.Visible = false; ;
+                btnNav2.Visible = false;
             }
 
         }

@@ -17,7 +17,7 @@
                         <asp:Label ID="lblUsername" runat="server" Text="Email" CssClass="label-control"></asp:Label>
                         <asp:TextBox ID="txtUsername" runat="server" CssClass="form-control"></asp:TextBox>
                         <asp:Label ID="lblPass" runat="server" Text="Password" CssClass="label-control"></asp:Label>
-                        <asp:TextBox ID="txtPass" runat="server" CssClass="form-control"></asp:TextBox>
+                        <asp:TextBox ID="txtPass" runat="server" CssClass="form-control" TextMode="Password"></asp:TextBox>
                         <asp:CheckBox ID="chKeepLogin" runat="server" Text="&nbsp Keep me loged in" />
                         <br />
 
@@ -32,7 +32,7 @@
                             New Customer ? 
                                 Please click here if you wish to book a reservation right now ! 
                             <br />
-                            <asp:Button CssClass="btn btn-primary" ID="btnBookNow" runat="server" Text="Book Now" />
+                            <asp:Button CssClass="btn btn-primary" ID="btnBookNow" runat="server" Text="Book Now" OnClick="btnBookNow_Click" />
                         </p>
                     </div>
                 </div>
