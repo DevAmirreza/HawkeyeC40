@@ -148,6 +148,15 @@ namespace AYadollahibastani_C40A02 {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator valReqPetSize;
         
         /// <summary>
+        /// dsVaccine control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource dsVaccine;
+        
+        /// <summary>
         /// ddlVacc control.
         /// </summary>
         /// <remarks>
@@ -155,6 +164,15 @@ namespace AYadollahibastani_C40A02 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlVacc;
+        
+        /// <summary>
+        /// btnAddVaccine control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAddVaccine;
         
         /// <summary>
         /// UCexpDate control.

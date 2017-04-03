@@ -217,6 +217,7 @@ namespace AYadollahibastani_C40A02
                 //Add the pet to reservation 
                 newReservation.pet.Add(new Hvk.PetReservation());
                 newReservation.pet[newReservation.pet.Count - 1].pet = new Hvk.Pet();
+                //possibly do a find on the current list to avoid duplication
                 newReservation.pet[newReservation.pet.Count - 1].pet.name = ddlChoosePet.SelectedItem.ToString();
             }
 

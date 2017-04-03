@@ -60,6 +60,7 @@ namespace AYadollahibastani_C40A02
                 int petIndex = (int)Session["PetID"];
                 txtPetName.Text = newOwner.pet[petIndex].name;
                 txtBreed.Text = newOwner.pet[petIndex].breed;
+                txtSpecialNote.InnerText = newOwner.pet[petIndex].note;
 
                 if (!IsPostBack)
                 {
@@ -92,6 +93,7 @@ namespace AYadollahibastani_C40A02
                 int tempindex = (int)Session["PetID"]; 
             newOwner.pet[tempindex].name = Request.Form[txtPetName.UniqueID];
             newOwner.pet[tempindex].breed = Request.Form[txtBreed.UniqueID];
+            newOwner.pet[tempindex].note = Request.Form[txtSpecialNote.UniqueID];
         }
            
                 try
@@ -185,10 +187,18 @@ namespace AYadollahibastani_C40A02
             
         }
 
-        protected void ddlVacc_SelectedIndexChanged(object sender, EventArgs e)
+        protected void btnAddVaccine_Click(object sender, EventArgs e)
         {
-            lbCurrentVacc.Items.Add(ddlVacc.SelectedItem);
+            ListItem item = new ListItem();
+            item.Text = ddlVacc.SelectedItem.ToString();
+            item.Value = UCexpDate.vacDate;
+            lbCurrentVacc.Items.Add(item);
             //adding vaccines to object here *****
+        }
+
+        protected void lbCurrentVacc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ddlVacc.SelectedIndex = ddlVacc.Items.IndexOf(ddlVacc.Items.FindByText(lbCurrentVacc.SelectedItem.ToString()));
         }
     }
 }
