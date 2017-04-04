@@ -13,51 +13,6 @@ namespace AYadollahibastani_C40A02 {
     public partial class manageReservation {
         
         /// <summary>
-        /// searchPanel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel searchPanel;
-        
-        /// <summary>
-        /// noReservationPanel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel noReservationPanel;
-        
-        /// <summary>
-        /// editPanel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel editPanel;
-        
-        /// <summary>
-        /// btnEdit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEdit;
-        
-        /// <summary>
-        /// btnNewReservation control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnNewReservation;
-        
-        /// <summary>
         /// ValidationSummary1 control.
         /// </summary>
         /// <remarks>
@@ -74,6 +29,15 @@ namespace AYadollahibastani_C40A02 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel reservationPanel;
+        
+        /// <summary>
+        /// pageTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pageTitle;
         
         /// <summary>
         /// UCstartDate control.
@@ -121,13 +85,13 @@ namespace AYadollahibastani_C40A02 {
         protected global::System.Web.UI.WebControls.CustomValidator valEndDate;
         
         /// <summary>
-        /// ddlChoosePet control.
+        /// ddlAddPet control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlChoosePet;
+        protected global::System.Web.UI.WebControls.DropDownList ddlAddPet;
         
         /// <summary>
         /// valPetExists control.
@@ -157,22 +121,22 @@ namespace AYadollahibastani_C40A02 {
         protected global::System.Web.UI.WebControls.DropDownList ddlChooseRun;
         
         /// <summary>
-        /// lblCurrentPet control.
+        /// lblPetsInRes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblCurrentPet;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblPetsInRes;
         
         /// <summary>
-        /// lbCurrentPets control.
+        /// ddlPetsInRes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox lbCurrentPets;
+        protected global::System.Web.UI.WebControls.DropDownList ddlPetsInRes;
         
         /// <summary>
         /// lblSelectedPet control.
@@ -218,6 +182,15 @@ namespace AYadollahibastani_C40A02 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnBook;
+        
+        /// <summary>
+        /// btnEdit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnEdit;
         
         /// <summary>
         /// btnClear control.
