@@ -164,59 +164,7 @@
                     -->
             <!--Pet List gets repeated for list of all pets -->
             <h2>List Of All Pets</h2>
-            <div class="listOfAllPets" id="listOfPets">
-                <div class="petList">
-                    <div class="col-md-8  ">
-                        <div class="form-group">
-                            <div class="col-sm-12" style="font-family: sans-serif">
-                                <label class="label-control col-sm-2">Pet Name : </label>
-                                <asp:Label ID="lblPetName" runat="server" CssClass="label-control col-sm-2" Text="n/a"></asp:Label>
-                            </div>
-
-                            <asp:Button CssClass="btn btn-danger btnEditPet" ID="btnPetListEdit" Text="Edit" runat="server" />
-                        </div>
-                    </div>
-                    <div class="col-md-4 ">
-                        <div id="" class="petProfileImage" style="background-image: url('images/profile.jpg')"></div>
-                    </div>
-
-
-                </div>
-
-                <!--Second Pet-->
-                <div class="petList">
-                    <div class="col-md-8  ">
-                        <div class="form-group">
-                            <div class="col-sm-12" style="font-family: sans-serif">
-                                <label class="label-control col-sm-2">Pet Name : </label>
-                                <asp:Label ID="Label1" runat="server" CssClass="label-control col-sm-2" Text="n/a"></asp:Label>
-                            </div>
-
-                            <asp:Button CssClass="btn btn-danger btnEditPet" ID="Button2" Text="Edit" runat="server" />
-                        </div>
-                    </div>
-                    <div class="col-md-4 ">
-                        <div id="" class="petProfileImage" style="background-image: url('images/profile.jpg')"></div>
-                    </div>
-                </div>
-
-                <!-- Third Pet -->
-                <div class="petList">
-                    <div class="col-md-8  ">
-                        <div class="form-group">
-                            <div class="col-sm-12" style="font-family: sans-serif">
-                                <label class="label-control col-sm-2">Petpiry Name : </label>
-                                <asp:Label ID="Label2" runat="server" CssClass="label-control col-sm-2" Text="n/a"></asp:Label>
-                            </div>
-                            <asp:Button CssClass="btn btn-danger btnEditPet" ID="Button1" Text="Edit" runat="server" />
-                        </div>
-                    </div>
-                    <div class="col-md-4 ">
-                        <div id="" class="petProfileImage" style="background-image: url('images/profile.jpg')"></div>
-                    </div>
-                </div>
-            </div>--%>
-
+         
             <uc1:listPets runat="server" ID="listPets" />
             <br />
             <asp:Button CausesValidation="false" CssClass="btn btn-default" ID="btnAdd" Text="Add A New Pet + " OnClick="btnAdd_Click" runat="server" />
