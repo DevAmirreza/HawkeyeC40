@@ -27,8 +27,8 @@
         </div>
 
         <h3>Reservations</h3>
-        <table class="table table-responsive">
-            <thead>
+        <asp:table runat="server" CssClass="table table-responsive">
+
                 <tr>
                     <th>Select
                     </th>
@@ -44,8 +44,7 @@
                     <th></th>
                     <th></th>
                 </tr>
-            </thead>
-            <tbody>
+
                 <tr>
                     <td>
                         <asp:CheckBox ID="chReservationSelect" runat="server" OnCheckedChanged="chReservationSelect_CheckedChanged" AutoPostBack="true" />
@@ -64,12 +63,14 @@
                     </td>
               
                     <td>  Avaialble  </td>
+                    <asp:Panel runat="server" ID="noCustomer"> 
                              <td>
-                        <asp:Button  runat="server" Text="Start" CssClass="btn btn-success"  />
+                        <asp:Button  runat="server" Text="Start" CssClass="btn btn-success clerkOnly "  />
                     </td>
                        <td>
-                        <asp:Button runat="server" Text="End" CssClass="btn btn-success" />
+                        <asp:Button runat="server" Text="End" CssClass="btn btn-success clerkOnly " />
                     </td>
+                        </asp:Panel>
                     <td>
 
                         <asp:Button ID="btnCancelReservation" runat="server" Text="Cancel" CausesValidation="false" CssClass="btn btn-danger" />
@@ -102,8 +103,8 @@
                         <asp:Button ID="Button3" runat="server" Text="More Info" CausesValidation="false" CssClass="btn btn-primary" />
                     </td>
                 </tr>--%>
-            </tbody>
-        </table>
+
+        </asp:table>
     </div>
     <div class="row ">
             <asp:Panel runat="server" ID="detailPanel">
