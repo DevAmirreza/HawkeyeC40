@@ -10,7 +10,7 @@
 namespace AYadollahibastani_C40A02 {
     
     
-    public partial class owners {
+    public partial class owner {
         
         /// <summary>
         /// btnAddNew control.
@@ -31,15 +31,6 @@ namespace AYadollahibastani_C40A02 {
         protected global::System.Web.UI.WebControls.TextBox txtEmail;
         
         /// <summary>
-        /// txtPhone control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPhone;
-        
-        /// <summary>
         /// btnSearch control.
         /// </summary>
         /// <remarks>
@@ -47,6 +38,15 @@ namespace AYadollahibastani_C40A02 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSearch;
+        
+        /// <summary>
+        /// cdOwnerSelected control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox cdOwnerSelected;
         
         /// <summary>
         /// customerEdit control.
@@ -58,30 +58,57 @@ namespace AYadollahibastani_C40A02 {
         protected global::System.Web.UI.WebControls.LinkButton customerEdit;
         
         /// <summary>
-        /// LinkButton1 control.
+        /// editDisplay control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
+        protected global::System.Web.UI.WebControls.Panel editDisplay;
         
         /// <summary>
-        /// LinkButton2 control.
+        /// btnBookNewReservation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton2;
+        protected global::System.Web.UI.WebControls.LinkButton btnBookNewReservation;
         
         /// <summary>
-        /// LinkButton3 control.
+        /// btnAddPet control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton3;
+        protected global::System.Web.UI.WebControls.LinkButton btnAddPet;
+        
+        /// <summary>
+        /// btnViewPet control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnViewPet;
+        
+        /// <summary>
+        /// viewPet control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel viewPet;
+        
+        /// <summary>
+        /// listPets control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AYadollahibastani_C40A02.listPets listPets;
     }
 }

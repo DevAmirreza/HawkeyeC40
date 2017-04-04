@@ -22,17 +22,19 @@ namespace AYadollahibastani_C40A02
             newOwner = (Hvk.Owner)Session["owner"];
             if(Session["PetID"] != null)
             x = (int)Session["PetID"]; 
+
         }
 
         protected void Page_PreRender(object sender, EventArgs e)
         {
-            if (Session["owner"] == null )
+            if (Session["owner"] == null)
                 newOwner = new Hvk.Owner();
             else
+            {
                 newOwner = ((Hvk.Owner)Session["owner"]);
-
-
-
+              
+            }
+            
             if (Session["PetID"] == null)
                 x = 0;
             else
@@ -199,6 +201,7 @@ namespace AYadollahibastani_C40A02
         protected void lbCurrentVacc_SelectedIndexChanged(object sender, EventArgs e)
         {
             ddlVacc.SelectedIndex = ddlVacc.Items.IndexOf(ddlVacc.Items.FindByText(lbCurrentVacc.SelectedItem.ToString()));
+            ((TextBox)UCexpDate.FindControl("txtDate")).Text = lbCurrentVacc.SelectedValue;
         }
     }
 }

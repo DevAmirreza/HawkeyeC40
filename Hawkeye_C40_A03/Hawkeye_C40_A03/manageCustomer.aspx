@@ -122,7 +122,11 @@
                             Province 
                             <%--                            <asp:RequiredFieldValidator ID="valProvince" runat="server" ControlToValidate="DropDownProvince" Display="Dynamic" ErrorMessage="Please select your province">*</asp:RequiredFieldValidator>--%>
                         </label>
-                        <asp:DropDownList placeholder="Your Province" CssClass="form-control prov" ID="DropDownProvince" runat="server"></asp:DropDownList>
+                        <asp:DropDownList placeholder="Your Province" CssClass="form-control prov" ID="DropDownProvince" runat="server">
+                            <asp:ListItem>--Select Province--</asp:ListItem>
+                            <asp:ListItem>Ontario</asp:ListItem>
+                            <asp:ListItem>Quebec</asp:ListItem>
+                        </asp:DropDownList>
                         <br />
                     </div>
                 </div>

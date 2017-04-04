@@ -105,6 +105,7 @@
     <Content Include="images\Calendar.png" />
     <Content Include="images\HVKLogo.ico" />
     <Content Include="images\profile.jpg" />
+    <Content Include="listPets.ascx" />
     <Content Include="manageCustomer.aspx" />
     <Content Include="managePet.aspx" />
     <Content Include="manageReservation.aspx" />
@@ -165,6 +166,13 @@
     </Compile>
     <Compile Include="HomePage.Master.designer.cs">
       <DependentUpon>HomePage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="listPets.ascx.cs">
+      <DependentUpon>listPets.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="listPets.ascx.designer.cs">
+      <DependentUpon>listPets.ascx</DependentUpon>
     </Compile>
     <Compile Include="main.aspx.cs">
       <DependentUpon>main.aspx</DependentUpon>

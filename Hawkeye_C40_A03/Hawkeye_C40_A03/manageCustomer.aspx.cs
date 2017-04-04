@@ -11,21 +11,32 @@ namespace AYadollahibastani_C40A02
     {
        private Hvk.Owner newOwner = null;
        private Hvk.Pet newPet = null;
-
+        enum UserType
+        {
+            Clerk,
+            Owner,
+            NewOwner
+        };
         protected void Page_Load(object sender, EventArgs e)
         {
             newOwner = (Hvk.Owner)Session["owner"];
        
             //Switch to clerk Mode
-            Boolean clerk = true;
+           
 
-            if (clerk == true)
+            if ((UserType)(Session["UserType"]) == UserType.Clerk)
             {
                 btnAdd.Visible = true;
             }
-            else
+            else if((UserType)(Session["UserType"]) == UserType.Owner)
             {
                 btnAdd.Visible = false;
+            }
+            else
+            {
+                btnPassdEdit.Visible = false;
+                btnAdd.Visible = false;
+
             }
             changeState(false);
             
@@ -115,6 +126,12 @@ namespace AYadollahibastani_C40A02
                 btnEdit.Visible = true;
                 lblMsg.Text = "You have sucessfully saved your information ! ";
             }
+
+            Session["UserType"] = UserType.Owner;
+            if(newOwner.pet.Count == 0)
+            {
+                Server.Transfer("~/ManagePet.aspx");
+            }
         }//Save Btn
 
 
@@ -124,7 +141,7 @@ namespace AYadollahibastani_C40A02
         }
 
 
-        protected void clear()
+        public void clear()
         {
             txtfName.Text = "";
             txtlName.Text = "";
