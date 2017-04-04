@@ -26,6 +26,7 @@ namespace AYadollahibastani_C40A02
         };
         protected void Page_Load(object sender, EventArgs e)
         {
+            owner = (Owner)Session["owner"];
             //on load set the active page to active
             string file = HttpContext.Current.Request.Url.AbsolutePath;
             if (Session["owner"] == null && file != "/default.aspx")
@@ -39,7 +40,7 @@ namespace AYadollahibastani_C40A02
                 {
                     Response.Redirect("/default.aspx");
                 }
-            }
+            } 
             switch (file)
             {
                 case "/home.aspx":

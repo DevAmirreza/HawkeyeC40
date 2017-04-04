@@ -21,8 +21,6 @@ namespace AYadollahibastani_C40A02
         {
             changeState(false);
             searchPanel.Visible = false;
-            HomePage master = Master as HomePage;
-            //owner = master.owner;
             if ((UserType)(Session["UserType"]) != UserType.Clerk)
             {
                 clerkPanel.Visible = false;
@@ -108,13 +106,8 @@ namespace AYadollahibastani_C40A02
 
             //if (!IsPostBack)
             //    loadReservationData();
-            if ((UserType)Session["UserType"] == UserType.Clerk)
-            {
-
-            } else
-            {
-
-            }
+            Application master = Master as Application;
+            owner = master.owner;
         }
 
         protected void btnMoreInfo_Click(object sender, EventArgs e)
