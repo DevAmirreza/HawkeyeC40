@@ -4,15 +4,25 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using HawkeyehvkBLL;
 namespace AYadollahibastani_C40A02
 {
     public partial class owners : System.Web.UI.Page
     {
+        Owner owner;
         protected void Page_Load(object sender, EventArgs e)
         {
             editDisplay.Visible = false;
-           // viewPet.Visible = false; 
+            // viewPet.Visible = false; 
+            //gdOwner.DataSource  = 
+            //gdOwner.DataBind();
+        }
+
+
+        protected void Page_PreRender(object sender, EventArgs e)
+        {
+            Application master = Master as Application;
+            owner = master.owner;
         }
 
         protected void customerEdit_Click(object sender, EventArgs e)
@@ -24,16 +34,15 @@ namespace AYadollahibastani_C40A02
         {
             //selects the owner id here
 
-            if (cdOwnerSelected.Checked)
-                editDisplay.Visible = true;
-            else
-                editDisplay.Visible = false;
+            //if (cdOwnerSelected.Checked)
+            //    editDisplay.Visible = true;
+            //else
+            //    editDisplay.Visible = false;
         }
 
         protected void btnAddNew_Click(object sender, EventArgs e)
         {
-            //ManageCustomer customer = new ManageCustomer();
-            //customer.clear();
+     
             Session["owner"] = null; 
         }
 

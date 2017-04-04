@@ -20,7 +20,7 @@
                 <br />
             </div>
             <div class="col-sm-12">
-                <table class="table table-striped">
+<%--                <table class="table table-striped">
                     <thead>
                         <tr>
                             <th>Select</th>
@@ -50,14 +50,20 @@
 
 
                     </tbody>
-                </table>
-                <asp:Panel runat="server" ID="editDisplay">
+                </table>--%>
+             
+                <asp:GridView ID="gdOwner" runat="server">
+
+                </asp:GridView>
+                
+                
+                   <asp:Panel runat="server" ID="editDisplay">
                     <asp:LinkButton ID="btnBookNewReservation" href="/managePet.aspx" runat="server" CssClass="btn btn-default">Book a new reservation </asp:LinkButton>
                     <asp:LinkButton ID="btnAddPet" href="/managePet.aspx" runat="server" CssClass="btn btn-default">Add a new Pet </asp:LinkButton>
                     <%--                    <asp:LinkButton ID="btnViewPet" runat="server" CssClass="btn btn-default" OnClick="btnViewPet_Click">Vew Pet List </asp:LinkButton>--%>
                     <asp:Panel runat="server" ID="viewPet">
                         <div class="col-sm-6">
-                            sd
+                            Reservation History
                         </div>
                         <div class="col-sm-6">
                             <uc1:listPets runat="server" ID="listPets" />
