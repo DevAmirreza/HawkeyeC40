@@ -18,10 +18,51 @@
                 <asp:TextBox ID="txtEmail" Name="email" runat="server" CssClass="form-control col-sm-6"></asp:TextBox>
                 <asp:Button ID="btnSearch" runat="server" CssClass=" btn btn-primary" Text="Search" OnClick="btnSearch_Click" />
                 <br />
+                <asp:ObjectDataSource ID="odFullOwner" runat="server" SelectMethod="getFullOwner" TypeName="HawkeyehvkBLL.Owner">
+                    <SelectParameters>
+                        <asp:ControlParameter ControlID="txtEmail" DefaultValue="bque@gmail.com" Name="email" PropertyName="Text" Type="String" />
+                    </SelectParameters>
+                </asp:ObjectDataSource>
+                <br />
                 <br />
             </div>
             <div class="col-sm-12">
-                    <asp:GridView ID="gdOwner" runat="server" AutoGenerateColumns="False" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2" Height="141px" Width="692px">
+                 <%--   <asp:GridView ID="gdOwner" runat="server" AutoGenerateColumns="False" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2" Height="141px" Width="821px" DataSourceID="odFullOwner">
+
+                        <Columns>
+                            <asp:TemplateField HeaderText="firstName" SortExpression="firstName">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("firstName") %>'></asp:TextBox>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label4" runat="server" Text='<%# Bind("firstName") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="lastName" SortExpression="lastName">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("lastName") %>'></asp:TextBox>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label3" runat="server" Text='<%# Bind("lastName") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="email" SortExpression="email">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("email") %>'></asp:TextBox>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label2" runat="server" Text='<%# Bind("email") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="phoneNumber" SortExpression="phoneNumber">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("phoneNumber") %>'></asp:TextBox>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label1" runat="server" Text='<%# Bind("phoneNumber") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                        </Columns>
 
                         <FooterStyle BackColor="#F7DFB5" ForeColor="#8C4510" />
                         <HeaderStyle BackColor="#A55129" Font-Bold="True" ForeColor="White" />
@@ -33,8 +74,8 @@
                         <SortedDescendingCellStyle BackColor="#F1E5CE" />
                         <SortedDescendingHeaderStyle BackColor="#93451F" />
 
-                </asp:GridView>
-<%--                <table class="table table-striped">
+                </asp:GridView>--%>
+                <table class="table table-striped">
                     <thead>
                         <tr>
                             <th>Select</th>
@@ -64,7 +105,7 @@
 
 
                     </tbody>
-                </table>--%>
+                </table>
              
             
                 

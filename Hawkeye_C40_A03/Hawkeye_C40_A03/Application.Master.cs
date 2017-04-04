@@ -28,6 +28,7 @@ namespace AYadollahibastani_C40A02
         {
             owner = (Owner)Session["owner"];
             //on load set the active page to active
+            //potential bug 
             string file = HttpContext.Current.Request.Url.AbsolutePath;
             if (Session["owner"] == null && file != "/default.aspx")
             {
