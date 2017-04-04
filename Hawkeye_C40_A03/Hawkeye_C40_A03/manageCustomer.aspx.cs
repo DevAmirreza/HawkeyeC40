@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HawkeyehvkBLL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,8 +10,8 @@ namespace AYadollahibastani_C40A02
 {
     public partial class ManageCustomer : System.Web.UI.Page
     {
-       private Hvk.Owner newOwner = null;
-       private Hvk.Pet newPet = null;
+       private Owner newOwner = null;
+       private Pet newPet = null;
         enum UserType
         {
             Clerk,
@@ -19,7 +20,7 @@ namespace AYadollahibastani_C40A02
         };
         protected void Page_Load(object sender, EventArgs e)
         {
-            newOwner = (Hvk.Owner)Session["owner"];
+            newOwner = (Owner)Session["owner"];
        
             //Switch to clerk Mode
            
@@ -51,11 +52,11 @@ namespace AYadollahibastani_C40A02
             //set sessions
             if (Session["owner"] == null)
             {
-                newOwner = new Hvk.Owner();
+                newOwner = new Owner();
             }
             else
             {
-                newOwner = ((Hvk.Owner)Session["owner"]);
+                newOwner = ((Owner)Session["owner"]);
             }
 
             if (!IsPostBack)
@@ -69,14 +70,14 @@ namespace AYadollahibastani_C40A02
             txtfName.Text = newOwner.firstName;
             txtlName.Text = newOwner.lastName;
             txtEmail.Text = newOwner.email;
-            txtEmrgfName.Text = newOwner.emgFirstName;
-            txtEmrglName.Text = newOwner.emgLastName;
-            txtEmrgPhone.Text = newOwner.emgPhoneNumber;
+            txtEmrgfName.Text = newOwner.emergencyFirstName;
+            txtEmrglName.Text = newOwner.emergencyLastName;
+            txtEmrgPhone.Text = newOwner.emergencyPhone;
             txtCity.Text = newOwner.address.city;
             DropDownProvince.Text = Convert.ToString(newOwner.address.province);
             txtaddress.Text = newOwner.address.street;
             txtPostal.Text = newOwner.address.postalCode;
-            txtHomePhone.Text = newOwner.phone;
+            txtHomePhone.Text = newOwner.phoneNumber;
         }
 
 
@@ -85,13 +86,13 @@ namespace AYadollahibastani_C40A02
             newOwner.firstName = Request.Form[txtfName.UniqueID];
             newOwner.lastName = Request.Form[txtlName.UniqueID];
             newOwner.email = Request.Form[txtEmail.UniqueID];
-            newOwner.emgFirstName = Request.Form[txtEmrgfName.UniqueID];
-            newOwner.emgLastName = Request.Form[txtEmrglName.UniqueID];
-            newOwner.emgPhoneNumber = Request.Form[txtEmrgPhone.UniqueID];
+            newOwner.emergencyFirstName = Request.Form[txtEmrgfName.UniqueID];
+            newOwner.emergencyLastName = Request.Form[txtEmrglName.UniqueID];
+            newOwner.emergencyPhone = Request.Form[txtEmrgPhone.UniqueID];
             newOwner.address.city = Request.Form[txtCity.UniqueID];
             newOwner.address.street = Request.Form[txtaddress.UniqueID];
             newOwner.address.postalCode = Request.Form[txtPostal.UniqueID];
-            newOwner.phone = Request.Form[txtHomePhone.UniqueID];
+            newOwner.phoneNumber = Request.Form[txtHomePhone.UniqueID];
         }
 
 
@@ -100,7 +101,7 @@ namespace AYadollahibastani_C40A02
             //update
             if (newOwner == null)
             {
-                newOwner = new Hvk.Owner();
+                newOwner = new Owner();
             }
             updateFields();
             //reload data
@@ -128,7 +129,7 @@ namespace AYadollahibastani_C40A02
             }
 
             Session["UserType"] = UserType.Owner;
-            if(newOwner.pet.Count == 0)
+            if(newOwner.petList.Count == 0)
             {
                 Server.Transfer("~/ManagePet.aspx");
             }
