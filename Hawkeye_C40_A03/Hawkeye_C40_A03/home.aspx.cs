@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using HawkeyehvkBLL;
+using System.Web.UI;
 
 namespace AYadollahibastani_C40A02
 {
@@ -21,7 +22,7 @@ namespace AYadollahibastani_C40A02
         {
             changeState(false);
             searchPanel.Visible = false;
-            owner = (Owner)Session["owner"];        
+            owner = ((HomePage)Master).owner;
             if ((UserType)(Session["UserType"]) != UserType.Clerk)
             {
                 clerkPanel.Visible = false;
