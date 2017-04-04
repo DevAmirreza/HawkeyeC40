@@ -47,6 +47,21 @@ namespace AYadollahibastani_C40A02
                 if (pass=="1234") {
                     //set session for clerk
                     setUserType("clerk");
+
+                    Owner newOwner = new Owner();
+                    newOwner.firstName = "Jim";
+                    newOwner.lastName = "Reed";
+                    newOwner.email = "Reed@hvk.ca";
+                    newOwner.emergencyFirstName = "steve";
+                    newOwner.emergencyLastName = "jobs";
+                    newOwner.emergencyPhone = "432455455";
+                    newOwner.address.city = "Chelsea";
+                    newOwner.address.province = "Q";
+                    newOwner.address.street = "123 scott road";
+                    newOwner.address.postalCode = "J9b 2p8";
+                    newOwner.phoneNumber = "4385566065";
+                    Session["owner"] = newOwner;
+
                     // the sessions with objects are loaded from the master page used for application pages
                     Response.Redirect("home.aspx");
                 }
