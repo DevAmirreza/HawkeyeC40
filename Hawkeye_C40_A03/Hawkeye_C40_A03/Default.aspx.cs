@@ -25,14 +25,19 @@ namespace AYadollahibastani_C40A02
         }
         enum UserType {
             Clerk,
-            Owner
+            Owner,
+            NewOwner
         };
         private void setUserType(String type) {
             if (type.ToUpper()=="CLERK") {
                 Session["UserType"] = UserType.Clerk;
             }
-            else {
+            else if(type.ToUpper() == "OWNER"){
                 Session["UserType"] = UserType.Owner;
+            }
+            else
+            {
+                Session["UserType"] = UserType.NewOwner;
             }
         }
         protected void btnLogin_Click(object sender, EventArgs e) {
@@ -83,6 +88,14 @@ namespace AYadollahibastani_C40A02
                     Response.Redirect("home.aspx");
                 }
             }
+           
+        }
+
+        protected void btnBookNow_Click(object sender, EventArgs e)
+        {
+            setUserType("NewOwner");
+            Session["owner"] = null;
+            Server.Transfer("~/ManageCustomer.aspx");
         }
     }
 }

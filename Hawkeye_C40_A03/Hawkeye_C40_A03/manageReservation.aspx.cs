@@ -4,19 +4,30 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using HawkeyehvkBLL;
 namespace AYadollahibastani_C40A02
 {
     public partial class manageReservation : System.Web.UI.Page
     {
-        Hvk.HvkPetReservation newReservation = null;
-        Hvk.Owner newOwner = null ;
-        int X = -1;
-
+        Owner newOwner = null ;
+        Reservation reservationOnPage;
+        int currentPetNumber = -1;
+        enum UserType
+        {
+            Clerk,
+            Owner
+        };
         protected void Page_Load(object sender, EventArgs e)
         {
+            Boolean clerk;
             //Switch To Clerk - Default : Customer
-            Boolean clerk = false;
+            if ((UserType)Session["UserType"] == UserType.Owner)
+            {
+                clerk = false;
+            }
+            else {
+                clerk = true;
+            }
             ddlChooseRun.Visible = false;
             lblChooseRun.Visible = false;
             searchPanel.Visible = false;
@@ -24,8 +35,26 @@ namespace AYadollahibastani_C40A02
             if (!IsPostBack) {
                 changeState(false);
             }
-            newOwner = (Hvk.Owner)Session["owner"];
-            newReservation = (Hvk.HvkPetReservation)Session["reservation"];
+            newOwner = ((Application)Master).owner;
+            /*
+             * The below variable is the reservation that is being manipulated.
+             * It will be set to a specific reservation number if editing or not
+             */
+            Reservation reservationOnPage;
+            bool resSet = false;
+            if (Session["reservation"] != null) {
+                int resNum = Convert.ToInt32(Session["reservation"]);
+                newOwner.reservationList.ForEach(delegate(Reservation res) {
+                    if (resNum == res.reservationNumber) {
+                        reservationOnPage = res;
+                        resSet = true;
+                    }
+                });
+            }
+
+            if (!resSet) {
+                reservationOnPage = new Reservation();
+            }
 
             if (Session["owner"] == null && clerk)
             {
@@ -43,39 +72,19 @@ namespace AYadollahibastani_C40A02
         protected void Page_PreRender(object sender, EventArgs e)
         {
 
-            if (Session["reservation"] == null)
-            {
-                newReservation = new Hvk.HvkPetReservation();
-            }
-            else
-            {
-                 Session["reservation"] = newReservation;
-                Session["owner"] = newOwner;
-            }
-
             if (!IsPostBack)
                 loadData();
         }
 
 
-        //updating fields need to be change inroder to work with db
+        //updating fields need to be change to work with db
         protected void updateFields(int petIndex)
-        {
-                //newReservation.pet = new List<Hvk.PetReservation>();
-                //newReservation.pet.Add(new Hvk.PetReservation());
-                //newReservation.pet[petIndex].pet = new Hvk.Pet();
-                newReservation.pet[petIndex].pet.name = lbCurrentPets.Items[petIndex].Text;
-                newReservation.pet[petIndex].name = lbCurrentPets.Items[petIndex].Text;
-                newReservation.pet[petIndex].note = Request.Form[txtResNote.UniqueID];
-                newReservation.pet[petIndex].medication = new List<Hvk.Medication>();
-                // newReservation.reservaion.startDate = DateTime.ParseExact(Request.Form[txtStartDate.ID],"ddmmyyyy", CultureInfo.InvariantCulture);
-                //newReservation.reservaion.endDate = DateTime.ParseExact(Request.Form[txtEndDate.ID],"dd/mm/yy", CultureInfo.InvariantCulture);
-                //run info - get it from db
-                newReservation.pet[petIndex].runAssigned = new Hvk.Run(100, 'L', 'c', 'D', 0);
-                newReservation.pet[petIndex].service = new List<Hvk.ReservationService>();
-                Hvk.ReservationService service = new Hvk.ReservationService();
-                newReservation.pet[petIndex].service.Add(service);
-
+        {            
+                reservationOnPage.petReservationList[petIndex].pet.name = lbCurrentPets.Items[petIndex].Text;
+                // get reservation
+                // reservationOnPage.petReservationList[petIndex].run.runNumber = 
+                ReservedService service = new ReservedService();
+                reservationOnPage.petReservationList[petIndex].serviceList.Add(service);
             
             
         }
@@ -94,13 +103,13 @@ namespace AYadollahibastani_C40A02
         {
             try
             {
-                ((TextBox)UCstartDate.FindControl("txtDate")).Text = newReservation.reservaion.startDate.ToShortDateString();
-                ((TextBox)UCendDate.FindControl("txtDate")).Text = newReservation.reservaion.endDate.ToShortDateString();
+                ((TextBox)UCstartDate.FindControl("txtDate")).Text = reservationOnPage.startDate.ToShortDateString();
+                ((TextBox)UCendDate.FindControl("txtDate")).Text = reservationOnPage.endDate.ToShortDateString();
                 //loads pet list from object into dropdown
                 if (!IsPostBack)
                 {
                     //Hawkeye : newOwner.reservation.petReservation.pet 
-                    foreach (var item in newOwner.pet)
+                    foreach (var item in newOwner.petList)
                     {
                         ddlChoosePet.Items.Add(item.name);
                         ddlChoosePet.Items[ddlChoosePet.Items.Count - 1].Value = item.petNumber.ToString();
@@ -108,20 +117,19 @@ namespace AYadollahibastani_C40A02
                 }
                 // Multiple Pet - to be implemented here
                 //Hawkeye : newOwner.reservation.petReservation.pet.Count() 
-                if (newReservation.pet.Count() > 0)
+                if (reservationOnPage.petReservationList.Count() > 0)
                 {
                     if (!IsPostBack)
                     {
-                        foreach (var item in newReservation.pet)
+                        foreach (var item in reservationOnPage.petReservationList)
                         {
                             lbCurrentPets.Items.Add(item.pet.name);
-                            lbCurrentPets.Items[lbCurrentPets.Items.Count - 1].Value = item.petNumber.ToString();
+                            lbCurrentPets.Items[lbCurrentPets.Items.Count - 1].Value = item.pet.petNumber.ToString();
 
                         }
                     }
 
                     chWalk.Checked = true;
-                    txtResNote.Value = newReservation.pet[(int)Session["PetID"]].note;
                 }
                 else
                 {
@@ -172,11 +180,11 @@ namespace AYadollahibastani_C40A02
             btnBook.Text = "Save";
         }
 
-        protected void btnNewReservation_Click(object sender, EventArgs e)
+        protected void btnreservationOnPage_Click(object sender, EventArgs e)
         {
             if (IsPostBack)
             {
-                newReservation = new Hvk.HvkPetReservation();
+                reservationOnPage = new Reservation();
                 changeState(true);
                 btnEdit.Visible = false;
                 loadData();
@@ -196,8 +204,8 @@ namespace AYadollahibastani_C40A02
             if (valEndDate.IsValid == true && validationFlag == false )
                 {
                     btnEdit.Visible = true;
-                if (X >= 0)
-                    updateFields(X);
+                if (currentPetNumber >= 0)
+                    updateFields(currentPetNumber);
                 else
                     validationFlag = false;
                     loadData();
@@ -215,10 +223,10 @@ namespace AYadollahibastani_C40A02
             if (validation)
             {
                 //Add the pet to reservation 
-                newReservation.pet.Add(new Hvk.PetReservation());
-                newReservation.pet[newReservation.pet.Count - 1].pet = new Hvk.Pet();
+                reservationOnPage.petReservationList.Add(new PetReservation());
+                reservationOnPage.petReservationList[reservationOnPage.petReservationList.Count - 1].pet = new Pet();
                 //possibly do a find on the current list to avoid duplication
-                newReservation.pet[newReservation.pet.Count - 1].pet.name = ddlChoosePet.SelectedItem.ToString();
+                reservationOnPage.petReservationList[reservationOnPage.petReservationList.Count - 1].pet.name = ddlChoosePet.SelectedItem.ToString();
             }
 
         }

@@ -21,7 +21,8 @@ namespace AYadollahibastani_C40A02
         enum UserType
         {
             Clerk,
-            Owner
+            Owner,
+            NewOwner
         };
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -43,7 +44,7 @@ namespace AYadollahibastani_C40A02
                     break;
             }
 
-            if (Session["owner"] == null)
+            if (Session["owner"] == null && (UserType)(Session["UserType"]) == UserType.Owner)
             {
                 if (file != "/default.aspx")
                     Response.Redirect("/default.aspx");
@@ -87,19 +88,31 @@ namespace AYadollahibastani_C40A02
             }
             else
             {
-                owner = (Owner)Session["owner"];
-                //set Nav based on type of user
-                btnNav1.Text = "Home";
-                btnNav3.Text = "Profile";
-                if ((UserType)Session["UserType"] == UserType.Owner)
-                {
-                    btnNav2.Text = "Pets";
+                if ((UserType)(Session["UserType"]) == UserType.Owner) {
+                    Session["reservation"] = (Hvk.HvkPetReservation)Session["reservation"];
                 }
-                else
-                {
-                    btnNav2.Text = "Owners";
-                    btnNav2.Attributes["href"] = "/owners.aspx";
-                }
+                Session["owner"] = (Hvk.Owner)Session["owner"]; 
+            }
+
+            //set Nav based on type of user
+            btnNav1.Text = "Home";
+            btnNav3.Text = "Profile";
+            if ((UserType)(Session["UserType"]) == UserType.Owner) {
+                btnNav1.Visible = true;
+                btnNav2.Visible = true;
+                btnNav2.Text = "Pets";
+            }
+            else if((UserType)(Session["UserType"]) == UserType.Clerk)
+            {
+                btnNav1.Visible = true;
+                btnNav2.Visible = true;
+                btnNav2.Text = "Owners";
+                btnNav2.Attributes["href"] = "/owners.aspx"; 
+            }
+            else
+            {
+                btnNav1.Visible = false; ;
+                btnNav2.Visible = false;
             }
 
         }
