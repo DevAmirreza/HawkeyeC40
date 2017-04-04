@@ -28,6 +28,18 @@ namespace AYadollahibastani_C40A02
         {
             //on load set the active page to active
             string file = HttpContext.Current.Request.Url.AbsolutePath;
+            if (Session["owner"] == null && file != "/default.aspx")
+            {
+                try
+                {
+                    if ((UserType)Session["UserType"] != UserType.NewOwner || file != "/manageOwner.aspx")
+                        Response.Redirect("/default.aspx");
+                }
+                catch
+                {
+                    Response.Redirect("/default.aspx");
+                }
+            }
             switch (file)
             {
                 case "/home.aspx":
@@ -44,70 +56,63 @@ namespace AYadollahibastani_C40A02
                     break;
             }
 
-            if (Session["owner"] == null && (UserType)(Session["UserType"]) == UserType.Owner)
-            {
-                if (file != "/default.aspx")
-                    Response.Redirect("/default.aspx");
-                //newReservation = new Hvk.HvkPetReservation();
-                //newOwner = new Hvk.Owner();
 
-                //setting reservation & owner session
 
-                //setDummyData reservation if its not a clerk
-                //    if ((UserType)(Session["UserType"]) == UserType.Owner)
-                //    {
-                //        Session["reservation"] = newReservation;
-                //        Session["owner"] = newOwner;
+            //newReservation = new Hvk.HvkPetReservation();
+            //newOwner = new Hvk.Owner();
 
-                //        setDummyData();
-                //    }
-                //    else
-                //    {
+            //setting reservation & owner session
 
-                //        newOwner.firstName = "Jim";
-                //        newOwner.lastName = "Reed";
-                //        newOwner.email = "Reed@hvk.ca";
-                //        newOwner.emgFirstName = "steve";
-                //        newOwner.emgLastName = "jobs";
-                //        newOwner.emgPhoneNumber = "432455455";
-                //        newOwner.address.city = "Chelsea";
-                //        newOwner.address.province = 'Q';
-                //        newOwner.address.street = "123 scott road";
-                //        newOwner.address.postalCode = "J9b 2p8";
-                //        newOwner.phone = "4385566065";
-                //        Session["owner"] = newOwner;
-                //    }
-                //}
-                //else
-                //{
-                //    if ((UserType)(Session["UserType"]) == UserType.Owner)
-                //    {
-                //        Session["reservation"] = (Hvk.HvkPetReservation)Session["reservation"];
-                //    }
-                //    Session["owner"] = (Hvk.Owner)Session["owner"];
-            }
-            else
-            {
-                if ((UserType)(Session["UserType"]) == UserType.Owner) {
-                    Session["reservation"] = (Hvk.HvkPetReservation)Session["reservation"];
-                }
-                Session["owner"] = (Hvk.Owner)Session["owner"]; 
-            }
+            //setDummyData reservation if its not a clerk
+            //    if ((UserType)(Session["UserType"]) == UserType.Owner)
+            //    {
+            //        Session["reservation"] = newReservation;
+            //        Session["owner"] = newOwner;
+
+            //        setDummyData();
+            //    }
+            //    else
+            //    {
+
+            //        newOwner.firstName = "Jim";
+            //        newOwner.lastName = "Reed";
+            //        newOwner.email = "Reed@hvk.ca";
+            //        newOwner.emgFirstName = "steve";
+            //        newOwner.emgLastName = "jobs";
+            //        newOwner.emgPhoneNumber = "432455455";
+            //        newOwner.address.city = "Chelsea";
+            //        newOwner.address.province = 'Q';
+            //        newOwner.address.street = "123 scott road";
+            //        newOwner.address.postalCode = "J9b 2p8";
+            //        newOwner.phone = "4385566065";
+            //        Session["owner"] = newOwner;
+            //    }
+            //}
+            //else
+            //{
+            //    if ((UserType)(Session["UserType"]) == UserType.Owner)
+            //    {
+            //        Session["reservation"] = (Hvk.HvkPetReservation)Session["reservation"];
+            //    }
+            //    Session["owner"] = (Hvk.Owner)Session["owner"];
+
+
 
             //set Nav based on type of user
             btnNav1.Text = "Home";
             btnNav3.Text = "Profile";
-            if ((UserType)(Session["UserType"]) == UserType.Owner) {
+            if ((UserType)(Session["UserType"]) == UserType.Owner)
+            {
                 btnNav1.Visible = true;
                 btnNav2.Visible = true;
                 btnNav2.Text = "Pets";
             }
-            else if((UserType)(Session["UserType"]) == UserType.Clerk)
+            else if ((UserType)(Session["UserType"]) == UserType.Clerk)
             {
                 btnNav1.Visible = true;
                 btnNav2.Visible = true;
                 btnNav2.Text = "Owners";
-                btnNav2.Attributes["href"] = "/owners.aspx"; 
+                btnNav2.Attributes["href"] = "/owners.aspx";
             }
             else
             {

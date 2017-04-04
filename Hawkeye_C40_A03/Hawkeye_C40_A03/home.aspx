@@ -27,7 +27,12 @@
         </div>
 
         <h3>Reservations</h3>
-        <asp:table runat="server" CssClass="table table-responsive">
+        <asp:GridView AutoGenerateColumns="true" ID="gvReservations" runat="server">
+
+        </asp:GridView>
+
+
+<%--        <table runat="server" CssClass="table table-responsive">
 
                 <tr>
                     <th>Select
@@ -102,9 +107,9 @@
                     <td>
                         <asp:Button ID="Button3" runat="server" Text="More Info" CausesValidation="false" CssClass="btn btn-primary" />
                     </td>
-                </tr>--%>
+                </tr>
 
-        </asp:table>
+        </table>--%>
     </div>
     <div class="row ">
             <asp:Panel runat="server" ID="detailPanel">
