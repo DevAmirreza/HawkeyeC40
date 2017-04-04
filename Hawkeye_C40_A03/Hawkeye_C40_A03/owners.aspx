@@ -7,12 +7,12 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
     <div class="page_title">
-        <%--Find a New Customer--%>
+        Find a New Customer
     </div>
     <div class="row">
         <div class="container">
             <asp:LinkButton ID="btnAddNew" href="/manageCustomer.aspx" runat="server" CssClass="btn btn-default" OnClick="btnAddNew_Click">Add a new customer </asp:LinkButton>
-            <h3>Search</h3>
+            <h4>Search</h4>
             <div class="col-sm-12">
                 <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control col-sm-6"></asp:TextBox>
                 <asp:Button ID="btnSearch" runat="server" CssClass=" btn btn-primary" Text="Search" />
@@ -41,7 +41,7 @@
                             <td>john@example.com</td>
                             <td>(438)990-6065</td>
                             <td>
-                                <asp:LinkButton ID="customerEdit" runat="server" OnClick="customerEdit_Click">Edit</asp:LinkButton>
+                                <asp:LinkButton href="/manageCustomer.aspx" ID="customerEdit" runat="server" OnClick="customerEdit_Click">Edit</asp:LinkButton>
                             </td>
 
                         </tr>
@@ -51,16 +51,21 @@
 
                     </tbody>
                 </table>
-                <asp:Panel runat="server" ID="editDisplay" >
+                <asp:Panel runat="server" ID="editDisplay">
                     <asp:LinkButton ID="btnBookNewReservation" href="/managePet.aspx" runat="server" CssClass="btn btn-default">Book a new reservation </asp:LinkButton>
                     <asp:LinkButton ID="btnAddPet" href="/managePet.aspx" runat="server" CssClass="btn btn-default">Add a new Pet </asp:LinkButton>
-                    <asp:LinkButton ID="btnViewPet" runat="server" CssClass="btn btn-default" OnClick="btnViewPet_Click">Vew Pet List </asp:LinkButton>
-
+                    <%--                    <asp:LinkButton ID="btnViewPet" runat="server" CssClass="btn btn-default" OnClick="btnViewPet_Click">Vew Pet List </asp:LinkButton>--%>
+                    <asp:Panel runat="server" ID="viewPet">
+                        <div class="col-sm-6">
+                            sd
+                        </div>
+                        <div class="col-sm-6">
+                            <uc1:listPets runat="server" ID="listPets" />
+                        </div>
+                    </asp:Panel>
                 </asp:Panel>
 
-                <asp:Panel runat="server" ID="viewPet">
-                    <uc1:listPets runat="server" ID="listPets" />
-                </asp:Panel>
+
 
             </div>
         </div>

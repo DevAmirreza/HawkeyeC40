@@ -12,7 +12,7 @@ namespace AYadollahibastani_C40A02
         protected void Page_Load(object sender, EventArgs e)
         {
             editDisplay.Visible = false;
-            viewPet.Visible = false; 
+           // viewPet.Visible = false; 
         }
 
         protected void customerEdit_Click(object sender, EventArgs e)
@@ -43,13 +43,13 @@ namespace AYadollahibastani_C40A02
             if (viewPet.Visible)
             {
                 viewPet.Visible = false;
-                btnViewPet.Text = "Hide List of pets ";
+                //btnViewPet.Text = "Hide List of pets ";
             }
             else
             {
                 viewPet.Visible = true;
-                btnViewPet.Text = "View List of pets ";
+                //btnViewPet.Text = "View List of pets ";
             }
-            }
+        }
     }
 }
