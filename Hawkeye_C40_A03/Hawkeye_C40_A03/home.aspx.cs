@@ -21,7 +21,8 @@ namespace AYadollahibastani_C40A02
         {
             changeState(false);
             searchPanel.Visible = false;
-            owner = ((HomePage)Master).owner;
+            HomePage master = Master as HomePage;
+            //owner = master.owner;
             if ((UserType)(Session["UserType"]) != UserType.Clerk)
             {
                 clerkPanel.Visible = false;
