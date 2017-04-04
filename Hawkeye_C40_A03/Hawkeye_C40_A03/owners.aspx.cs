@@ -14,8 +14,7 @@ namespace AYadollahibastani_C40A02
         {
             editDisplay.Visible = false;
             // viewPet.Visible = false; 
-            //gdOwner.DataSource  = 
-            //gdOwner.DataBind();
+
         }
 
 
@@ -59,6 +58,13 @@ namespace AYadollahibastani_C40A02
                 viewPet.Visible = true;
                 //btnViewPet.Text = "View List of pets ";
             }
+        }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            //gdOwner.DataSource = Owner.getFullOwner(txtEmail.Text);
+            //gdOwner.DataBind();
+            //odsOwner.SelectParameters[0].DefaultValue = Request.Form[txtEmail.UniqueID];
         }
     }
 }
