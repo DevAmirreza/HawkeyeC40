@@ -82,8 +82,8 @@
                             </label>
 
                             <asp:RadioButtonList ID="rdlPetSize" CssClass="btnRadio" runat="server">
-                                <asp:ListItem>Small</asp:ListItem>
-                                <asp:ListItem>Medium</asp:ListItem>
+                                <asp:ListItem Value="Small">Small</asp:ListItem>
+                                <asp:ListItem Value="Medium">Medium</asp:ListItem>
                                 <asp:ListItem>Large</asp:ListItem>
                             </asp:RadioButtonList>
                             <div class="error_msg label-control col-sm-6">
@@ -108,15 +108,40 @@
                             
                         </div>
                         <div class="error_msg col-sm-6 label-control block">
-                            <<asp:CustomValidator ID="valCheckDate" runat="server" ControlToValidate="UCexpDate$txtDate" ErrorMessage="Please eneter a valid date"></asp:CustomValidator>
+                            <asp:CustomValidator ID="valCheckDate" runat="server" ControlToValidate="UCexpDate$txtDate" ErrorMessage="Please enter a valid date"></asp:CustomValidator>
                             <asp:CustomValidator ID="valVacDate" runat="server" ControlToValidate="UCexpDate$txtDate" ErrorMessage="Please enter your expiry date"></asp:CustomValidator>
                         </div>
                         <div class="col-sm-12" style="font-family: sans-serif">
-
+                            <asp:ObjectDataSource ID="odsPetVaccinations" runat="server" SelectMethod="listVaccinations" TypeName="HawkeyehvkBLL.PetVaccination" OldValuesParameterFormatString="original_{0}" UpdateMethod="updatePetVaccinationExpiry">
+                                <SelectParameters>
+                                    <asp:SessionParameter Name="petNum" SessionField="PetId" Type="Int32" />
+                                </SelectParameters>
+                                <UpdateParameters>
+                                    <asp:Parameter Name="expiryDate" Type="DateTime" />
+                                    <asp:Parameter Name="vacNumber" Type="Int32" />
+                                    <asp:Parameter Name="petNumber" Type="Int32" />
+                                </UpdateParameters>
+                            </asp:ObjectDataSource>
                             <label class="label-control col-sm-2">Current Vaccines</label>
                             <asp:ListBox ID="lbCurrentVacc" runat="server" OnSelectedIndexChanged="lbCurrentVacc_SelectedIndexChanged" SelectionMode="Multiple" AutoPostBack="True">
                                 <asp:ListItem></asp:ListItem>
                             </asp:ListBox>
+                            <asp:GridView ID="gvPetVaccination" runat="server" AutoGenerateColumns="False" DataSourceID="odsPetVaccinations">
+                                <Columns>
+                                    <asp:TemplateField ConvertEmptyStringToNull="False" HeaderText="Vaccine Id">
+                                        <ItemTemplate>
+                                            <%# DataBinder.Eval(Container.DataItem, "vaccination.vaccinationNumber") %>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField ConvertEmptyStringToNull="False" HeaderText="Vaccine">
+                                        <ItemTemplate>
+                                            <%# DataBinder.Eval(Container.DataItem, "vaccination.name")  %>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:BoundField DataField="expirationDate" HeaderText="expirationDate" SortExpression="expirationDate" />
+                                    <asp:BoundField DataField="isValidated" HeaderText="isValidated" ReadOnly="True" SortExpression="isValidated" />
+                                </Columns>
+                            </asp:GridView>
                         </div>
 
 
