@@ -28,13 +28,17 @@ namespace AYadollahibastani_C40A02
 
         protected void Page_PreRender(object sender, EventArgs e)
         {
-            if (Session["owner"] == null )
-                newOwner = new Owner();
+            if (Session["owner"] == null)
+            {
+                Response.Redirect("~/ManageCustomer.aspx");
+                //newOwner = new Owner();
+            } 
             else
-                newOwner = ((Owner)Session["owner"]);
-
-
-
+            {
+                Application master = Master as Application;
+                newOwner = master.owner;
+                Session["PetId"] = newOwner.petList[0].petNumber;
+            }
             if (Session["PetID"] == null)
                 x = 0;
             else
@@ -57,33 +61,28 @@ namespace AYadollahibastani_C40A02
         //Load data into form
         protected void loadData()
         {
-            try
-            {
-                int petIndex = (int)Session["PetID"];
-                txtPetName.Text = newOwner.petList[petIndex].name;
-                txtBreed.Text = newOwner.petList[petIndex].breed;
-                txtSpecialNote.InnerText = newOwner.petList[petIndex].notes; 
+            Pet currentPetSelected = newOwner.petList[0];
+                //int petIndex = (int)Session["PetID"];
+                txtPetName.Text = currentPetSelected.name;
+                txtBreed.Text = currentPetSelected.breed;
+                txtSpecialNote.InnerText = currentPetSelected.notes; 
 
                 if (!IsPostBack)
                 {
-                    rdlPetSize.Items.FindByValue(selectSize(newOwner.petList[petIndex].size)).Selected = true ;
+                    rdlPetSize.Items.FindByValue(selectSize(currentPetSelected.size)).Selected = true ;
+                    rdGender.SelectedIndex = rdGender.Items.IndexOf(rdGender.Items.FindByValue(currentPetSelected.gender.ToString()));
                     
                 }
-                txtSpecialNote.Value = newOwner.petList[petIndex].notes;
+                txtSpecialNote.Value = newOwner.petList[0].notes;
                 if (!IsPostBack)
                 {
-                    foreach (var item in newOwner.petList[petIndex].vaccinationList)
+                    foreach (var item in newOwner.petList[0].vaccinationList)
                     {
                         ddlVacc.Items.Add(item.vaccination.name);
                      //****   ((TextBox)UCexpDate.FindControl("txtDate")).Text = item.vaccination..ToShortDateString();
                     }
                 }
-            }
-            catch
-            {
-                Console.Write("Exception catched in loadDataMethod"); 
-            }
-            
+           
         }
 
         protected void updateFields()
@@ -94,9 +93,9 @@ namespace AYadollahibastani_C40A02
                 Session["PetID"] = newOwner.petList.Count - 1; 
             } else {
                 int tempindex = (int)Session["PetID"]; 
-            newOwner.petList[tempindex].name  = Request.Form[txtPetName.UniqueID];
-            newOwner.petList[tempindex].breed = Request.Form[txtBreed.UniqueID];
-            newOwner.petList[tempindex].notes = Request.Form[txtSpecialNote.UniqueID];
+            newOwner.petList[0].name  = Request.Form[txtPetName.UniqueID];
+            newOwner.petList[0].breed = Request.Form[txtBreed.UniqueID];
+            newOwner.petList[0].notes = Request.Form[txtSpecialNote.UniqueID];
         }
            
                 try
