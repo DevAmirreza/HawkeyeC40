@@ -86,7 +86,7 @@
                         <asp:LinkButton ID="lbtnEdit" href="manageReservation.aspx" CssClass="btn btn-secondary" runat="server">Edit</asp:LinkButton>
                     </td>
                 </tr>
-                <%--<tr>
+                <tr>
                     <td>
                         <asp:CheckBox ID="CheckBox3" runat="server" />
                     </td>
@@ -109,7 +109,7 @@
                     </td>
                 </tr>
 
-        <%--</asp:table>--%>
+        </asp:table>--%>
 
         <asp:GridView ID="gvCustomer" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
             <AlternatingRowStyle BackColor="White" />
@@ -126,7 +126,7 @@
         </asp:GridView>
         
 
-        </table>--%>
+        </table>
     </div>
     <div class="row ">
             <asp:Panel runat="server" ID="detailPanel">
