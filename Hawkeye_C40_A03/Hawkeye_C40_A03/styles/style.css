@@ -135,7 +135,12 @@ border:solid 1px red ;
     padding-left: 15px;
     border-bottom: solid 1px silver;
 }
-
+.subtitleInline {
+    margin-left: 15px;
+    display: inline-block;
+    padding-left: 15px;
+    border-bottom: solid 1px silver;
+}
 
 .continue{
     text-align:center ;
@@ -464,4 +469,8 @@ display: inline-block !important;
     display: inline-block;
     width: 240px;
     height: auto;
+}
+.inlineDdl {
+margin: 0;
+display: inline-block;
 }

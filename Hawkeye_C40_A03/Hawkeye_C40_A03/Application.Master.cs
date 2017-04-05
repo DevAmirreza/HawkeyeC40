@@ -145,7 +145,8 @@ namespace AYadollahibastani_C40A02
 
                     break;
                 case 3:
-                    Response.Redirect("manageCustomer.aspx");
+                   Response.Redirect("manageCustomer.aspx");
+                    
                     break;
             }
         }

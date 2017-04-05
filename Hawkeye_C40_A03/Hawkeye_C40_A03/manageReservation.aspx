@@ -50,9 +50,11 @@
                     <div class="col-sm-6 center">
                         <br />
                         <label class="label-control col-sm-4">Add Your Pet + </label>
-                        <asp:DropDownList ID="ddlAddPet" runat="server" CssClass="form-control" AutoPostBack="True" >
+                        <asp:DropDownList ID="ddlAddPet" runat="server" CssClass="form-control inlineDdl" AutoPostBack="True" >
                             <asp:ListItem> Select Your Pet</asp:ListItem>
                         </asp:DropDownList>
+                        <asp:Button ID="btnAddDog" runat="server" Text="Add" CssClass="btn btn-default" OnClick="btnAddDog_Click"/>
+
                        <div class="error_msg label-control col-sm-6 oneSixity">
                             &nbsp;&nbsp;&nbsp;
                            <asp:CustomValidator ID="valPetExists" runat="server" ErrorMessage="Pet is already on reservation list ! " ></asp:CustomValidator>
@@ -71,7 +73,9 @@
 
                 </div>
                 <br />
-                <h4 class="subtitle">Pets in Reservation -  </h4><asp:DropDownList ID="ddlPetsInRes" runat="server" CssClass="form-control short"></asp:DropDownList>
+                <hr />
+                <h4 class="subtitleInline">Pets in Reservation -  </h4><asp:DropDownList ID="ddlPetsInRes" runat="server" CssClass="form-control short inlineDdl"></asp:DropDownList>
+                <asp:Button ID="btnRemovePet" runat="server" Text="Remove" CssClass="btn btn-default" OnClick="btnRemovePet_Click"/>
                 <div class="row">
                     <div class="col-md-6 ">
                         <label class="label-control col-sm-4">Services</label>
