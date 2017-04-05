@@ -13,12 +13,12 @@ namespace AYadollahibastani_C40A02 {
     public partial class listPets {
         
         /// <summary>
-        /// gdPetList control.
+        /// gvPetList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gdPetList;
+        protected global::System.Web.UI.WebControls.GridView gvPetList;
     }
 }

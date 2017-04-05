@@ -79,6 +79,8 @@ namespace AYadollahibastani_C40A02
                 {
                     setUserType("owner");
                     Session["owner"] = owner;
+                    Session["PetID"] = null;
+                    Session["SelectedPet"] = null;
                     Response.Redirect("home.aspx");
                 }
             }
