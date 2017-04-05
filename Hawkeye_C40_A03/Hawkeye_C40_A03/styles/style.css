@@ -490,3 +490,7 @@ display: inline-block;
 .loginNewOwner {
     margin-left: 0.5em;
 }
+#content_btnBookNow {
+    float: right;
+    margin-bottom: 1em;
+}

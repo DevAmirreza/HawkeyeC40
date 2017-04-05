@@ -31,11 +31,13 @@ namespace AYadollahibastani_C40A02
             switch ((UserType)(Session["UserType"])) {
                 case UserType.Owner:
                     clerkPanel.Visible = false;
+                    searchPanel.Visible = false;
                     resList = owner.reservationList;
                     break;
                 case UserType.Clerk:
                     customerPanel.Visible = false;
                     searchPanel.Visible = true;
+                    btnBookNow.Visible = false;
                     resList = Reservation.listUpcomingReservations(DateTime.Now);
                     break;                   
             }
@@ -79,6 +81,11 @@ namespace AYadollahibastani_C40A02
                 Session["selectedReservation"] = e.CommandArgument.ToString();
                 Response.Redirect("/manageReservation.aspx");
             }
+        }
+
+        protected void btnBookNow_Click(object sender, EventArgs e) {
+            Session["selectedReservation"] = null;
+            Response.Redirect("/manageReservation.aspx");
         }
     }
 }

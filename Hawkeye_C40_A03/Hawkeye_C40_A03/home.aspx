@@ -26,7 +26,7 @@
             </asp:Panel>
         </div>
  
-        <h3>Reservations</h3>
+        <h3>Reservations<asp:Button OnClick="btnBookNow_Click" ID="btnBookNow" CssClass="loginNewOwner btn btn-success" Text="Book New Reservation" runat="server" /></h3>
         <asp:GridView OnRowCommand="gvReservations_RowCommand" CssClass="table table-striped" ID="gvReservations" runat="server" AutoGenerateColumns="false">
             <Columns>
                 <asp:TemplateField>
