@@ -199,13 +199,8 @@ namespace AYadollahibastani_C40A02
             ListItem item = new ListItem();
             item.Text = ddlVacc.SelectedItem.ToString();
             item.Value = UCexpDate.vacDate;
-            lbCurrentVacc.Items.Add(item);
+            
             //adding vaccines to object here *****
-        }
-
-        protected void lbCurrentVacc_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ddlVacc.SelectedIndex = ddlVacc.Items.IndexOf(ddlVacc.Items.FindByText(lbCurrentVacc.SelectedItem.ToString()));
         }
     }
 }

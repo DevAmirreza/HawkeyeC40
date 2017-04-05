@@ -90,11 +90,15 @@
                         </div>
                     </div>
                     <asp:SqlDataSource ID="dsVaccine" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;VACCINATION_NUMBER&quot;, &quot;VACCINATION_NAME&quot; FROM &quot;HVK_VACCINATION&quot;"></asp:SqlDataSource>
-                    <asp:ObjectDataSource ID="odsVaccinesNotHad" runat="server"></asp:ObjectDataSource>
+                    <asp:ObjectDataSource ID="odsVaccinesNotHad" runat="server" SelectMethod="listNonPetVaccinations" TypeName="HawkeyehvkBLL.Vaccination">
+                        <SelectParameters>
+                            <asp:SessionParameter Name="petNum" SessionField="PetID" Type="Int32" />
+                        </SelectParameters>
+                    </asp:ObjectDataSource>
                     <div class="form-group">
                         <div class="col-sm-12">
                             <label class="label-control col-sm-2">Choose Your Vaccination</label>
-                            <asp:DropDownList CssClass="form-control medium" ID="ddlVacc" runat="server" DataSourceID="dsVaccine" DataTextField="VACCINATION_NAME" DataValueField="VACCINATION_NUMBER">
+                            <asp:DropDownList CssClass="form-control medium" ID="ddlVacc" runat="server" DataSourceID="odsVaccinesNotHad" DataTextField="name" DataValueField="vaccinationNumber">
 
                             </asp:DropDownList>
                             <asp:Button ID="btnAddVaccine" runat="server" CausesValidation="False" OnClick="btnAddVaccine_Click" Text="Add Vaccine" />
@@ -117,9 +121,6 @@
                                 </SelectParameters>
                             </asp:ObjectDataSource>
                             <label class="label-control col-sm-2">Current Vaccines</label>
-                            <asp:ListBox ID="lbCurrentVacc" runat="server" OnSelectedIndexChanged="lbCurrentVacc_SelectedIndexChanged" SelectionMode="Multiple" AutoPostBack="True">
-                                <asp:ListItem></asp:ListItem>
-                            </asp:ListBox>
                             <asp:GridView ID="gvPetVaccination" runat="server" AutoGenerateColumns="False" DataSourceID="odsPetVaccinations">
                                 <Columns>
                                     <asp:TemplateField ShowHeader="False">
