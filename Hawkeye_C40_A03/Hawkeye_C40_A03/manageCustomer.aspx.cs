@@ -29,11 +29,26 @@ namespace AYadollahibastani_C40A02
             changeState(false);
             if ((UserType)(Session["UserType"]) == UserType.Clerk)
             {
+                
                 clerk = (Owner)Session["owner"];
                 if (Session["SelectedOwner"] != null)
+                {
                     newOwner = (Owner)Session["SelectedOwner"];
+                    lblPageContext.Text = "Editing Customer Information";
+                    lblPersonalInfo.Text = "Customer's Personal Information";
+                    lblContactInfo.Text = "Customer's Contact Information";
+                    lblEmergencyContact.Text = "Customer's Emergency Contact Information";
+
+                    if(newOwner.firstName == "")
+                        lblPageContext.Text = "Creating New Customer Account";
+                }
                 else
                 {
+                    lblPersonalInfo.Text = "Personal Clerk Information";
+                    lblContactInfo.Text = "Clerk Contact Information";
+                    lblEmergencyContact.Text = "Clerk Emergency Contact Information";
+                    lblPageContext.Text = "Editing Clerk Information";
+
                     btnSave.Visible = false;
                     lbtnCancel.Visible = false;
                     btnSaveClerk.Visible = true;
@@ -45,12 +60,20 @@ namespace AYadollahibastani_C40A02
             }
             else if((UserType)(Session["UserType"]) == UserType.Owner)
             {
+                lblPersonalInfo.Text = "Personal Information";
+                lblContactInfo.Text = "Contact Information";
+                lblEmergencyContact.Text = "Emergency Contact Information";
+                lblPageContext.Text = "Editing Profile Information";
                 btnAdd.Visible = false;
                 newOwner = (Owner)Session["owner"];
 
             }
             else
             {
+                lblPersonalInfo.Text = "Personal Information";
+                lblContactInfo.Text = "Contact Information";
+                lblEmergencyContact.Text = "Emergency Contact Information";
+                lblPageContext.Text = "Creating Account";
                 newOwner = (Owner)Session["owner"];
                 btnPassedEdit.Visible = false;
                 btnAdd.Visible = false;
@@ -96,7 +119,7 @@ namespace AYadollahibastani_C40A02
             }
             else
             {
-                btnEditClerk.Visible = true;
+                
                 if (Session["SelectedOwner"] != null)
                 {
                     //newOwner = new Owner();
@@ -179,7 +202,7 @@ namespace AYadollahibastani_C40A02
             newOwner.address.city = Request.Form[txtCity.UniqueID];
             newOwner.address.street = Request.Form[txtaddress.UniqueID];
             newOwner.address.postalCode = Request.Form[txtPostal.UniqueID];
-            newOwner.address.province = DropDownProvince.SelectedItem.ToString();
+            newOwner.address.province = DropDownProvince.SelectedValue;
             newOwner.phoneNumber = Request.Form[txtHomePhone.UniqueID];
 
             //Session["owner"] = newOwner;
@@ -196,7 +219,7 @@ namespace AYadollahibastani_C40A02
             clerk.address.city = Request.Form[txtCity.UniqueID];
             clerk.address.street = Request.Form[txtaddress.UniqueID];
             clerk.address.postalCode = Request.Form[txtPostal.UniqueID];
-            clerk.address.province = DropDownProvince.SelectedItem.ToString();
+            clerk.address.province = DropDownProvince.SelectedValue;
             clerk.phoneNumber = Request.Form[txtHomePhone.UniqueID];
         }
 
@@ -239,9 +262,10 @@ namespace AYadollahibastani_C40A02
 
            
 
-            if(newOwner.petList.Count == 0 && ((UserType)Session["UserType"] == UserType.NewOwner))
+            if(((UserType)Session["UserType"] == UserType.NewOwner))
             {
-                Server.Transfer("~/ManagePet.aspx");
+                Session["UserType"] = UserType.Owner;
+                Response.Redirect("~/ManagePet.aspx");
             }
         }//Save Btn
 
@@ -311,14 +335,6 @@ namespace AYadollahibastani_C40A02
             btnPassedEdit.Visible = false;
         }
 
-        protected void btnEditClerk_Click(object sender, EventArgs e)
-        {
-            btnSave.Visible = false;
-            btnSaveClerk.Visible = true;
-            loadClerkData();
-
-        }
-
         protected void btnSaveClerk_Click(object sender, EventArgs e)
         {
             updateClerkData();
@@ -326,12 +342,16 @@ namespace AYadollahibastani_C40A02
             //btnSave.Visible = true;
             //btnSaveClerk.Visible = false;
             changeState(false);
+            displayPasswords(false);
+            btnPassedEdit.Visible = true;
         }
 
         protected void lbtnCancelClerk_Click(object sender, EventArgs e)
         {
             loadClerkData();
             changeState(false);
+            displayPasswords(false);
+            btnPassedEdit.Visible = true;
         }
     }
 }

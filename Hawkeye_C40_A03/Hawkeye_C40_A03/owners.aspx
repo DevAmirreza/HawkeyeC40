@@ -11,7 +11,7 @@
     </div>
     <div class="row">
         <div class="container">
-            <asp:LinkButton ID="btnAddNew" href="/manageCustomer.aspx" runat="server" CssClass="btn btn-default" OnClick="btnAddNew_Click">Add a new customer </asp:LinkButton><br />
+            <asp:LinkButton ID="btnAddNew" runat="server" CssClass="btn btn-default" OnClick="btnAddNew_Click">Add a new customer </asp:LinkButton><br />
             <h4>Search</h4>
             <div class="col-sm-12">
                 <asp:TextBox ID="txtEmail" Name="email" runat="server" CssClass="form-control col-sm-6"></asp:TextBox>

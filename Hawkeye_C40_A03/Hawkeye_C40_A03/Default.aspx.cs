@@ -54,11 +54,11 @@ namespace AYadollahibastani_C40A02
                     newOwner.email = "Reed@hvk.ca";
                     newOwner.emergencyFirstName = "steve";
                     newOwner.emergencyLastName = "jobs";
-                    newOwner.emergencyPhone = "432455455";
+                    newOwner.emergencyPhone = "4324554555";
                     newOwner.address.city = "Chelsea";
-                    newOwner.address.province = "Q";
+                    newOwner.address.province = "QC";
                     newOwner.address.street = "123 scott road";
-                    newOwner.address.postalCode = "J9b 2p8";
+                    newOwner.address.postalCode = "J9B 2P8";
                     newOwner.phoneNumber = "4385566065";
                     Session["owner"] = newOwner;
 

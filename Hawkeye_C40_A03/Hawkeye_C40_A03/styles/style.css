@@ -378,7 +378,7 @@ margin-left:350px ;
         margin-left: 0;
     }
     .prov {
-        width: 15%;
+        width: initial;
     }
     .city {
         width: 20%;

@@ -151,8 +151,9 @@ namespace AYadollahibastani_C40A02
                     }
                     else
                     {
-                        Response.Redirect("manageCustomer.aspx");
+                        
                         Session["SelectedOwner"] = null;
+                        Response.Redirect("manageCustomer.aspx");
 
                     }
                     break;
