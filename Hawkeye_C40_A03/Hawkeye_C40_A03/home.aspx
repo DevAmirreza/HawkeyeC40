@@ -25,9 +25,9 @@
                 </div>
             </asp:Panel>
         </div>
-
+ 
         <h3>Reservations</h3>
-        <asp:GridView ID="gvReservations" runat="server" AutoGenerateColumns="false">
+        <asp:GridView OnRowCommand="gvReservations_RowCommand" ID="gvReservations" runat="server" AutoGenerateColumns="false">
             <Columns>
                 <asp:TemplateField>
                     <ItemTemplate>
