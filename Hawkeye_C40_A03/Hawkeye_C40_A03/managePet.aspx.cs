@@ -22,8 +22,8 @@ namespace AYadollahibastani_C40A02
             addDisplay.Visible = false;
             viewDisplay.Visible = false;
             newOwner = (Owner)Session["owner"];
-            if(Session["PetID"] != null)
-            x = (int)Session["PetID"];
+            //if(Session["PetID"] != null)
+            //x = (int)Session["PetID"];
             gvPetVaccination.GridLines = GridLines.None;
         }
 
@@ -41,19 +41,20 @@ namespace AYadollahibastani_C40A02
             else { 
                 Application master = Master as Application;
                 newOwner = master.owner;
-                Session["PetId"] = newOwner.petList[0].petNumber;
-                Session["PetId"] = 7;
-
-                if (Session["PetID"] == null)
-                    x = 0;
-                else
-                    x = (int)Session["PetID"];
+                //Session["PetId"] = newOwner.petList[0].petNumber;
+                //Session["PetId"] = 7;
+                
 
                 if (!IsPostBack)
                     loadData();
             }
             
 
+            
+
+
+            //i added  
+            loadData();
 
 
             //loads data from objects into the fields
@@ -70,8 +71,18 @@ namespace AYadollahibastani_C40A02
         //Load data into form
         protected void loadData()
         {
-            Pet currentPetSelected = newOwner.petList[0];
-                //int petIndex = (int)Session["PetID"];
+
+            int petIndex ;
+            if (Session["SelectedPet"] != null)
+            {
+                petIndex = (int)Session["SelectedPet"];
+            }
+            else
+                petIndex = 0;
+
+
+            Pet currentPetSelected = newOwner.petList[petIndex];
+               
                 txtPetName.Text = currentPetSelected.name;
                 txtBreed.Text = currentPetSelected.breed;
                 txtSpecialNote.InnerText = currentPetSelected.notes; 
@@ -82,15 +93,15 @@ namespace AYadollahibastani_C40A02
                     rdGender.SelectedIndex = rdGender.Items.IndexOf(rdGender.Items.FindByValue(currentPetSelected.gender.ToString()));
                     
                 }
-                txtSpecialNote.Value = newOwner.petList[0].notes;
-                if (!IsPostBack)
-                {
-                    foreach (var item in newOwner.petList[0].vaccinationList)
-                    {
-                        ddlVacc.Items.Add(item.vaccination.name);
-                     //****   ((TextBox)UCexpDate.FindControl("txtDate")).Text = item.vaccination..ToShortDateString();
-                    }
-                }
+                txtSpecialNote.Value = currentPetSelected.notes;
+                //if (!IsPostBack)
+                //{
+                //    foreach (var item in currentPetSelected.vaccinationList)
+                //    {
+                //        ddlVacc.Items.Add(item.vaccination.name);
+                //     //****   ((TextBox)UCexpDate.FindControl("txtDate")).Text = item.vaccination..ToShortDateString();
+                //    }
+                //}
            
         }
 
