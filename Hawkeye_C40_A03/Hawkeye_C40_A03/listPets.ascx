@@ -54,8 +54,22 @@
 
       
 
-            <asp:GridView ID="gdPetList" runat="server" AutoGenerateColumns="False"   >
-
+            <asp:GridView CssClass="table table-striped petTable" ID="gvPetList" runat="server" AutoGenerateColumns="False" Height="300px" Width="600px" OnRowCommand="gvPetList_RowCommand"   >
+              <Columns>
+                <asp:BoundField HeaderText="Pet Name" DataField="name" />
+                <asp:BoundField HeaderText="Gender" DataField="gender" />
+                <asp:BoundField HeaderText="Birthday" DataField="birthday" />
+                  <asp:TemplateField>
+                      <ItemTemplate>
+                        <img src="images/profile.jpg" class="petProfileImage" />
+                      </ItemTemplate>
+                  </asp:TemplateField>
+                             <asp:TemplateField>
+                      <ItemTemplate>
+                          <asp:Button  CommandArgument='<%# Eval("petNumber") %>' runat="server" Text="Edit" CssClass="btn btn-default" CausesValidation="false"    />
+                      </ItemTemplate>
+                  </asp:TemplateField>
+              </Columns>
            </asp:GridView>
 
 
