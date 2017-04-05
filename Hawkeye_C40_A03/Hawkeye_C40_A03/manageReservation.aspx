@@ -74,7 +74,7 @@
                 </div>
                 <br />
                 <hr />
-                <h4 class="subtitleInline">Pets in Reservation -  </h4><asp:DropDownList ID="ddlPetsInRes" runat="server" CssClass="form-control short inlineDdl"></asp:DropDownList>
+                <h4 class="subtitleInline">Pets in Reservation -  </h4><asp:DropDownList ID="ddlPetsInRes" runat="server" CssClass="form-control short inlineDdl" OnSelectedIndexChanged="ddlPetsInRes_SelectedIndexChanged"></asp:DropDownList>
                 <asp:Button ID="btnRemovePet" runat="server" Text="Remove" CssClass="btn btn-default" OnClick="btnRemovePet_Click"/>
                 <div class="row">
                     <div class="col-md-6 ">
