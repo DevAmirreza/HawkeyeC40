@@ -59,6 +59,7 @@ namespace AYadollahibastani_C40A02
                         else
                         {
                             pageTitle.InnerText = "Editing Reservation";
+                            btnDeleteRes.Enabled = true;
                         }
                             loadData(resOnPage, ((Application)Master).owner);
                         Session["manageReservationObject"] = resOnPage;
@@ -68,6 +69,7 @@ namespace AYadollahibastani_C40A02
                     else
                     {//new Reservation, owner
                         pageTitle.InnerText = "New Reservation";
+                        btnDeleteRes.Enabled = false;
                         editedReservation = new Reservation();
                         Session["manageReservationObject"] = editedReservation;
                     }
@@ -76,8 +78,8 @@ namespace AYadollahibastani_C40A02
                 {// clerk
                     //update run ddl with availible runs for that day
 
-                    ddlChooseRun.Visible = true;
-                    lblChooseRun.Visible = true;
+                    ddlChooseRun.Visible = false;//false for now
+                    lblChooseRun.Visible = false;//false for now
                     if (Session["selectedReservation"] != null)// edit reservation / clerk
                     {
                         Reservation curRes = new Reservation();
@@ -86,11 +88,12 @@ namespace AYadollahibastani_C40A02
                         curRes = Reservation.getReservation(resNum);
                         if (curRes != null)
                         {
-
-                            Owner own = Owner.getOwner(curRes.ownerNumber);
+                            btnDeleteRes.Enabled = true;
+                            Owner own = ((Owner)(Session["selectedOwner"]));
                             loadData(curRes, own);
                             pageTitle.InnerText = "Editing Reservation for " + own.firstName + " " + own.lastName;
                             Session["manageReservationObject"] = curRes;
+                            
                         }
                         else
                         {
@@ -102,10 +105,14 @@ namespace AYadollahibastani_C40A02
                     else
                     { // new Reservation, clerk
 
-                        Owner own = Owner.getOwner(Convert.ToInt32(Session["selectedOwner"]));
+                        Owner own = ((Owner)(Session["selectedOwner"]));
                         pageTitle.InnerText = "New Reservation for " + own.firstName + " " + own.lastName;
+                        btnDeleteRes.Enabled = false;
                         editedReservation = new Reservation();
                         Session["manageReservationObject"] = editedReservation;
+                        own.petList.ForEach(delegate (Pet pet) {
+                            ddlAddPet.Items.Add(new ListItem(pet.name, pet.petNumber.ToString()));
+                        });
                     }
                 }
                 if (!IsPostBack)
@@ -396,6 +403,11 @@ namespace AYadollahibastani_C40A02
             editedReservation = Reservation.getReservation(resNum);
             Session["manageReservationObject"] = editedReservation;
             Response.Redirect(Request.RawUrl);
+        }
+
+        protected void btnDeleteRes_Click(object sender, EventArgs e)
+        {
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Delete Funtionality not implemented')", true);
         }
     }
 
