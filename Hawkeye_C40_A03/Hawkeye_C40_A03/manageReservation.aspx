@@ -21,7 +21,9 @@
                 </div>
             </div>
         </div>
+        <asp:Button ID="btnDeleteRes" runat="server" Text="Delete Reservation" CssClass="btn btn-danger pull-right" OnClick="btnDeleteRes_Click"/><br />
         <asp:Panel runat="server" ID="reservationPanel">
+            
             <div class="form-group">
                 <h4 class="subtitle" id="pageTitle" runat="server">Reservation Details</h4>
                 <div class="row">
@@ -49,7 +51,6 @@
                         <br />
                         <label class="label-control col-sm-4">Add Your Pet + </label>
                         <asp:DropDownList ID="ddlAddPet" runat="server" CssClass="form-control inlineDdl" AutoPostBack="True" >
-                            <asp:ListItem> Select Your Pet</asp:ListItem>
                         </asp:DropDownList>
                         <asp:Button ID="btnAddDog" runat="server" Text="Add" CssClass="btn btn-default" OnClick="btnAddDog_Click"/>
 

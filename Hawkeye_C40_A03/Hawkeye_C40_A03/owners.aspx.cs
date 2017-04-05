@@ -64,5 +64,10 @@ namespace AYadollahibastani_C40A02
             viewPet.Visible = true; 
             editDisplay.Visible = true; 
         }
+        protected void btnBookNewReservation_Click(object sender, EventArgs e)
+        {
+            Session["selectedOwner"] = Owner.getFullOwner(txtEmail.Text);//using owner email get phone number
+            Response.Redirect("manageReservation.aspx");
+        }
     }
 }

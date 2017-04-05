@@ -31,7 +31,7 @@
             <Columns>
                 <asp:TemplateField>
                     <ItemTemplate>
-                        <asp:Button ID="btn1" CssClass="btn btn-default" Text="Select" runat="server" CausesValidation="false" CommandName="selectReservation" CommandArgument='<%# Eval("reservationId") %>' />
+                        <asp:Button ID="btn1" CssClass="btn btn-default" Text="More Info" runat="server" CausesValidation="false" CommandName="selectReservation" CommandArgument='<%# Eval("reservationId") %>' />
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:BoundField HeaderText="Pet Names" DataField="PetNames" />
