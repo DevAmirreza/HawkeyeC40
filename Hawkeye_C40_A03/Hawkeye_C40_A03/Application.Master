@@ -41,8 +41,9 @@
                         <li runat="server" id="li3"><asp:LinkButton ID="btnNav3" runat="server" OnClick="navClick" CausesValidation="False">Profile</asp:LinkButton></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                       
+                      
                     </ul>
+                    <div id="divName"><asp:Label ID="lblDisplayName" runat="server"></asp:Label></div>
                 </div>
             </div>
         </nav>

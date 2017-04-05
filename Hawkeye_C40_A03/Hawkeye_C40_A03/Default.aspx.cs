@@ -71,27 +71,6 @@ namespace AYadollahibastani_C40A02
                 }
             }
             else {
-                //DataSourceSelectArguments args = new DataSourceSelectArguments();
-                //DataView view = (DataView)dsOwnerEmails.Select(args);
-                //DataTable dt = view.ToTable();
-                //int columnNumber = 0;
-                //bool isTrue = false;
-                //// checks all emails in database for the entered email
-                //for (int i = 0; i < dt.Rows.Count; i++) {
-                //    if (email == (dt.Rows[i][columnNumber].ToString())) {
-                //        isTrue = true;
-                //    }
-                //}
-                //if (isTrue) {
-                //    //set sessions for that owner
-                //    setUserType("owner");
-                //    // the sessions with objects are loaded from the master page used for application pages
-                //    Response.Redirect("home.aspx");
-                //}
-                //else {
-                //    //invalid info
-                //    invalidInfo();
-                //}
                 owner = Owner.getFullOwner(email);
                 if (owner == null)
                 {
@@ -113,14 +92,6 @@ namespace AYadollahibastani_C40A02
             Server.Transfer("~/ManageCustomer.aspx");
         }
         
-        protected void btnManageReservation_Click(object sender, EventArgs e) {
-         
-        Session["UserType"] = UserType.Owner;
-            owner = Owner.getFullOwner("mophone@gmail.com");
-            Session["selectedReservation"] = 103;
-            Session["owner"] = owner;
-            Response.Redirect("/manageReservation.aspx");
-        }
     }
     enum UserType
     {
