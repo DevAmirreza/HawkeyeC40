@@ -19,6 +19,7 @@ namespace AYadollahibastani_C40A02
         };
         protected void Page_Load(object sender, EventArgs e) {
             gvReservations.GridLines = GridLines.None;
+            searchPanel.Visible = false;
         }
 
 
@@ -36,7 +37,6 @@ namespace AYadollahibastani_C40A02
                     break;
                 case UserType.Clerk:
                     customerPanel.Visible = false;
-                    searchPanel.Visible = true;
                     btnBookNow.Visible = false;
                     resList = Reservation.listUpcomingReservations(DateTime.Now);
                     break;                   
