@@ -41,6 +41,7 @@ namespace AYadollahibastani_C40A02
                 Application master = Master as Application;
                 newOwner = master.owner;
                 Session["PetId"] = newOwner.petList[0].petNumber;
+                Session["PetId"] = 7;
 
                 if (Session["PetID"] == null)
                     x = 0;

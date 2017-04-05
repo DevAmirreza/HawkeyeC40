@@ -31,7 +31,7 @@ namespace AYadollahibastani_C40A02
         protected void btnAddNew_Click(object sender, EventArgs e)
         {
      
-            Session["owner"] = null; 
+            Session["SelectedOwner"] = null; 
         }
 
         protected void btnViewPet_Click(object sender, EventArgs e)
@@ -60,7 +60,7 @@ namespace AYadollahibastani_C40A02
             var ownerNum = Convert.ToInt16(e.CommandArgument);
             Owner newOwner = new Owner();
             newOwner = Owner.getOwner(ownerNum);
-            Session["selectedOwner"] = newOwner;
+            Session["SelectedOwner"] = newOwner;
             viewPet.Visible = true; 
             editDisplay.Visible = true; 
         }

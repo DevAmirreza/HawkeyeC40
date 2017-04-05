@@ -32,7 +32,7 @@ namespace AYadollahibastani_C40A02
                 clerk = (Owner)Session["owner"];
                 if (Session["SelectedOwner"] != null)
                     newOwner = (Owner)Session["SelectedOwner"];
-                btnAdd.Visible = true;
+                    //btnAdd.Visible = true;
                 
             }
             else if((UserType)(Session["UserType"]) == UserType.Owner)
@@ -67,13 +67,14 @@ namespace AYadollahibastani_C40A02
                 {
                     newOwner = new Owner();
                     Session["owner"] = newOwner;
+
                     //displayPasswords(true);
                     //btnPassedEdit.Visible = false;
                 }
                 else
                 {
-                    Application master = Master as Application;
-                    newOwner = master.owner;
+                    //Application master = Master as Application;
+                    //newOwner = master.owner;
                     Session["owner"] = newOwner;
                     if (!IsPostBack)
                         displayPasswords(false);
@@ -85,6 +86,7 @@ namespace AYadollahibastani_C40A02
             }
             else
             {
+                btnEditClerk.Visible = true;
                 if (Session["SelectedOwner"] == null)
                 {
                     newOwner = new Owner();
@@ -131,6 +133,25 @@ namespace AYadollahibastani_C40A02
                 txtHomePhone.Text = newOwner.phoneNumber;
         }
 
+        public void loadClerkData()
+        {
+            txtfName.Text = clerk.firstName;
+            txtlName.Text = clerk.lastName;
+            txtEmail.Text = clerk.email;
+            txtEmrgfName.Text = clerk.emergencyFirstName;
+            txtEmrglName.Text = clerk.emergencyLastName;
+            txtEmrgPhone.Text = clerk.emergencyPhone;
+            txtCity.Text = clerk.address.city;
+            if (clerk.address.province == "")
+            {
+                DropDownProvince.SelectedIndex = 0;
+            }
+            else
+                DropDownProvince.SelectedIndex = DropDownProvince.Items.IndexOf(DropDownProvince.Items.FindByValue(clerk.address.province));
+            txtaddress.Text = clerk.address.street;
+            txtPostal.Text = clerk.address.postalCode;
+            txtHomePhone.Text = clerk.phoneNumber;
+        }
 
         public void updateFields()
         {
@@ -147,6 +168,21 @@ namespace AYadollahibastani_C40A02
             newOwner.phoneNumber = Request.Form[txtHomePhone.UniqueID];
 
             //Session["owner"] = newOwner;
+        }
+
+        public void updateClerkData()
+        {
+            clerk.firstName = Request.Form[txtfName.UniqueID];
+            clerk.lastName = Request.Form[txtlName.UniqueID];
+            clerk.email = Request.Form[txtEmail.UniqueID];
+            clerk.emergencyFirstName = Request.Form[txtEmrgfName.UniqueID];
+            clerk.emergencyLastName = Request.Form[txtEmrglName.UniqueID];
+            clerk.emergencyPhone = Request.Form[txtEmrgPhone.UniqueID];
+            clerk.address.city = Request.Form[txtCity.UniqueID];
+            clerk.address.street = Request.Form[txtaddress.UniqueID];
+            clerk.address.postalCode = Request.Form[txtPostal.UniqueID];
+            clerk.address.province = DropDownProvince.SelectedItem.ToString();
+            clerk.phoneNumber = Request.Form[txtHomePhone.UniqueID];
         }
 
 
@@ -244,6 +280,7 @@ namespace AYadollahibastani_C40A02
             loadData();
             changeState(false);
             displayPasswords(false);
+            btnEdit.Visible = true;
             btnPassedEdit.Visible = true;
         }
 
@@ -257,6 +294,21 @@ namespace AYadollahibastani_C40A02
             changeState(true);
             displayPasswords(true);
             btnPassedEdit.Visible = false;
+        }
+
+        protected void btnEditClerk_Click(object sender, EventArgs e)
+        {
+            btnSave.Visible = false;
+            btnSaveClerk.Visible = true;
+            loadClerkData();
+
+        }
+
+        protected void btnSaveClerk_Click(object sender, EventArgs e)
+        {
+            updateClerkData();
+            btnSave.Visible = true;
+            btnSaveClerk.Visible = false;
         }
     }
 }

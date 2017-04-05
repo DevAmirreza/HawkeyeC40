@@ -27,8 +27,9 @@
         </div>
         <div class="centerit">
             <asp:Button CssClass="btn btnEdit btn-danger" ID="btnEdit" runat="server" Text="Edit" OnClick="btnEdit_Click" CausesValidation="False" />
-            <asp:Button CssClass="btn btnEdit btn-danger" ID="btnAdd" runat="server" Text="Add New Customer" OnClick="btnAdd_Click" CausesValidation="False" />
-            &nbsp;&nbsp;&nbsp;
+            <asp:Button CssClass="btn btnEdit btn-danger" ID="btnAdd" runat="server" Text="Add New Customer" OnClick="btnAdd_Click" CausesValidation="False" Visible="False" />
+            <asp:Button CssClass="btn btnEdit btn-default" ID="btnEditClerk" runat="server" Text="Edit Clerk Profile" CausesValidation="False" OnClick="btnEditClerk_Click" Visible="False" />
+            
             <br />
             <%--    <div class="error_box">
                 <asp:ValidationSummary ID="valSumary" runat="server" CssClass="error_style" />
@@ -199,9 +200,11 @@
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-12">
                         <asp:Button CssClass="btn btn-primary" ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" />
+                        <asp:Button CssClass="btn btn-primary" ID="btnSaveClerk" runat="server" Text="Save" OnClick="btnSaveClerk_Click" Visible="False" />
                         <asp:LinkButton ID="lbtnCancel" runat="server" CausesValidation="false" OnClick="lbtnCancel_Click">Cancel</asp:LinkButton>
+
                         <div class="right-wrap">
-                            <asp:Button CssClass="btn btn-default" ID="btnPassedEdit" runat="server" Text="Edit My Password" OnClick="btnPassedEdit_Click" CausesValidation="False"/>
+                            <asp:Button CssClass="btn btn-default" ID="btnPassedEdit" runat="server" Text="Edit Password" OnClick="btnPassedEdit_Click" CausesValidation="False"/>
 
 
                         </div>
