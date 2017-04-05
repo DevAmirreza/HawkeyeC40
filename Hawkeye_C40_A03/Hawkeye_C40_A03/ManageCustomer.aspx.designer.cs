@@ -355,6 +355,15 @@ namespace AYadollahibastani_C40A02 {
         protected global::System.Web.UI.WebControls.LinkButton lbtnCancel;
         
         /// <summary>
+        /// lbtnCancelClerk control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbtnCancelClerk;
+        
+        /// <summary>
         /// btnPassedEdit control.
         /// </summary>
         /// <remarks>

@@ -144,9 +144,17 @@ namespace AYadollahibastani_C40A02
                     }
 
                     break;
-                case 3:
-                   Response.Redirect("manageCustomer.aspx");
-                    
+                case 3://Handle Clerk edit profile
+                    if ((UserType)(Session["UserType"]) == UserType.Owner)
+                    {
+                        Response.Redirect("manageCustomer.aspx");
+                    }
+                    else
+                    {
+                        Response.Redirect("manageCustomer.aspx");
+                        Session["SelectedOwner"] = null;
+
+                    }
                     break;
             }
         }

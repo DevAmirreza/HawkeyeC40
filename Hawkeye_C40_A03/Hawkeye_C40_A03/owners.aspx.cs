@@ -30,7 +30,7 @@ namespace AYadollahibastani_C40A02
         protected void btnAddNew_Click(object sender, EventArgs e)
         {
      
-            Session["SelectedOwner"] = null; 
+            Session["SelectedOwner"] = new Owner(); 
         }
 
         protected void btnViewPet_Click(object sender, EventArgs e)

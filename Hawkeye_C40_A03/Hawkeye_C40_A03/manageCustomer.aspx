@@ -9,18 +9,9 @@
     </div>
 
 
-    <%--    
-    Work in progress / will be added at the end
-    <asp:Wizard ID="wzRegistery" runat="server">
-        <WizardSteps>
-            <asp:WizardStep ID="Personalnformation" runat="server" Title="Personal Information"></asp:WizardStep>
-            <asp:WizardStep ID="PersonalContact" runat="server" Title="Personal Contact"></asp:WizardStep>
-            <asp:WizardStep ID="EmergencyContact" runat="server" Title="Emergency Contact"></asp:WizardStep>
-        </WizardSteps>
-    </asp:Wizard>
-    <br />
-    <br />
-    <br />--%>
+    <%--    <div class="error_box">
+                <asp:ValidationSummary ID="valSumary" runat="server" CssClass="error_style" />
+            </div>--%>
     <div class="container">
         <div class="message">
             <asp:Label ID="lblMsg" runat="server" Text=""></asp:Label>
@@ -31,9 +22,8 @@
             <asp:Button CssClass="btn btnEdit btn-default" ID="btnEditClerk" runat="server" Text="Edit Clerk Profile" CausesValidation="False" OnClick="btnEditClerk_Click" Visible="False" />
             
             <br />
-            <%--    <div class="error_box">
-                <asp:ValidationSummary ID="valSumary" runat="server" CssClass="error_style" />
-            </div>--%>
+            <%--                            to be fixed
+                            <asp:RegularExpressionValidator ID="valEmail" runat="server" ControlToValidate="txtEmail" Display="Dynamic" ErrorMessage="Please enter a valid email address" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>--%>
             <asp:Panel runat="server" ID="formPanel">
                 <h4 class="subtitle">Personal Information</h4>
                 <div class="form-group">
@@ -202,6 +192,8 @@
                         <asp:Button CssClass="btn btn-primary" ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" />
                         <asp:Button CssClass="btn btn-primary" ID="btnSaveClerk" runat="server" Text="Save" OnClick="btnSaveClerk_Click" Visible="False" />
                         <asp:LinkButton ID="lbtnCancel" runat="server" CausesValidation="false" OnClick="lbtnCancel_Click">Cancel</asp:LinkButton>
+
+                        <asp:LinkButton ID="lbtnCancelClerk" runat="server" CausesValidation="False" OnClick="lbtnCancelClerk_Click" Visible="False">Cancel</asp:LinkButton>
 
                         <div class="right-wrap">
                             <asp:Button CssClass="btn btn-default" ID="btnPassedEdit" runat="server" Text="Edit Password" OnClick="btnPassedEdit_Click" CausesValidation="False"/>
