@@ -149,14 +149,8 @@ namespace AYadollahibastani_C40A02
                     });
 
                 // now populate the first pet reservations data
-                reservationOnPage.petReservationList[0].serviceList.ForEach(delegate(ReservedService serv) {
-                    if (serv.service.descripion == "Walk") {
-                        chWalk.Checked = true;
-                    }
-                    else if (serv.service.descripion == "Playtime") {
-                        chPalytime.Checked = true;
-                    }
-                });
+                setSelectedPetRes(reservationOnPage);
+
                 }
                 catch
                 {
@@ -165,6 +159,31 @@ namespace AYadollahibastani_C40A02
             
         }//load info into fields 
 
+        private void setSelectedPetRes(Reservation reservationOnPage) {
+            List<ReservedService> resser = new List<ReservedService>();
+            reservationOnPage.petReservationList.ForEach(delegate(PetReservation pres) {
+                if (pres.pet.petNumber == Convert.ToInt32(ddlPetsInRes.SelectedValue)) {
+                    resser = pres.serviceList;
+                }
+            });            
+           resser.ForEach(delegate (ReservedService serv) {
+               if (serv.service.descripion == "Walk")
+               {
+                   chWalk.Checked = true;
+               }
+               else {
+                   chWalk.Checked = false;
+               }
+
+               if (serv.service.descripion == "Playtime")
+               {
+                   chPalytime.Checked = true;
+               }
+               else {
+                   chPalytime.Checked = false;
+               }
+            });
+        }
 
 
         protected void btnEdit_Click1(object sender, EventArgs e)
@@ -188,6 +207,7 @@ namespace AYadollahibastani_C40A02
             pres.pet = Pet.getOnePet(petNum);
             editedReservation.addPetReservation(pres);
             Session["manageReservationObject"] = editedReservation;
+            setDropdownsFunctionality();
         }
 
         protected void btnRemovePet_Click(object sender, EventArgs e)
@@ -216,6 +236,34 @@ namespace AYadollahibastani_C40A02
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('No pet reservation was removed..')", true);
             }
             Session["manageReservationObject"] = editedReservation;
+            setDropdownsFunctionality();
+        }
+        private void setDropdownsFunctionality() {
+            if (ddlAddPet.Items.Count == 0)
+            {
+                ddlAddPet.Enabled = false;
+                btnAddDog.Enabled = false;
+            }
+            else {
+                ddlAddPet.Enabled = true;
+                btnAddDog.Enabled = true;
+            }
+
+            if (ddlPetsInRes.Items.Count == 0)
+            {
+                ddlPetsInRes.Enabled = false;
+                btnRemovePet.Enabled = false;
+            }
+            else
+            {
+                ddlPetsInRes.Enabled = true;
+                btnRemovePet.Enabled = true;
+            }
+        }
+
+        protected void ddlPetsInRes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            setSelectedPetRes(editedReservation);
         }
     }
 

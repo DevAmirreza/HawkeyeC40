@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="listPets.ascx.cs" Inherits="AYadollahibastani_C40A02.listPets" %>
        <div class="listOfAllPets">
-                <div class="petList">
+    <%--            <div class="petList">
                     <div class="col-md-8  ">
                         <div class="form-group">
                             <div class="col-sm-12" style="font-family: sans-serif">
@@ -49,5 +49,18 @@
                     <div class="col-md-4 ">
                         <div id="" class="petProfileImage" style="background-image: url('images/profile.jpg')"></div>
                     </div>
-                </div>
+                </div>--%>
+
+
+      
+
+            <asp:GridView ID="gdPetList" runat="server" AutoGenerateColumns="False"   >
+
+           </asp:GridView>
+
+
+
+
+
+
             </div>
