@@ -13,7 +13,9 @@ namespace AYadollahibastani_C40A02
         protected void Page_Load(object sender, EventArgs e)
         {
             editDisplay.Visible = false;
-            // viewPet.Visible = false; 
+            viewPet.Visible = false;  
+            gdOwner.GridLines = GridLines.None;
+         
 
         }
 
@@ -22,22 +24,9 @@ namespace AYadollahibastani_C40A02
         {
             Application master = Master as Application;
             owner = master.owner;
+
         }
 
-        protected void customerEdit_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        protected void cdOwnerSelected_CheckedChanged(object sender, EventArgs e)
-        {
-            //selects the owner id here
-
-            //if (cdOwnerSelected.Checked)
-            //    editDisplay.Visible = true;
-            //else
-            //    editDisplay.Visible = false;
-        }
 
         protected void btnAddNew_Click(object sender, EventArgs e)
         {
@@ -51,20 +40,29 @@ namespace AYadollahibastani_C40A02
             if (viewPet.Visible)
             {
                 viewPet.Visible = false;
-                //btnViewPet.Text = "Hide List of pets ";
             }
             else
             {
                 viewPet.Visible = true;
-                //btnViewPet.Text = "View List of pets ";
             }
         }
 
-        protected void btnSearch_Click(object sender, EventArgs e)
+
+     
+        protected void btnDetail_Click(object sender, EventArgs e)
         {
-            //gdOwner.DataSource = Owner.getFullOwner(txtEmail.Text);
-            //gdOwner.DataBind();
-            //odsOwner.SelectParameters[0].DefaultValue = Request.Form[txtEmail.UniqueID];
+            editDisplay.Visible = true;
+            viewPet.Visible = true;
+        }
+
+        protected void gdOwner_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            var ownerNum = Convert.ToInt16(e.CommandArgument);
+            Owner newOwner = new Owner();
+            newOwner = Owner.getOwner(ownerNum);
+            Session["selectedOwner"] = newOwner;
+            viewPet.Visible = true; 
+            editDisplay.Visible = true; 
         }
     }
 }

@@ -236,6 +236,7 @@ namespace AYadollahibastani_C40A02
             lblSelectedPet.Text = lbCurrentPets.SelectedItem.Text;
             ddlChoosePet.SelectedIndex = 0; //reset  
             changeState(true);//reset 
+            
         }
     }
 
