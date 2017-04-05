@@ -15,8 +15,7 @@ namespace AYadollahibastani_C40A02
             editDisplay.Visible = false;
             viewPet.Visible = false;  
             gdOwner.GridLines = GridLines.None;
-         
-
+        
         }
 
 

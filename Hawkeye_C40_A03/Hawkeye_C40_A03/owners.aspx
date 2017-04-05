@@ -35,7 +35,7 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Customer Name" SortExpression="firstName">
                                 <ItemTemplate>
-                                    <asp:Label ID="Label4" runat="server" Text='<%# Eval("firstName").ToString()+Eval("lastname").ToString()%>' ></asp:Label>
+                                    <asp:Label ID="Label4" runat="server" Text='<%# Eval("lastname").ToString()+ " " + Eval("firstName").ToString()%>' ></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Email" SortExpression="email">
@@ -48,10 +48,10 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Phone Number" SortExpression="phoneNumber">
                                 <EditItemTemplate>
-                                    <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("phoneNumber") %>'></asp:TextBox>
+                                    <asp:TextBox ID="txtEditPhone" runat="server" Text='<%# Bind("phoneNumber") %>'></asp:TextBox>
                                 </EditItemTemplate>
                                 <ItemTemplate>
-                                    <asp:Label ID="Label1" runat="server" Text='<%# Bind("phoneNumber") %>'></asp:Label>
+                                    <asp:Label ID="gdlblPhone" runat="server" Text='<%# Bind("phoneNumber") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                  
@@ -61,16 +61,11 @@
 
 
                 </asp:GridView>
-             
-            
-                
                 
                    <asp:Panel runat="server" ID="editDisplay">
                     <asp:LinkButton ID="btnBookNewReservation" href="/manageReservation.aspx" runat="server" CssClass="btn btn-default">Book a new reservation </asp:LinkButton>
                     <asp:LinkButton ID="btnAddPet" href="/managePet.aspx" runat="server" CssClass="btn btn-default">Add a new Pet </asp:LinkButton>
                     <asp:LinkButton ID="btnEditCustomer" href="/manageCustomer.aspx" runat="server" CssClass="btn btn-default">Manage Customer </asp:LinkButton>
-
-                         <%--                    <asp:LinkButton ID="btnViewPet" runat="server" CssClass="btn btn-default" OnClick="btnViewPet_Click">Vew Pet List </asp:LinkButton>--%>
                     <asp:Panel runat="server" ID="viewPet">
                         <div class="col-sm-6">
                             <br />
