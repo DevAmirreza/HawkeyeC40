@@ -116,6 +116,7 @@
     </Content>
     <Content Include="HomePage.Master" />
     <Content Include="Application.Master" />
+    <Content Include="hawkeyeC40TestsAndMethods.docx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
