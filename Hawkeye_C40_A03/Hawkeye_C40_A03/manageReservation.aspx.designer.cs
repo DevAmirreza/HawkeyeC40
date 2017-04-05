@@ -121,15 +121,6 @@ namespace AYadollahibastani_C40A02 {
         protected global::System.Web.UI.WebControls.DropDownList ddlChooseRun;
         
         /// <summary>
-        /// lblPetsInRes control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblPetsInRes;
-        
-        /// <summary>
         /// ddlPetsInRes control.
         /// </summary>
         /// <remarks>
@@ -137,15 +128,6 @@ namespace AYadollahibastani_C40A02 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlPetsInRes;
-        
-        /// <summary>
-        /// lblSelectedPet control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSelectedPet;
         
         /// <summary>
         /// chWalk control.
@@ -164,15 +146,6 @@ namespace AYadollahibastani_C40A02 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox chPalytime;
-        
-        /// <summary>
-        /// txtResNote control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtResNote;
         
         /// <summary>
         /// btnBook control.

@@ -10,14 +10,12 @@ namespace AYadollahibastani_C40A02
     public partial class manageReservation : System.Web.UI.Page
     {
         Owner newOwner = null ;
-        Reservation reservationOnPage;
-        int currentPetNumber = -1;
         enum UserType
         {
             Clerk,
             Owner
         };
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_PreRender(object sender, EventArgs e)
         {
             newOwner = ((Application)Master).owner;
             Reservation resOnPage = new Reservation();
@@ -46,7 +44,8 @@ namespace AYadollahibastani_C40A02
                     else {
                         pageTitle.InnerText = "Editing Reservation";
                     }
-                    loadData(resOnPage);
+                    loadData(resOnPage, ((Application)Master).owner);
+                    
                 }
                 else {//new Reservation, owner
                     pageTitle.InnerText = "New Reservation";
@@ -59,6 +58,7 @@ namespace AYadollahibastani_C40A02
                 {
                     Reservation curRes = new Reservation();
                     int resNum = Convert.ToInt32(Session["selectedReservation"]);
+                    
                     List<Reservation> resList = Reservation.listReservations(Convert.ToInt32(Session["selectedOwner"]));
 
                     resList.ForEach(delegate (Reservation res) {
@@ -68,8 +68,9 @@ namespace AYadollahibastani_C40A02
                     });
                     if (curRes != null)
                     {
-                        loadData(curRes);
+                        
                         Owner own = curRes.owner;
+                        loadData(curRes, own);
                         pageTitle.InnerText = "Editing Reservation for " + own.firstName + " " + own.lastName;
                     }
                     else {
@@ -95,13 +96,12 @@ namespace AYadollahibastani_C40A02
 
         protected void changeState(Boolean State)
         {
-            txtResNote.Disabled = ((State == false) ? true : false);
             ((TextBox)UCstartDate.FindControl("txtDate")).Enabled = State;
             ((TextBox)UCendDate.FindControl("txtDate")).Enabled = State;
             reservationPanel.Enabled = State;
         }
 
-        protected void loadData(Reservation reservationOnPage)
+        protected void loadData(Reservation reservationOnPage,Owner owner)
         {
             
                 try
@@ -115,6 +115,28 @@ namespace AYadollahibastani_C40A02
                 petList.ForEach(delegate(Pet pet) {
                     ddlPetsInRes.Items.Add(new ListItem(pet.name,pet.petNumber.ToString()));
                 });
+                bool inList;
+                owner.petList.ForEach(delegate (Pet pet) {
+                    inList = false;// check if pet is already listed in other ddl
+                    petList.ForEach(delegate (Pet petInDdl) {
+                        if (petInDdl.name == pet.name) {
+                            inList = true;
+                        }
+                    });
+                    if (!inList) {// if pet not already listed add the the other ddl
+                        ddlAddPet.Items.Add(new ListItem(pet.name, pet.petNumber.ToString()));
+                    }
+                });
+
+                // now populate the first pet reservations data
+                reservationOnPage.petReservationList[0].serviceList.ForEach(delegate(ReservedService serv) {
+                    if (serv.service.descripion == "Walk") {
+                        chWalk.Checked = true;
+                    }
+                    else if (serv.service.descripion == "Playtime") {
+                        chWalk.Checked = true;
+                    }
+                });
                 }
                 catch
                 {
@@ -125,16 +147,11 @@ namespace AYadollahibastani_C40A02
 
 
 
-
-
-        protected void btnEdit_Click(object sender, EventArgs e)
+        protected void btnEdit_Click1(object sender, EventArgs e)
         {
             changeState(true);
             btnBook.Text = "Save";
         }
-
-
-
     }
 
 }

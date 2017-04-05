@@ -50,7 +50,7 @@
                     <div class="col-sm-6 center">
                         <br />
                         <label class="label-control col-sm-4">Add Your Pet + </label>
-                        <asp:DropDownList ID="ddlAddPet" runat="server" CssClass="form-control" AutoPostBack="True" OnTextChanged="ddlChoosePet_TextChanged" >
+                        <asp:DropDownList ID="ddlAddPet" runat="server" CssClass="form-control" AutoPostBack="True" >
                             <asp:ListItem> Select Your Pet</asp:ListItem>
                         </asp:DropDownList>
                        <div class="error_msg label-control col-sm-6 oneSixity">
@@ -71,9 +71,7 @@
 
                 </div>
                 <br />
-                <label id="lblPetsInRes" runat="server" class="label-control col-sm-4">Pets in Reservation</label>
-                <asp:DropDownList ID="ddlPetsInRes" runat="server" CssClass="form-control short"></asp:DropDownList>
-                <h4 class="subtitle">Pet Services - <asp:Label ID="lblSelectedPet" runat="server" Text="[Pet's Name]"></asp:Label></h4>
+                <h4 class="subtitle">Pets in Reservation -  </h4><asp:DropDownList ID="ddlPetsInRes" runat="server" CssClass="form-control short"></asp:DropDownList>
                 <div class="row">
                     <div class="col-md-6 ">
                         <label class="label-control col-sm-4">Services</label>
@@ -88,23 +86,19 @@
                     </div>
                     </div>
                    
-                    <div class="col-md-6">
-                        <label class="label-control col-sm-4">Reservation Note</label>
-                        <textarea id="txtResNote" runat="server" cols="20" rows="2" class=" form-control"></textarea>
-                    </div>
+                    
                     <br />
                 </div>
+            </asp:Panel>
                 <div class="pull-left col-md-4 buttons">
-                    <asp:Button ID="btnBook" runat="server" Text="Book Now" CssClass="btn btn-primary" OnClick="btnBook_Click" />
-                    <asp:Button CssClass="btn btn-default" ID="btnEdit" Text="Edit" runat="server" OnClick="btnEdit_Click" CausesValidation="False" />
+                    <asp:Button ID="btnBook" runat="server" Text="Book Now" CssClass="btn btn-primary"/>
+                    <asp:Button CssClass="btn btn-default" ID="btnEdit" Text="Edit" runat="server" CausesValidation="False" OnClick="btnEdit_Click1" />
                     <asp:LinkButton ID="btnClear" runat="server">Cancel</asp:LinkButton>
 
                 </div>
 
 
             </div>
-    </asp:Panel>
-    </div>
     
 
 
