@@ -20,9 +20,12 @@ namespace AYadollahibastani_C40A02
         };
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["manageReservationObject"]!=null)
+            if (Session["manageReservationObject"] != null)
             {
                 editedReservation = (Reservation)Session["manageReservationObject"];
+            }
+            else {
+                Session["manageReservationObject"] = new Reservation();
             }
         }
         protected void Page_PreRender(object sender, EventArgs e)
@@ -36,6 +39,7 @@ namespace AYadollahibastani_C40A02
             //Switch To Clerk - Default : Customer
             if (!IsPostBack)
             {
+                changeState(true);
                 if ((UserType)Session["UserType"] == UserType.Owner)
                 {
                     ddlChooseRun.Visible = false;
@@ -72,6 +76,10 @@ namespace AYadollahibastani_C40A02
                         btnDeleteRes.Enabled = false;
                         editedReservation = new Reservation();
                         Session["manageReservationObject"] = editedReservation;
+                        Owner own = (Owner)Session["owner"];
+                        own.petList.ForEach(delegate (Pet pet) {
+                            ddlAddPet.Items.Add(new ListItem(pet.name, pet.petNumber.ToString()));
+                        });
                     }
                 }
                 else
@@ -114,10 +122,6 @@ namespace AYadollahibastani_C40A02
                             ddlAddPet.Items.Add(new ListItem(pet.name, pet.petNumber.ToString()));
                         });
                     }
-                }
-                if (!IsPostBack)
-                {
-                    changeState(false);
                 }
             }
             else {
@@ -375,21 +379,25 @@ namespace AYadollahibastani_C40A02
         protected void btnBook_Click(object sender, EventArgs e)
         {
             validatDates();
-
             
-
             if ((UserType)Session["UserType"] == UserType.Owner)
             {// save to session
                 DateTime start = Convert.ToDateTime(UCstartDate.vacDate);
                 DateTime end = Convert.ToDateTime(UCendDate.vacDate);
+                
                 editedReservation.startDate = start;
                 editedReservation.endDate = end;
                 int resNum = Convert.ToInt32(Session["selectedReservation"]);
-                ((Application)Master).owner.reservationList.ForEach(delegate(Reservation res) {
-                    if (res.reservationNumber == resNum) {
-                        res = editedReservation;
-                    }
-                });
+                if (Session["selectedReservation"] != null) {
+                    ((Application)Master).owner.reservationList.ForEach(delegate (Reservation res) {
+                        if (res.reservationNumber == resNum) {
+                            res = editedReservation;
+                        }
+                    });
+                }
+                else {
+                    ((Application)Master).owner.addReservation(editedReservation);
+                }
             }
             // regardless of user disable form on save
             reservationPanel.Enabled = false;
