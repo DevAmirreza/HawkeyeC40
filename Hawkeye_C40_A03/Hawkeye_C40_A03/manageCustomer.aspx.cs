@@ -99,7 +99,7 @@ namespace AYadollahibastani_C40A02
                 btnEditClerk.Visible = true;
                 if (Session["SelectedOwner"] != null)
                 {
-                    newOwner = new Owner();
+                    //newOwner = new Owner();
                     Session["SelectedOwner"] = newOwner;
                     //displayPasswords(true);
                     //btnPassedEdit.Visible = false;
