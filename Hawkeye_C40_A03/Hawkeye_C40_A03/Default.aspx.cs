@@ -112,12 +112,19 @@ namespace AYadollahibastani_C40A02
             Session["owner"] = null;
             Server.Transfer("~/ManageCustomer.aspx");
         }
-
+        
         protected void btnManageReservation_Click(object sender, EventArgs e) {
+         
+        Session["UserType"] = UserType.Owner;
             owner = Owner.getFullOwner("mcoate@gmail.com");
             Session["selectedReservation"] = 631;
             Session["owner"] = owner;
             Response.Redirect("/manageReservation.aspx");
         }
+    }
+    enum UserType
+    {
+        Clerk,
+        Owner
     }
 }

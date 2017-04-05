@@ -283,6 +283,42 @@ namespace AYadollahibastani_C40A02 {
         protected global::System.Web.UI.WebControls.CustomValidator valRequiredEmg;
         
         /// <summary>
+        /// passwordPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel passwordPanel;
+        
+        /// <summary>
+        /// txtPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtPassword;
+        
+        /// <summary>
+        /// valComparePasswords control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator valComparePasswords;
+        
+        /// <summary>
+        /// txtConfirmPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtConfirmPassword;
+        
+        /// <summary>
         /// btnSave control.
         /// </summary>
         /// <remarks>
@@ -292,21 +328,21 @@ namespace AYadollahibastani_C40A02 {
         protected global::System.Web.UI.WebControls.Button btnSave;
         
         /// <summary>
-        /// lbtnClear control.
+        /// lbtnCancel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbtnClear;
+        protected global::System.Web.UI.WebControls.LinkButton lbtnCancel;
         
         /// <summary>
-        /// btnPassdEdit control.
+        /// btnPassedEdit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnPassdEdit;
+        protected global::System.Web.UI.WebControls.Button btnPassedEdit;
     }
 }
