@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using HawkeyehvkBLL;
+using System.Globalization;
+
 namespace AYadollahibastani_C40A02
 {
     public partial class manageReservation : System.Web.UI.Page
@@ -18,22 +20,30 @@ namespace AYadollahibastani_C40A02
         };
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["manageReservationObject"]!=null)
+            if (Session["manageReservationObject"] != null)
             {
                 editedReservation = (Reservation)Session["manageReservationObject"];
+            }
+            else {
+                Session["manageReservationObject"] = new Reservation();
             }
         }
         protected void Page_PreRender(object sender, EventArgs e)
         {
+            if (IsPostBack)
+            {
+                validatDates();
+            }
             newOwner = ((Application)Master).owner;
             Reservation resOnPage = new Reservation();
             //Switch To Clerk - Default : Customer
             if (!IsPostBack)
             {
+                changeState(true);
                 if ((UserType)Session["UserType"] == UserType.Owner)
                 {
-                    ddlChooseRun.Visible = false;
-                    lblChooseRun.Visible = false;
+                    //ddlChooseRun.Visible = false;
+                    //lblChooseRun.Visible = false;
                     if (Session["selectedReservation"] != null)
                     {
                         bool resFound = false;
@@ -53,6 +63,7 @@ namespace AYadollahibastani_C40A02
                         else
                         {
                             pageTitle.InnerText = "Editing Reservation";
+                            btnDeleteRes.Enabled = true;
                         }
                             loadData(resOnPage, ((Application)Master).owner);
                         Session["manageReservationObject"] = resOnPage;
@@ -62,14 +73,21 @@ namespace AYadollahibastani_C40A02
                     else
                     {//new Reservation, owner
                         pageTitle.InnerText = "New Reservation";
+                        btnDeleteRes.Enabled = false;
                         editedReservation = new Reservation();
                         Session["manageReservationObject"] = editedReservation;
+                        Owner own = (Owner)Session["owner"];
+                        own.petList.ForEach(delegate (Pet pet) {
+                            ddlAddPet.Items.Add(new ListItem(pet.name, pet.petNumber.ToString()));
+                        });
                     }
                 }
                 else
                 {// clerk
-                    ddlChooseRun.Visible = true;
-                    lblChooseRun.Visible = true;
+                    //update run ddl with availible runs for that day
+
+                    //ddlChooseRun.Visible = false;//false for now
+                    //lblChooseRun.Visible = false;//false for now
                     if (Session["selectedReservation"] != null)// edit reservation / clerk
                     {
                         Reservation curRes = new Reservation();
@@ -78,11 +96,12 @@ namespace AYadollahibastani_C40A02
                         curRes = Reservation.getReservation(resNum);
                         if (curRes != null)
                         {
-
-                            Owner own = Owner.getOwner(curRes.ownerNumber);
+                            btnDeleteRes.Enabled = true;
+                            Owner own = ((Owner)(Session["selectedOwner"]));
                             loadData(curRes, own);
                             pageTitle.InnerText = "Editing Reservation for " + own.firstName + " " + own.lastName;
                             Session["manageReservationObject"] = curRes;
+                            
                         }
                         else
                         {
@@ -94,15 +113,15 @@ namespace AYadollahibastani_C40A02
                     else
                     { // new Reservation, clerk
 
-                        Owner own = Owner.getOwner(Convert.ToInt32(Session["selectedOwner"]));
+                        Owner own = ((Owner)(Session["selectedOwner"]));
                         pageTitle.InnerText = "New Reservation for " + own.firstName + " " + own.lastName;
+                        btnDeleteRes.Enabled = false;
                         editedReservation = new Reservation();
                         Session["manageReservationObject"] = editedReservation;
+                        own.petList.ForEach(delegate (Pet pet) {
+                            ddlAddPet.Items.Add(new ListItem(pet.name, pet.petNumber.ToString()));
+                        });
                     }
-                }
-                if (!IsPostBack)
-                {
-                    changeState(false);
                 }
             }
             else {
@@ -164,25 +183,45 @@ namespace AYadollahibastani_C40A02
             reservationOnPage.petReservationList.ForEach(delegate(PetReservation pres) {
                 if (pres.pet.petNumber == Convert.ToInt32(ddlPetsInRes.SelectedValue)) {
                     resser = pres.serviceList;
+                    
+                    // populate run ddl with availible runs
+                    //if (pres.pet.size == 'L') {
+                    //    List<Run> runs = Run.getNumAvailableLargeRuns(reservationOnPage.startDate, reservationOnPage.endDate);
+                    //}
+                    //else {
+                    //    Run.getNumAvailableRuns(reservationOnPage.startDate, reservationOnPage.endDate)
+                    //}
                 }
-            });            
+            });
+            bool walk = false;
+            bool play = false;
            resser.ForEach(delegate (ReservedService serv) {
                if (serv.service.descripion == "Walk")
                {
-                   chWalk.Checked = true;
+                   walk = true;
                }
-               else {
-                   chWalk.Checked = false;
-               }
-
-               if (serv.service.descripion == "Playtime")
+               else if (serv.service.descripion == "Playtime")
                {
-                   chPalytime.Checked = true;
-               }
-               else {
-                   chPalytime.Checked = false;
+                   play = true;
                }
             });
+            if (walk)
+            {
+                chWalk.Checked = true;
+            }
+            else
+            {
+                chWalk.Checked = false;
+            }
+
+            if (play)
+            {
+                chPlaytime.Checked = true;
+            }
+            else
+            {
+                chPlaytime.Checked = false;
+            }
         }
 
 
@@ -235,8 +274,11 @@ namespace AYadollahibastani_C40A02
                 //if it wasnt removed something went wrong
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('No pet reservation was removed..')", true);
             }
+
             Session["manageReservationObject"] = editedReservation;
             setDropdownsFunctionality();
+            setSelectedPetRes(editedReservation);
+            
         }
         private void setDropdownsFunctionality() {
             if (ddlAddPet.Items.Count == 0)
@@ -259,11 +301,125 @@ namespace AYadollahibastani_C40A02
                 ddlPetsInRes.Enabled = true;
                 btnRemovePet.Enabled = true;
             }
+            if (ddlPetsInRes.Items.Count == 1)
+            {
+                btnRemovePet.Enabled = false;
+
+            }
+            else {
+                btnRemovePet.Enabled = true;
+            }
         }
 
         protected void ddlPetsInRes_SelectedIndexChanged(object sender, EventArgs e)
         {
             setSelectedPetRes(editedReservation);
+        }
+        private void updatePres() {
+            // this updates the pet reservation services
+            bool walk = chWalk.Checked;
+            bool playtime = chPlaytime.Checked;
+            int petId = Convert.ToInt32(ddlPetsInRes.SelectedValue);
+
+            editedReservation.petReservationList.ForEach(delegate (PetReservation pres)
+            {
+                if (pres.pet.petNumber == petId)
+                {
+                    List<ReservedService> resser = new List<ReservedService>();
+                    ReservedService res = new ReservedService();
+                    Service ser = new Service();
+                    ser.descripion = "Boarding";
+                    ser.serviceNumber = 1;
+                    res.service = ser;
+                    resser.Add(res);
+                    if (walk) {
+                        Service ser2 = new Service();
+                        ReservedService res2 = new ReservedService();
+                        ser2.descripion = "Walk";
+                        ser2.serviceNumber = 2;
+                        res2.service = ser2;
+                        resser.Add(res2);
+                    }
+                    if (playtime) {
+                        Service ser3 = new Service();
+                        ReservedService res3 = new ReservedService();
+                        ser3.descripion = "Playtime";
+                        ser3.serviceNumber = 5;
+                        res3.service = ser3;
+                        resser.Add(res3);
+                    }
+                    pres.serviceList = resser;                
+                }
+            });
+
+            }
+        protected void chWalk_CheckedChanged(object sender, EventArgs e)
+        {
+            updatePres();
+        }
+
+        protected void chPlaytime_CheckedChanged(object sender, EventArgs e)
+        {
+            updatePres();
+        }
+        public void validatDates()
+        {
+            if (((TextBox)UCstartDate.FindControl("txtDate")).Text!= ""&& ((TextBox)UCendDate.FindControl("txtDate")).Text != "") { 
+            try
+            {
+                DateTime start = Convert.ToDateTime(UCstartDate.vacDate);
+                DateTime end = Convert.ToDateTime(UCendDate.vacDate);
+                if (end < start)
+                {
+                    valEndDate.IsValid = false;
+                }
+            }
+            catch
+            {
+                valEndDate.IsValid = false;
+            }
+        }
+        }
+        protected void btnBook_Click(object sender, EventArgs e)
+        {
+            validatDates();
+            
+            if ((UserType)Session["UserType"] == UserType.Owner)
+            {// save to session
+                DateTime start = Convert.ToDateTime(((TextBox)UCstartDate.FindControl("txtDate")).Text);
+                DateTime end = Convert.ToDateTime(((TextBox)UCendDate.FindControl("txtDate")).Text);
+                
+                editedReservation.startDate = start;
+                editedReservation.endDate = end;
+                int resNum = Convert.ToInt32(Session["selectedReservation"]);
+                if (Session["selectedReservation"] != null) {
+                    ((Application)Master).owner.reservationList.ForEach(delegate (Reservation res) {
+                        if (res.reservationNumber == resNum) {
+                            res = editedReservation;
+                        }
+                    });
+                }
+                else {
+                    ((Application)Master).owner.addReservation(editedReservation);
+                }
+            }
+            // regardless of user disable form on save
+            reservationPanel.Enabled = false;
+        }
+        
+
+        protected void btnCancel_Click(object sender, EventArgs e)
+        {
+            // change reservation to the un edited version
+            int resNum = Convert.ToInt32(Session["selectedReservation"]);
+            editedReservation = Reservation.getReservation(resNum);
+            Session["manageReservationObject"] = editedReservation;
+            Response.Redirect(Request.RawUrl);
+        }
+
+        protected void btnDeleteRes_Click(object sender, EventArgs e)
+        {
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Delete Funtionality not implemented')", true);
         }
     }
 

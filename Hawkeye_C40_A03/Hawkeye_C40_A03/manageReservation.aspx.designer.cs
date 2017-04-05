@@ -13,13 +13,22 @@ namespace AYadollahibastani_C40A02 {
     public partial class manageReservation {
         
         /// <summary>
-        /// ValidationSummary1 control.
+        /// valSumm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
+        protected global::System.Web.UI.WebControls.ValidationSummary valSumm;
+        
+        /// <summary>
+        /// btnDeleteRes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnDeleteRes;
         
         /// <summary>
         /// reservationPanel control.
@@ -67,13 +76,13 @@ namespace AYadollahibastani_C40A02 {
         protected global::AYadollahibastani_C40A02.CalendarControl UCendDate;
         
         /// <summary>
-        /// RequiredFieldValidator2 control.
+        /// valReqEnd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator valReqEnd;
         
         /// <summary>
         /// valEndDate control.
@@ -112,24 +121,6 @@ namespace AYadollahibastani_C40A02 {
         protected global::System.Web.UI.WebControls.CustomValidator valPetExists;
         
         /// <summary>
-        /// lblChooseRun control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblChooseRun;
-        
-        /// <summary>
-        /// ddlChooseRun control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlChooseRun;
-        
-        /// <summary>
         /// ddlPetsInRes control.
         /// </summary>
         /// <remarks>
@@ -157,13 +148,13 @@ namespace AYadollahibastani_C40A02 {
         protected global::System.Web.UI.WebControls.CheckBox chWalk;
         
         /// <summary>
-        /// chPalytime control.
+        /// chPlaytime control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chPalytime;
+        protected global::System.Web.UI.WebControls.CheckBox chPlaytime;
         
         /// <summary>
         /// btnBook control.
@@ -184,12 +175,12 @@ namespace AYadollahibastani_C40A02 {
         protected global::System.Web.UI.WebControls.Button btnEdit;
         
         /// <summary>
-        /// btnClear control.
+        /// btnCancel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnClear;
+        protected global::System.Web.UI.WebControls.LinkButton btnCancel;
     }
 }

@@ -6,8 +6,9 @@
 <head runat="server">
     <title></title>
     <asp:ContentPlaceHolder ID="head" runat="server">
-        <link rel="shortcut icon" href="images/HVKLogo.ico"/>
+        
     </asp:ContentPlaceHolder>
+    <link rel="shortcut icon" href="images/HVKLogo.ico"/>
         <!-- Latest compiled and minified CSS -->
 <%--       <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -36,13 +37,14 @@
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
-                        <li runat="server" id="li1"><asp:LinkButton ID="btnNav1" runat="server" OnClick="navClick" CausesValidation="False">Home</asp:LinkButton></li>
-                        <li runat="server" id="li2"><asp:LinkButton ID="btnNav2" runat="server" OnClick="navClick" CausesValidation="False">Pet</asp:LinkButton></li>
-                        <li runat="server" id="li3"><asp:LinkButton ID="btnNav3" runat="server" OnClick="navClick" CausesValidation="False">Profile</asp:LinkButton></li>
+                        <li runat="server" id="li1"><asp:LinkButton ID="btnNav1" runat="server" OnClick="navClick" CausesValidation="False" CssClass="navCSS">Home</asp:LinkButton></li>
+                        <li runat="server" id="li2"><asp:LinkButton ID="btnNav2" runat="server" OnClick="navClick" CausesValidation="False" CssClass="navCSS">Pet</asp:LinkButton></li>
+                        <li runat="server" id="li3"><asp:LinkButton ID="btnNav3" runat="server" OnClick="navClick" CausesValidation="False" CssClass="navCSS">Profile</asp:LinkButton></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                       
+                      
                     </ul>
+                    <div id="divName"><asp:Label ID="lblDisplayName" runat="server"></asp:Label></div>
                 </div>
             </div>
         </nav>

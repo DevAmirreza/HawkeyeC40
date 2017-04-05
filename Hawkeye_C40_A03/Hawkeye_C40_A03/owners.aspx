@@ -11,7 +11,7 @@
     </div>
     <div class="row">
         <div class="container">
-            <asp:LinkButton ID="btnAddNew" href="/manageCustomer.aspx" runat="server" CssClass="btn btn-default" OnClick="btnAddNew_Click">Add a new customer </asp:LinkButton><br />
+            <asp:LinkButton ID="btnAddNew" runat="server" CssClass="btn btn-default" OnClick="btnAddNew_Click">Add a new customer </asp:LinkButton><br />
             <h4>Search</h4>
             <div class="col-sm-12">
                 <asp:TextBox ID="txtEmail" Name="email" runat="server" CssClass="form-control col-sm-6"></asp:TextBox>
@@ -63,7 +63,7 @@
                 </asp:GridView>
                 
                    <asp:Panel runat="server" ID="editDisplay">
-                    <asp:LinkButton ID="btnBookNewReservation" href="/manageReservation.aspx" runat="server" CssClass="btn btn-default">Book a new reservation </asp:LinkButton>
+                    <asp:LinkButton ID="btnBookNewReservation" runat="server" CssClass="btn btn-default" OnClick="btnBookNewReservation_Click">Book a new reservation </asp:LinkButton>
                     <asp:LinkButton ID="btnAddPet" href="/managePet.aspx" runat="server" CssClass="btn btn-default">Add a new Pet </asp:LinkButton>
                     <asp:LinkButton ID="btnEditCustomer" href="/manageCustomer.aspx" runat="server" CssClass="btn btn-default">Manage Customer </asp:LinkButton>
                     <asp:Panel runat="server" ID="viewPet">

@@ -272,6 +272,10 @@ margin-left:350px ;
     background-color:white !important ;
 }
 
+ .table-striped {
+        background-color: #e5e5e5;
+    }
+
 
 
 @media (min-width: 768px) {
@@ -286,7 +290,7 @@ margin-left:350px ;
         float:left;
         margin-left:-9px !important;
     }
-
+   
 .error_msg
 {
     margin-left:115px ;
@@ -380,7 +384,7 @@ margin-left:350px ;
         margin-left: 0;
     }
     .prov {
-        width: 15%;
+        width: initial;
     }
     .city {
         width: 20%;
@@ -475,4 +479,23 @@ display: inline-block !important;
 .inlineDdl {
 margin: 0;
 display: inline-block;
+}
+#divName {
+    float: right;
+    margin-top: 1em;
+}
+#lblDisplayName {
+    color: #D35400;
+    font-size: 1.2em;
+}
+
+.loginNewOwner {
+    margin-left: 0.5em;
+}
+.navCSS{
+    color: lightgrey;
+}
+#content_btnBookNow {
+    float: right;
+    margin-bottom: 1em;
 }

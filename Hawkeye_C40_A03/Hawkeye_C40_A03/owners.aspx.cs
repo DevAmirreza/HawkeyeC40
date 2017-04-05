@@ -30,7 +30,8 @@ namespace AYadollahibastani_C40A02
         protected void btnAddNew_Click(object sender, EventArgs e)
         {
      
-            Session["SelectedOwner"] = new Owner(); 
+            Session["SelectedOwner"] = new Owner();
+            Response.Redirect("manageCustomer.aspx"); 
         }
 
         protected void btnViewPet_Click(object sender, EventArgs e)
@@ -62,6 +63,11 @@ namespace AYadollahibastani_C40A02
             Session["SelectedOwner"] = newOwner;
             viewPet.Visible = true; 
             editDisplay.Visible = true; 
+        }
+        protected void btnBookNewReservation_Click(object sender, EventArgs e)
+        {
+            Session["selectedOwner"] = Owner.getFullOwner(txtEmail.Text);//using owner email get phone number
+            Response.Redirect("manageReservation.aspx");
         }
     }
 }

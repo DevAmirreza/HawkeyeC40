@@ -16,16 +16,18 @@
         <div class="message">
             <asp:Label ID="lblMsg" runat="server" Text=""></asp:Label>
         </div>
+         <div class="message">
+            <asp:Label ID="lblPageContext" runat="server" Text=""></asp:Label>
+        </div>
         <div class="centerit">
             <asp:Button CssClass="btn btnEdit btn-danger" ID="btnEdit" runat="server" Text="Edit" OnClick="btnEdit_Click" CausesValidation="False" />
             <asp:Button CssClass="btn btnEdit btn-danger" ID="btnAdd" runat="server" Text="Add New Customer" OnClick="btnAdd_Click" CausesValidation="False" Visible="False" />
-            <asp:Button CssClass="btn btnEdit btn-default" ID="btnEditClerk" runat="server" Text="Edit Clerk Profile" CausesValidation="False" OnClick="btnEditClerk_Click" Visible="False" />
             
             <br />
             <%--                            to be fixed
                             <asp:RegularExpressionValidator ID="valEmail" runat="server" ControlToValidate="txtEmail" Display="Dynamic" ErrorMessage="Please enter a valid email address" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>--%>
             <asp:Panel runat="server" ID="formPanel">
-                <h4 class="subtitle">Personal Information</h4>
+                <h4 class="subtitle"><asp:Label ID="lblPersonalInfo" runat="server" Text="" /></h4>
                 <div class="form-group">
                     <div class="col-sm-12">
                         <label class="label-control col-sm-2">
@@ -67,7 +69,7 @@
                         </div>
                     </div>
                 </div>
-                <h4 class="subtitle">Personal Contact </h4>
+                <h4 class="subtitle"><asp:Label ID="lblContactInfo" runat="server" Text="" /></h4>
                 <div class="form-group">
                     <div class="col-sm-12">
                         <label class="label-control col-sm-2">
@@ -137,7 +139,7 @@
 
 
 
-                <h4 class="subtitle">Emergency Contact </h4>
+                <h4 class="subtitle"><asp:Label ID="lblEmergencyContact" runat="server" Text="" /></h4>
                 <div class="form-group">
                     <div class="col-sm-12">
                         <label class="label-control col-sm-2">Emergency First Name</label>
