@@ -32,6 +32,14 @@ namespace AYadollahibastani_C40A02
                 clerk = (Owner)Session["owner"];
                 if (Session["SelectedOwner"] != null)
                     newOwner = (Owner)Session["SelectedOwner"];
+                else
+                {
+                    btnSave.Visible = false;
+                    lbtnCancel.Visible = false;
+                    btnSaveClerk.Visible = true;
+                    lbtnCancelClerk.Visible = true;
+                    loadClerkData();
+                }
                     //btnAdd.Visible = true;
                 
             }
@@ -77,8 +85,10 @@ namespace AYadollahibastani_C40A02
                     //newOwner = master.owner;
                     Session["owner"] = newOwner;
                     if (!IsPostBack)
+                    {
                         displayPasswords(false);
-
+                  
+                    }     
                 }
 
                 if (!IsPostBack)
@@ -87,13 +97,16 @@ namespace AYadollahibastani_C40A02
             else
             {
                 btnEditClerk.Visible = true;
-                if (Session["SelectedOwner"] == null)
+                if (Session["SelectedOwner"] != null)
                 {
                     newOwner = new Owner();
                     Session["SelectedOwner"] = newOwner;
                     //displayPasswords(true);
                     //btnPassedEdit.Visible = false;
                     Session["owner"] = clerk;
+
+                    if (!IsPostBack)
+                        loadData();
                 }
                 else
                 {
@@ -103,11 +116,13 @@ namespace AYadollahibastani_C40A02
                     Session["owner"] = clerk;
 
                     if (!IsPostBack)
+                    {
                         displayPasswords(false);
+                        loadClerkData();
+                    }
 
                 }
-                if (!IsPostBack)
-                    loadData();
+               
             }
             
         }
@@ -307,8 +322,16 @@ namespace AYadollahibastani_C40A02
         protected void btnSaveClerk_Click(object sender, EventArgs e)
         {
             updateClerkData();
-            btnSave.Visible = true;
-            btnSaveClerk.Visible = false;
+            loadClerkData();
+            //btnSave.Visible = true;
+            //btnSaveClerk.Visible = false;
+            changeState(false);
+        }
+
+        protected void lbtnCancelClerk_Click(object sender, EventArgs e)
+        {
+            loadClerkData();
+            changeState(false);
         }
     }
 }
