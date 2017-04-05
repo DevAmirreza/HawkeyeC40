@@ -116,8 +116,8 @@ namespace AYadollahibastani_C40A02
         protected void btnManageReservation_Click(object sender, EventArgs e) {
          
         Session["UserType"] = UserType.Owner;
-            owner = Owner.getFullOwner("mcoate@gmail.com");
-            Session["selectedReservation"] = 631;
+            owner = Owner.getFullOwner("mophone@gmail.com");
+            Session["selectedReservation"] = 103;
             Session["owner"] = owner;
             Response.Redirect("/manageReservation.aspx");
         }

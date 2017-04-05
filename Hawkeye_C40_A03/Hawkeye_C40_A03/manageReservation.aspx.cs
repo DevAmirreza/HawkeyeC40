@@ -134,7 +134,7 @@ namespace AYadollahibastani_C40A02
                         chWalk.Checked = true;
                     }
                     else if (serv.service.descripion == "Playtime") {
-                        chWalk.Checked = true;
+                        chPalytime.Checked = true;
                     }
                 });
                 }
