@@ -5,13 +5,13 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using HawkeyehvkBLL;
+using System.Data;
 
 namespace AYadollahibastani_C40A02
 {
     public partial class homePage : System.Web.UI.Page
     {
         Owner owner;
-        List<Reservation> resList;
         enum UserType
         {
             Clerk,
@@ -108,6 +108,45 @@ namespace AYadollahibastani_C40A02
             //    loadReservationData();
             Application master = Master as Application;
             owner = master.owner;
+            List<Reservation> resList = null;
+            switch ((UserType)(Session["UserType"])) {
+                case UserType.Owner:
+                    resList = owner.reservationList;
+                    break;
+                case UserType.Clerk:
+                    resList = Reservation.listUpcomingReservations(DateTime.Now);
+                    break;                   
+            }
+            populateResGrid(resList);
+        }
+
+        public void populateResGrid(List<Reservation> resList) {          
+            if (resList != null) {
+                DataTable dt = new DataTable();
+                dt.Columns.Add("PetNames");
+                dt.Columns.Add("StartDate");
+                dt.Columns.Add("EndDate");
+                dt.Columns.Add("ValidVaccinations");
+                dt.Columns.Add("reservationId");
+                foreach (Reservation res in resList) {
+                    DataRow dr = dt.NewRow();
+                    bool valid = true;
+                    string petNames = "";
+                    foreach (PetReservation pres in res.petReservationList) {
+                        petNames += pres.pet.name + "\n";
+                        if (valid) {
+                            valid = (PetVaccination.checkVaccinations(pres.pet.petNumber, res.endDate) == 0);
+                        }
+                    }
+                    dr["PetNames"] = petNames;
+                    dr["StartDate"] = res.startDate.ToShortDateString();
+                    dr["EndDate"] = res.endDate.ToShortDateString();
+                    dr["ValidVaccinations"] = valid;
+                    dt.Rows.Add(dr);
+                }
+                gvReservations.DataSource = dt;
+                gvReservations.DataBind();
+            }
         }
 
         protected void btnMoreInfo_Click(object sender, EventArgs e)

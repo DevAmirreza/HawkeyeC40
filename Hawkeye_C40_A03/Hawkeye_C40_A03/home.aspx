@@ -27,8 +27,28 @@
         </div>
 
         <h3>Reservations</h3>
-        <asp:GridView AutoGenerateColumns="true" ID="gvReservations" runat="server">
-
+        <asp:GridView ID="gvReservations" runat="server" AutoGenerateColumns="false">
+            <Columns>
+                <asp:TemplateField>
+                    <ItemTemplate>
+                        <asp:Button ID="btn1" Text="Select" runat="server" CausesValidation="false" CommandName="selectReservation" CommandArgument='<%# Eval("reservationId") %>' />
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:BoundField HeaderText="Pet Names" DataField="PetNames" />
+                <asp:BoundField HeaderText="Start Date" DataField="StartDate" />
+                <asp:BoundField HeaderText="End Date" DataField="EndDate" />
+                <asp:TemplateField>
+                    <HeaderTemplate>
+                        Vaccinations Valid
+                    </HeaderTemplate>
+                    <ItemTemplate>
+                        <asp:CheckBox runat="server" Enabled="true" Checked='<%# Convert.ToBoolean(Eval("ValidVaccinations")) %>' /> 
+                    </ItemTemplate>
+                </asp:TemplateField>
+            </Columns>
+            <EmptyDataTemplate>
+                No Reservations Found
+            </EmptyDataTemplate>
         </asp:GridView>
 
 
@@ -126,7 +146,7 @@
         </asp:GridView>
         
 
-        </table>--%>
+        
     </div>
     <div class="row ">
             <asp:Panel runat="server" ID="detailPanel">
