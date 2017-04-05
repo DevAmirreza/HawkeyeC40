@@ -23,7 +23,8 @@ namespace AYadollahibastani_C40A02
             viewDisplay.Visible = false;
             newOwner = (Owner)Session["owner"];
             if(Session["PetID"] != null)
-            x = (int)Session["PetID"]; 
+            x = (int)Session["PetID"];
+            gvPetVaccination.GridLines = GridLines.None;
         }
 
         protected void Page_PreRender(object sender, EventArgs e)
