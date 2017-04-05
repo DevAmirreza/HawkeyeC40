@@ -75,19 +75,11 @@ namespace AYadollahibastani_C40A02
                         Reservation curRes = new Reservation();
                         int resNum = Convert.ToInt32(Session["selectedReservation"]);
 
-                        List<Reservation> resList = Reservation.listReservations(Convert.ToInt32(Session["selectedOwner"]));
-
-                        resList.ForEach(delegate (Reservation res)
-                        {
-                            if (res.reservationNumber == resNum)
-                            {
-                                curRes = res;
-                            }
-                        });
+                        curRes = Reservation.getReservation(resNum);
                         if (curRes != null)
                         {
 
-                            Owner own = curRes.owner;
+                            Owner own = Owner.getOwner(curRes.ownerNumber);
                             loadData(curRes, own);
                             pageTitle.InnerText = "Editing Reservation for " + own.firstName + " " + own.lastName;
                             Session["manageReservationObject"] = curRes;
