@@ -89,19 +89,20 @@ namespace AYadollahibastani_C40A02
             else
                 petIndex = 0;
 
-
-            Pet currentPetSelected = newOwner.petList[petIndex];
+            if (newOwner.petList.Count != 0)
+            {
+                Pet currentPetSelected = newOwner.petList[petIndex];
                 gvPetVaccination.DataBind();
-                
+
                 txtPetName.Text = currentPetSelected.name;
                 txtBreed.Text = currentPetSelected.breed;
-                txtSpecialNote.InnerText = currentPetSelected.notes; 
+                txtSpecialNote.InnerText = currentPetSelected.notes;
 
                 if (!IsPostBack)
                 {
-                    rdlPetSize.Items.FindByValue(selectSize(currentPetSelected.size)).Selected = true ;
+                    rdlPetSize.Items.FindByValue(selectSize(currentPetSelected.size)).Selected = true;
                     rdGender.SelectedIndex = rdGender.Items.IndexOf(rdGender.Items.FindByValue(currentPetSelected.gender.ToString()));
-                    
+
                 }
                 txtSpecialNote.Value = currentPetSelected.notes;
                 //if (!IsPostBack)
@@ -112,7 +113,7 @@ namespace AYadollahibastani_C40A02
                 //     //****   ((TextBox)UCexpDate.FindControl("txtDate")).Text = item.vaccination..ToShortDateString();
                 //    }
                 //}
-           
+            }
         }
 
         protected void updateFields()
