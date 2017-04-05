@@ -486,3 +486,7 @@ display: inline-block;
     color: #D35400;
     font-size: 1.2em;
 }
+
+.loginNewOwner {
+    margin-left: 0.5em;
+}

@@ -31,8 +31,8 @@
                         <p>
                             New Customer ? 
                                 Please click here if you wish to book a reservation right now ! 
-                            <br />
-                            <asp:Button CssClass="btn btn-primary" ID="btnBookNow" runat="server" Text="Book Now" OnClick="btnBookNow_Click" />
+                           
+                            <asp:Button CssClass="btn btn-primary loginNewOwner" ID="btnBookNow" runat="server" Text="Book Now" OnClick="btnBookNow_Click" />
                         </p>
                     </div>
                 </div>
