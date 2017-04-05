@@ -27,11 +27,11 @@
         </div>
  
         <h3>Reservations</h3>
-        <asp:GridView OnRowCommand="gvReservations_RowCommand" ID="gvReservations" runat="server" AutoGenerateColumns="false">
+        <asp:GridView OnRowCommand="gvReservations_RowCommand" CssClass="table table-striped" ID="gvReservations" runat="server" AutoGenerateColumns="false">
             <Columns>
                 <asp:TemplateField>
                     <ItemTemplate>
-                        <asp:Button ID="btn1" Text="Select" runat="server" CausesValidation="false" CommandName="selectReservation" CommandArgument='<%# Eval("reservationId") %>' />
+                        <asp:Button ID="btn1" CssClass="btn btn-default" Text="Select" runat="server" CausesValidation="false" CommandName="selectReservation" CommandArgument='<%# Eval("reservationId") %>' />
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:BoundField HeaderText="Pet Names" DataField="PetNames" />
@@ -42,7 +42,7 @@
                         Vaccinations Valid
                     </HeaderTemplate>
                     <ItemTemplate>
-                        <asp:CheckBox runat="server" Enabled="true" Checked='<%# Convert.ToBoolean(Eval("ValidVaccinations")) %>' /> 
+                        <asp:CheckBox runat="server" Enabled="false" Checked='<%# Convert.ToBoolean(Eval("ValidVaccinations")) %>' /> 
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
@@ -50,86 +50,6 @@
                 No Reservations Found
             </EmptyDataTemplate>
         </asp:GridView>
-
-
-<%--        <table runat="server" CssClass="table table-responsive">
-
-                <tr>
-                    <th>Select
-                    </th>
-                    <th>Pet Names
-                    </th>
-                    <th>Time in 
-                    </th>
-                    <th>Time out
-                    </th>
-                    <th>Vaccine Valid
-                    </th>
-                    <th>Status</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-
-                <tr>
-                    <td>
-                        <asp:CheckBox ID="chReservationSelect" runat="server" OnCheckedChanged="chReservationSelect_CheckedChanged" AutoPostBack="true" />
-                    </td>
-                    <td>
-                        <asp:Label ID="lblPetNames" runat="server" Text=""></asp:Label>
-                    </td>
-                    <td>
-                        <asp:Label ID="lblStartTime" runat="server" Text="Time In"></asp:Label>
-                    </td>
-                    <td>
-                        <asp:Label ID="lblEndTime" runat="server" Text="Time Out"></asp:Label>
-                    </td>
-                    <td>
-                        <asp:CheckBox ID="CheckBox2" runat="server" />
-                    </td>
-              
-                    <td>  Avaialble  </td>
-                    <asp:Panel runat="server" ID="noCustomer"> 
-                             <td>
-                        <asp:Button  runat="server" Text="Start" CssClass="btn btn-success clerkOnly "  />
-                    </td>
-                       <td>
-                        <asp:Button runat="server" Text="End" CssClass="btn btn-success clerkOnly " />
-                    </td>
-                        </asp:Panel>
-                    <td>
-
-                        <asp:Button ID="btnCancelReservation" runat="server" Text="Cancel" CausesValidation="false" CssClass="btn btn-danger" />
-
-                    </td>
-                    <td>
-                        <asp:Button ID="btnMoreInfo" runat="server" Text="More Info" CausesValidation="false" CssClass="btn btn-primary" OnClick="btnMoreInfo_Click" />
-                        <asp:LinkButton ID="lbtnEdit" href="manageReservation.aspx" CssClass="btn btn-secondary" runat="server">Edit</asp:LinkButton>
-                    </td>
-                </tr>
-                <%--<tr>
-                    <td>
-                        <asp:CheckBox ID="CheckBox3" runat="server" />
-                    </td>
-                    <td>[CONTENT]
-                    </td>
-                    <td>[CONTENT]
-                    </td>
-                    <td>[CONTENT]
-                    </td>
-                    <td>
-                        <asp:CheckBox ID="CheckBox4" runat="server" />
-                    </td>
-                    <td>
-                        <asp:LinkButton ID="LinkButton1" href="" CssClass="btn btn-secondary" runat="server">Edit</asp:LinkButton>
-                        <asp:Button ID="Button2" runat="server" Text="Cancel" CausesValidation="false" CssClass="btn btn-danger" />
-
-                    </td>
-                    <td>
-                        <asp:Button ID="Button3" runat="server" Text="More Info" CausesValidation="false" CssClass="btn btn-primary" />
-                    </td>
-                </tr>
-
-        <%--</asp:table>--%>
 
         <asp:GridView ID="gvCustomer" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
             <AlternatingRowStyle BackColor="White" />
