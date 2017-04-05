@@ -10,8 +10,8 @@ namespace AYadollahibastani_C40A02
 {
     public partial class ManageCustomer : System.Web.UI.Page
     {
-       private Owner newOwner = null;
-       private Pet newPet = null;
+       private Owner newOwner;
+       private Owner clerk;
         enum UserType
         {
             Clerk,
@@ -20,26 +20,37 @@ namespace AYadollahibastani_C40A02
         };
         protected void Page_Load(object sender, EventArgs e)
         {
-            newOwner = (Owner)Session["owner"];
-       
-            //Switch to clerk Mode
-           
+            //Application master = Master as Application;
+           // newOwner = master.owner;
+            
 
+            //Switch to clerk Mode
+
+            changeState(false);
             if ((UserType)(Session["UserType"]) == UserType.Clerk)
             {
-                btnAdd.Visible = true;
+                clerk = (Owner)Session["owner"];
+                if (Session["SelectedOwner"] != null)
+                    newOwner = (Owner)Session["SelectedOwner"];
+                    //btnAdd.Visible = true;
+                
             }
             else if((UserType)(Session["UserType"]) == UserType.Owner)
             {
                 btnAdd.Visible = false;
+                newOwner = (Owner)Session["owner"];
+
             }
             else
             {
-                btnPassdEdit.Visible = false;
+                newOwner = (Owner)Session["owner"];
+                btnPassedEdit.Visible = false;
                 btnAdd.Visible = false;
+                displayPasswords(true);
+                changeState(true);
 
             }
-            changeState(false);
+            
             
             //reset status notifiation 
             lblMsg.Text = "";
@@ -49,18 +60,55 @@ namespace AYadollahibastani_C40A02
 
         protected void Page_PreRender(object sender, EventArgs e)
         {
-            //set sessions
-            if (Session["owner"] == null)
+            if ((UserType)Session["UserType"] != UserType.Clerk)
             {
-                newOwner = new Owner();
+                //set sessions
+                if (Session["owner"] == null)
+                {
+                    newOwner = new Owner();
+                    Session["owner"] = newOwner;
+
+                    //displayPasswords(true);
+                    //btnPassedEdit.Visible = false;
+                }
+                else
+                {
+                    //Application master = Master as Application;
+                    //newOwner = master.owner;
+                    Session["owner"] = newOwner;
+                    if (!IsPostBack)
+                        displayPasswords(false);
+
+                }
+
+                if (!IsPostBack)
+                    loadData();
             }
             else
             {
-                newOwner = ((Owner)Session["owner"]);
-            }
+                btnEditClerk.Visible = true;
+                if (Session["SelectedOwner"] == null)
+                {
+                    newOwner = new Owner();
+                    Session["SelectedOwner"] = newOwner;
+                    //displayPasswords(true);
+                    //btnPassedEdit.Visible = false;
+                    Session["owner"] = clerk;
+                }
+                else
+                {
+                    //Application master = Master as Application;
+                    //newOwner = master.owner;
+                    Session["SelectedOwner"] = newOwner;
+                    Session["owner"] = clerk;
 
-            if (!IsPostBack)
-                loadData();
+                    if (!IsPostBack)
+                        displayPasswords(false);
+
+                }
+                if (!IsPostBack)
+                    loadData();
+            }
             
         }
 
@@ -74,12 +122,36 @@ namespace AYadollahibastani_C40A02
             txtEmrglName.Text = newOwner.emergencyLastName;
             txtEmrgPhone.Text = newOwner.emergencyPhone;
             txtCity.Text = newOwner.address.city;
-            DropDownProvince.Text = Convert.ToString(newOwner.address.province);
-            txtaddress.Text = newOwner.address.street;
-            txtPostal.Text = newOwner.address.postalCode;
-            txtHomePhone.Text = newOwner.phoneNumber;
+            if(newOwner.address.province == "")
+            {
+                DropDownProvince.SelectedIndex = 0;
+            }
+            else
+                DropDownProvince.SelectedIndex = DropDownProvince.Items.IndexOf(DropDownProvince.Items.FindByValue(newOwner.address.province));
+                txtaddress.Text = newOwner.address.street;
+                txtPostal.Text = newOwner.address.postalCode;
+                txtHomePhone.Text = newOwner.phoneNumber;
         }
 
+        public void loadClerkData()
+        {
+            txtfName.Text = clerk.firstName;
+            txtlName.Text = clerk.lastName;
+            txtEmail.Text = clerk.email;
+            txtEmrgfName.Text = clerk.emergencyFirstName;
+            txtEmrglName.Text = clerk.emergencyLastName;
+            txtEmrgPhone.Text = clerk.emergencyPhone;
+            txtCity.Text = clerk.address.city;
+            if (clerk.address.province == "")
+            {
+                DropDownProvince.SelectedIndex = 0;
+            }
+            else
+                DropDownProvince.SelectedIndex = DropDownProvince.Items.IndexOf(DropDownProvince.Items.FindByValue(clerk.address.province));
+            txtaddress.Text = clerk.address.street;
+            txtPostal.Text = clerk.address.postalCode;
+            txtHomePhone.Text = clerk.phoneNumber;
+        }
 
         public void updateFields()
         {
@@ -92,21 +164,41 @@ namespace AYadollahibastani_C40A02
             newOwner.address.city = Request.Form[txtCity.UniqueID];
             newOwner.address.street = Request.Form[txtaddress.UniqueID];
             newOwner.address.postalCode = Request.Form[txtPostal.UniqueID];
+            newOwner.address.province = DropDownProvince.SelectedItem.ToString();
             newOwner.phoneNumber = Request.Form[txtHomePhone.UniqueID];
+
+            //Session["owner"] = newOwner;
+        }
+
+        public void updateClerkData()
+        {
+            clerk.firstName = Request.Form[txtfName.UniqueID];
+            clerk.lastName = Request.Form[txtlName.UniqueID];
+            clerk.email = Request.Form[txtEmail.UniqueID];
+            clerk.emergencyFirstName = Request.Form[txtEmrgfName.UniqueID];
+            clerk.emergencyLastName = Request.Form[txtEmrglName.UniqueID];
+            clerk.emergencyPhone = Request.Form[txtEmrgPhone.UniqueID];
+            clerk.address.city = Request.Form[txtCity.UniqueID];
+            clerk.address.street = Request.Form[txtaddress.UniqueID];
+            clerk.address.postalCode = Request.Form[txtPostal.UniqueID];
+            clerk.address.province = DropDownProvince.SelectedItem.ToString();
+            clerk.phoneNumber = Request.Form[txtHomePhone.UniqueID];
         }
 
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
             //update
-            if (newOwner == null)
-            {
-                newOwner = new Owner();
-            }
+            //if (newOwner == null)
+            //{
+            //    newOwner = new Owner();
+           //}
             updateFields();
             //reload data
             loadData();
-
+            //Session["owner"] = newOwner;
+            btnPassedEdit.Visible = true;
+            displayPasswords(false);
             if (txtEmrgfName.Text != "" ) {
                 if (txtEmrgPhone.Text == "")
                 {
@@ -115,6 +207,8 @@ namespace AYadollahibastani_C40A02
                 }
             }
 
+            //btnPassedEdit.Visible = true;
+            //displayPasswords(false);
             //to be fixed
             //if (txtEmail.Text != "")
             //    valHomePhone.IsValid = true;
@@ -128,8 +222,9 @@ namespace AYadollahibastani_C40A02
                 lblMsg.Text = "You have sucessfully saved your information ! ";
             }
 
-            Session["UserType"] = UserType.Owner;
-            if(newOwner.petList.Count == 0)
+           
+
+            if(newOwner.petList.Count == 0 && ((UserType)Session["UserType"] == UserType.NewOwner))
             {
                 Server.Transfer("~/ManagePet.aspx");
             }
@@ -171,19 +266,49 @@ namespace AYadollahibastani_C40A02
                 changeState(true);
                 //form1.Disabled = false;
                 btnAdd.Visible = true;
-                btnPassdEdit.Visible = false;
+                btnPassedEdit.Visible = false;
                 btnEdit.Visible = false;
-                loadData();
+                //loadData();
                 clear();
+                displayPasswords(true);
             }
 
         }
 
-        protected void lbtnClear_Click(object sender, EventArgs e)
+        protected void lbtnCancel_Click(object sender, EventArgs e)
         {
-            clear();
-            changeState(true);
+            loadData();
+            changeState(false);
+            displayPasswords(false);
+            btnEdit.Visible = true;
+            btnPassedEdit.Visible = true;
         }
 
+        protected void displayPasswords(bool display)
+        {
+            passwordPanel.Visible = display;
+        }
+
+        protected void btnPassedEdit_Click(object sender, EventArgs e)
+        {
+            changeState(true);
+            displayPasswords(true);
+            btnPassedEdit.Visible = false;
+        }
+
+        protected void btnEditClerk_Click(object sender, EventArgs e)
+        {
+            btnSave.Visible = false;
+            btnSaveClerk.Visible = true;
+            loadClerkData();
+
+        }
+
+        protected void btnSaveClerk_Click(object sender, EventArgs e)
+        {
+            updateClerkData();
+            btnSave.Visible = true;
+            btnSaveClerk.Visible = false;
+        }
     }
 }

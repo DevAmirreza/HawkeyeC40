@@ -20,7 +20,7 @@
                         <asp:TextBox ID="txtUsername" runat="server" CssClass="form-control"></asp:TextBox>
                         <asp:Label ID="lblPass" runat="server" Text="Password" CssClass="label-control"></asp:Label>
                         <asp:TextBox ID="txtPass" runat="server" CssClass="form-control" TextMode="Password"></asp:TextBox>
-                        <asp:CheckBox ID="chKeepLogin" runat="server" Text="&nbsp Keep me loged in" />
+                        <asp:CheckBox ID="chKeepLogin" runat="server" Text="&nbsp Keep me logged in" />
                         <br />
 
                         </asp:Panel>

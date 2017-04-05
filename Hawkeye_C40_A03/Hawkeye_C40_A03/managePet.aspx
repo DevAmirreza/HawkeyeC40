@@ -21,12 +21,10 @@
         <div class="editDisplay" id="editDisplay" runat="Server">
             <asp:Panel runat="server" ID="editPanel">
                 <div class="col-md-4 item2">
-                    <div id="petProfileImage" class="petProfileImage" style="background-image: url('images/profile.jpg')"></div>
-                    <asp:HyperLink ID="linkUpload" runat="server">Upload a new picture</asp:HyperLink>
 
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <label class="label-control col-sm-4 txtArea">Special Note</label>
+                            <label class="label-control col-sm-4 txtArea">Special Notes</label>
                             <textarea class="txtArea" runat="server" id="txtSpecialNote" cols="50" rows="2"></textarea>
 
                         </div>
@@ -92,6 +90,7 @@
                         </div>
                     </div>
                     <asp:SqlDataSource ID="dsVaccine" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;VACCINATION_NUMBER&quot;, &quot;VACCINATION_NAME&quot; FROM &quot;HVK_VACCINATION&quot;"></asp:SqlDataSource>
+                    <asp:ObjectDataSource ID="odsVaccinesNotHad" runat="server"></asp:ObjectDataSource>
                     <div class="form-group">
                         <div class="col-sm-12">
                             <label class="label-control col-sm-2">Choose Your Vaccination</label>
@@ -112,15 +111,10 @@
                             <asp:CustomValidator ID="valVacDate" runat="server" ControlToValidate="UCexpDate$txtDate" ErrorMessage="Please enter your expiry date"></asp:CustomValidator>
                         </div>
                         <div class="col-sm-12" style="font-family: sans-serif">
-                            <asp:ObjectDataSource ID="odsPetVaccinations" runat="server" SelectMethod="listVaccinations" TypeName="HawkeyehvkBLL.PetVaccination" OldValuesParameterFormatString="original_{0}" UpdateMethod="updatePetVaccinationExpiry">
+                            <asp:ObjectDataSource ID="odsPetVaccinations" runat="server" SelectMethod="listVaccinations" TypeName="HawkeyehvkBLL.PetVaccination" OldValuesParameterFormatString="original_{0}">
                                 <SelectParameters>
-                                    <asp:SessionParameter Name="petNum" SessionField="PetId" Type="Int32" />
+                                    <asp:SessionParameter Name="petNum" SessionField="PetID" Type="Int32" />
                                 </SelectParameters>
-                                <UpdateParameters>
-                                    <asp:Parameter Name="expiryDate" Type="DateTime" />
-                                    <asp:Parameter Name="vacNumber" Type="Int32" />
-                                    <asp:Parameter Name="petNumber" Type="Int32" />
-                                </UpdateParameters>
                             </asp:ObjectDataSource>
                             <label class="label-control col-sm-2">Current Vaccines</label>
                             <asp:ListBox ID="lbCurrentVacc" runat="server" OnSelectedIndexChanged="lbCurrentVacc_SelectedIndexChanged" SelectionMode="Multiple" AutoPostBack="True">
@@ -128,18 +122,42 @@
                             </asp:ListBox>
                             <asp:GridView ID="gvPetVaccination" runat="server" AutoGenerateColumns="False" DataSourceID="odsPetVaccinations">
                                 <Columns>
-                                    <asp:TemplateField ConvertEmptyStringToNull="False" HeaderText="Vaccine Id">
+                                    <asp:TemplateField ShowHeader="False">
+                                        <EditItemTemplate>
+                                            <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="false" CommandName="Cancel" Text="Update"></asp:LinkButton>
+                                            &nbsp<asp:LinkButton ID="LinkButton2" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel"></asp:LinkButton>
+                                        </EditItemTemplate>
                                         <ItemTemplate>
-                                            <%# DataBinder.Eval(Container.DataItem, "vaccination.vaccinationNumber") %>
+                                            <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Edit" Text="Edit"></asp:LinkButton>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField ConvertEmptyStringToNull="False" HeaderText="Vaccine">
                                         <ItemTemplate>
                                             <%# DataBinder.Eval(Container.DataItem, "vaccination.name")  %>
                                         </ItemTemplate>
+                                        <EditItemTemplate>
+                                            <asp:TextBox ID="txtVacName" runat="server" Text=''></asp:TextBox>
+                                        </EditItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:BoundField DataField="expirationDate" HeaderText="expirationDate" SortExpression="expirationDate" />
-                                    <asp:BoundField DataField="isValidated" HeaderText="isValidated" ReadOnly="True" SortExpression="isValidated" />
+                                    <asp:TemplateField HeaderText="Expiration Date" SortExpression="expirationDate">
+                                        <EditItemTemplate>
+                                            <asp:Calendar ID="Calendar1" runat="server" SelectedDate='<%# Bind("expirationDate") %>'></asp:Calendar>
+                                        </EditItemTemplate>
+                                        <ItemTemplate>
+                                            <asp:Label ID="Label1" runat="server" Text='<%# Bind("expirationDate", "{0:MMM dd, yyyy}") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Validated?">
+                                        <EditItemTemplate>
+                                            <asp:DropDownList ID="DropDownList1" runat="server" SelectedValue='<%# Bind("isValidated") %>'>
+                                                <asp:ListItem Value="Y">Valid</asp:ListItem>
+                                                <asp:ListItem Value="N">Invalid</asp:ListItem>
+                                            </asp:DropDownList>
+                                        </EditItemTemplate>
+                                        <ItemTemplate>
+                                            <asp:Label ID="Label2" runat="server" Text='<%# (Eval("isValidated").ToString() == "N" ? "Invalid" : "Valid") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
                                 </Columns>
                             </asp:GridView>
                         </div>
