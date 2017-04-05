@@ -21,10 +21,25 @@ namespace AYadollahibastani_C40A02
             editDisplay.Visible = true;
             addDisplay.Visible = false;
             viewDisplay.Visible = false;
-            newOwner = (Owner)Session["owner"];
+            
+            if ((UserType)Session["UserType"] == UserType.Owner)
+            {
+                newOwner = (Owner)Session["owner"];
+            }
+            else
+            {
+                newOwner = (Owner)Session["SelectedOwner"];
+            }
+
+            //newOwner = (Owner)Session["owner"];
             //if(Session["PetID"] != null)
             //x = (int)Session["PetID"];
             gvPetVaccination.GridLines = GridLines.None;
+          
+            if(newOwner.petList.Count != 0 && Session["PetID"] == null)
+            {
+                Session["PetID"] = newOwner.petList[0].petNumber;
+            }
         }
 
         protected void Page_PreRender(object sender, EventArgs e)
@@ -39,8 +54,8 @@ namespace AYadollahibastani_C40A02
 
             }
             else { 
-                Application master = Master as Application;
-                newOwner = master.owner;
+                //Application master = Master as Application;
+                //newOwner = master.owner;
                 //Session["PetId"] = newOwner.petList[0].petNumber;
                 //Session["PetId"] = 7;
                 
@@ -48,17 +63,11 @@ namespace AYadollahibastani_C40A02
                 if (!IsPostBack)
                     loadData();
             }
-            
-
-            
-
-
-            //i added  
-            loadData();
 
 
             //loads data from objects into the fields
-            
+            loadData();
+
         }
 
         protected void changeState(bool State)
@@ -82,7 +91,8 @@ namespace AYadollahibastani_C40A02
 
 
             Pet currentPetSelected = newOwner.petList[petIndex];
-               
+                gvPetVaccination.DataBind();
+                
                 txtPetName.Text = currentPetSelected.name;
                 txtBreed.Text = currentPetSelected.breed;
                 txtSpecialNote.InnerText = currentPetSelected.notes; 

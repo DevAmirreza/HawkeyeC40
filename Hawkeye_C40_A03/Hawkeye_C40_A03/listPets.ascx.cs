@@ -78,15 +78,29 @@ namespace AYadollahibastani_C40A02
 
         protected void gvPetList_RowCommand1(object sender, GridViewCommandEventArgs e)
         {
-            int petNum = Convert.ToInt16(e.CommandArgument);
-            Session["petID"] = petNum;
-            for (int i = 0; i < ((Owner)Session["owner"]).petList.Count; i++)
+            Owner selectedOwner; 
+
+            if ((UserType)Session["UserType"] == UserType.Owner)
             {
-                if (petNum == ((Owner)Session["owner"]).petList[i].petNumber)
+                selectedOwner = (Owner)Session["owner"] ; 
+            }
+            else
+            {
+                selectedOwner = (Owner)Session["SelectedOwner"];
+            }
+
+
+                int petNum = Convert.ToInt16(e.CommandArgument);
+            Session["petID"] = petNum;
+            for (int i = 0; i < ((Owner)Session["SelectedOwner"]).petList.Count; i++)
+            {
+                if (petNum == ((Owner)Session["SelectedOwner"]).petList[i].petNumber)
                 {
                     Session["SelectedPet"] = i;
                 }
             }
+
+            
 
 
             //Session["selectedPet"] = ((Owner)Session["owner"]).petList[gvPetList.SelectedIndex];
