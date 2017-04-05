@@ -13,7 +13,18 @@ namespace AYadollahibastani_C40A02
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            List<Pet> petList = Pet.listPets(((Owner)Session["owner"]).ownerNumber);
+            List<Pet> petList = new List<Pet>();
+            if ((UserType)Session["UserType"] == UserType.Clerk) {
+                if (Session["SelectedOwner"] != null)
+                {
+                    petList = Pet.listPets(((Owner)Session["SelectedOwner"]).ownerNumber);
+                }
+            }
+            else
+            {
+                petList = Pet.listPets(((Owner)Session["owner"]).ownerNumber);
+            } 
+            //List<Pet> petList = Pet.listPets(((Owner)Session["owner"]).ownerNumber);
             populatePetGrid(petList);
             gvPetList.GridLines = GridLines.None;
         }
@@ -91,18 +102,17 @@ namespace AYadollahibastani_C40A02
 
 
                 int petNum = Convert.ToInt16(e.CommandArgument);
-            Session["petID"] = petNum;
-            for (int i = 0; i < ((Owner)Session["SelectedOwner"]).petList.Count; i++)
+                Session["petID"] = petNum;
+            for (int i = 0; i < selectedOwner.petList.Count; i++)
             {
-                if (petNum == ((Owner)Session["SelectedOwner"]).petList[i].petNumber)
+                if (petNum == selectedOwner.petList[i].petNumber)
                 {
                     Session["SelectedPet"] = i;
                 }
             }
+                
 
-            
-
-
+            populatePetGrid(selectedOwner.petList);
             //Session["selectedPet"] = ((Owner)Session["owner"]).petList[gvPetList.SelectedIndex];
 
         }
