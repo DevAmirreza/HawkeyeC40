@@ -32,23 +32,30 @@ namespace AYadollahibastani_C40A02
             {
                 Response.Redirect("~/ManageCustomer.aspx");
                 //newOwner = new Owner();
-            } 
-            else
+            }
+            else if (newOwner.petList.Count == 0)
             {
+
+            }
+            else { 
                 Application master = Master as Application;
                 newOwner = master.owner;
                 Session["PetId"] = newOwner.petList[0].petNumber;
+
+                if (Session["PetID"] == null)
+                    x = 0;
+                else
+                    x = (int)Session["PetID"];
+
+                if (!IsPostBack)
+                    loadData();
             }
-            if (Session["PetID"] == null)
-                x = 0;
-            else
-                x = (int)Session["PetID"]; 
+            
 
 
 
             //loads data from objects into the fields
-            if (!IsPostBack)
-                loadData();
+            
         }
 
         protected void changeState(bool State)

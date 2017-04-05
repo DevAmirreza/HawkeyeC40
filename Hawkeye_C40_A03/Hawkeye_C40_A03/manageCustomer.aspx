@@ -9,7 +9,7 @@
     </div>
 
 
-<%--    
+    <%--    
     Work in progress / will be added at the end
     <asp:Wizard ID="wzRegistery" runat="server">
         <WizardSteps>
@@ -124,8 +124,8 @@
                         </label>
                         <asp:DropDownList placeholder="Your Province" CssClass="form-control prov" ID="DropDownProvince" runat="server">
                             <asp:ListItem>--Select Province--</asp:ListItem>
-                            <asp:ListItem>Ontario</asp:ListItem>
-                            <asp:ListItem>Quebec</asp:ListItem>
+                            <asp:ListItem Value="ON">Ontario</asp:ListItem>
+                            <asp:ListItem Value="QC">Quebec</asp:ListItem>
                         </asp:DropDownList>
                         <br />
                     </div>
@@ -171,15 +171,38 @@
                         </div>
                     </div>
                 </div>
+                <asp:Panel runat="server" ID="passwordPanel">
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <label class="label-control col-sm-2">
+                                Password
+                            </label>
+                            <asp:TextBox placeholder="Password" CssClass="form-control" ID="txtPassword" runat="server"></asp:TextBox>
+                            <div class="error_msg label-control col-sm-6 block">
+                                <asp:CompareValidator ID="valComparePasswords" runat="server" ErrorMessage="The Passwords Do Not Match" ControlToCompare="txtConfirmPassword" ControlToValidate="txtPassword" Display="Dynamic"></asp:CompareValidator>
+                            </div>
+                        </div>
+                    </div>
 
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <label class="label-control col-sm-2">
+                                Confirm Password
+                            </label>
+                            <asp:TextBox CssClass="form-control" ID="txtConfirmPassword" runat="server"></asp:TextBox>
+                            <div class="error_msg label-control col-sm-6 block">
+                            </div>
+                        </div>
+                    </div>
+                </asp:Panel>
                 <!--Buttons-->
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-12">
                         <asp:Button CssClass="btn btn-primary" ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" />
-                        <asp:LinkButton ID="lbtnClear" runat="server" OnClick="lbtnClear_Click" CausesValidation="false">Clear</asp:LinkButton>
+                        <asp:LinkButton ID="lbtnCancel" runat="server" CausesValidation="false" OnClick="lbtnCancel_Click">Cancel</asp:LinkButton>
                         <div class="right-wrap">
-                            <asp:Button CssClass="btn btn-default" ID="btnPassdEdit" runat="server" Text="Edit My Password" />
-                            
+                            <asp:Button CssClass="btn btn-default" ID="btnPassedEdit" runat="server" Text="Edit My Password" OnClick="btnPassedEdit_Click" CausesValidation="False"/>
+
 
                         </div>
 
