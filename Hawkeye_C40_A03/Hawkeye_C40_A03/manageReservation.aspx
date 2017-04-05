@@ -10,22 +10,10 @@
         <p>Manage Reservation</p>
     </div>
     <div class="container">
-        <asp:Panel ID="searchPanel" runat="server">
-            <h3>Please Choose Your Customer</h3>
-            
-        </asp:Panel>
 
-                <asp:Panel ID="noReservationPanel" runat="server">
-                    <h4>There are curently no reservation booked</h4>
-
-                </asp:Panel>
-        <asp:Panel ID="editPanel" runat="server">
+        
         <div class="row">
-            <div class="col-md-6">
-                <asp:Button CssClass="btn btn-default" ID="btnEdit" Text="Edit" runat="server" OnClick="btnEdit_Click" CausesValidation="False" />
-                <asp:Button CssClass="btn btn-default" ID="btnNewReservation" Text="Book A Reservation" runat="server" CausesValidation="false" OnClick="btnNewReservation_Click"  />
-          <br />
-                  </div>
+                        
             <div class="col-md-6">
                 <div class="error_box alert-danger ">
 <%--                    <span class="glyphicon glyphicon-warning-sign"></span>--%>
@@ -35,7 +23,7 @@
         </div>
         <asp:Panel runat="server" ID="reservationPanel">
             <div class="form-group">
-                <h4 class="subtitle">Reservation Details</h4>
+                <h4 class="subtitle" id="pageTitle" runat="server">Reservation Details</h4>
                 <div class="row">
                     <div class="col-sm-6">
                         <label class="label-control col-sm-4">
@@ -62,7 +50,7 @@
                     <div class="col-sm-6 center">
                         <br />
                         <label class="label-control col-sm-4">Add Your Pet + </label>
-                        <asp:DropDownList ID="ddlChoosePet" runat="server" CssClass="form-control" AutoPostBack="True" OnTextChanged="ddlChoosePet_TextChanged" >
+                        <asp:DropDownList ID="ddlAddPet" runat="server" CssClass="form-control" AutoPostBack="True" OnTextChanged="ddlChoosePet_TextChanged" >
                             <asp:ListItem> Select Your Pet</asp:ListItem>
                         </asp:DropDownList>
                        <div class="error_msg label-control col-sm-6 oneSixity">
@@ -79,13 +67,12 @@
                     </div>
 
 
-                        <div class="col-sm-6 center">
-                        <label id="lblCurrentPet" runat="server" class="label-control col-sm-4">Current Pets</label>
-                            <asp:ListBox ID="lbCurrentPets" runat="server" OnSelectedIndexChanged="lbCurrentPets_SelectedIndexChanged" AutoPostBack="true"></asp:ListBox>
-                    </div>
+                        
 
                 </div>
                 <br />
+                <label id="lblPetsInRes" runat="server" class="label-control col-sm-4">Pets in Reservation</label>
+                <asp:DropDownList ID="ddlPetsInRes" runat="server" CssClass="form-control short"></asp:DropDownList>
                 <h4 class="subtitle">Pet Services - <asp:Label ID="lblSelectedPet" runat="server" Text="[Pet's Name]"></asp:Label></h4>
                 <div class="row">
                     <div class="col-md-6 ">
@@ -109,6 +96,7 @@
                 </div>
                 <div class="pull-left col-md-4 buttons">
                     <asp:Button ID="btnBook" runat="server" Text="Book Now" CssClass="btn btn-primary" OnClick="btnBook_Click" />
+                    <asp:Button CssClass="btn btn-default" ID="btnEdit" Text="Edit" runat="server" OnClick="btnEdit_Click" CausesValidation="False" />
                     <asp:LinkButton ID="btnClear" runat="server">Cancel</asp:LinkButton>
 
                 </div>

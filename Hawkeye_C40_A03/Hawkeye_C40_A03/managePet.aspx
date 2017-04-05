@@ -21,12 +21,10 @@
         <div class="editDisplay" id="editDisplay" runat="Server">
             <asp:Panel runat="server" ID="editPanel">
                 <div class="col-md-4 item2">
-                    <div id="petProfileImage" class="petProfileImage" style="background-image: url('images/profile.jpg')"></div>
-                    <asp:HyperLink ID="linkUpload" runat="server">Upload a new picture</asp:HyperLink>
 
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <label class="label-control col-sm-4 txtArea">Special Note</label>
+                            <label class="label-control col-sm-4 txtArea">Special Notes</label>
                             <textarea class="txtArea" runat="server" id="txtSpecialNote" cols="50" rows="2"></textarea>
 
                         </div>
