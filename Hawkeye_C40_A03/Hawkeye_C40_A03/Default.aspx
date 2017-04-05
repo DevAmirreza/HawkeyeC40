@@ -13,8 +13,6 @@
                          
                         <asp:Panel ID="customerLogin" runat="server">
                                                     <h2>Login </h2>
-                        <asp:Button runat="server" ID="btnManageReservation" Text="Mangage Reservation" OnClick="btnManageReservation_Click"/>
-                            <br />
                             <asp:Label ID="lblErrors" runat="server" Text=""></asp:Label><br />
                         <asp:Label ID="lblUsername" runat="server" Text="Email" CssClass="label-control"></asp:Label>
                         <asp:TextBox ID="txtUsername" runat="server" CssClass="form-control"></asp:TextBox>
@@ -33,8 +31,8 @@
                         <p>
                             New Customer ? 
                                 Please click here if you wish to book a reservation right now ! 
-                            <br />
-                            <asp:Button CssClass="btn btn-primary" ID="btnBookNow" runat="server" Text="Book Now" OnClick="btnBookNow_Click" />
+                           
+                            <asp:Button CssClass="btn btn-primary loginNewOwner" ID="btnBookNow" runat="server" Text="Book Now" OnClick="btnBookNow_Click" />
                         </p>
                     </div>
                 </div>

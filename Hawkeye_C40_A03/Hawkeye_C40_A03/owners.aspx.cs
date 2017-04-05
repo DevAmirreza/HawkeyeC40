@@ -30,7 +30,8 @@ namespace AYadollahibastani_C40A02
         protected void btnAddNew_Click(object sender, EventArgs e)
         {
      
-            Session["SelectedOwner"] = new Owner(); 
+            Session["SelectedOwner"] = new Owner();
+            Response.Redirect("manageCustomer.aspx"); 
         }
 
         protected void btnViewPet_Click(object sender, EventArgs e)
