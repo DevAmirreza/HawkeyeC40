@@ -17,7 +17,7 @@
             <div class="col-md-6">
                 <div class="error_box alert-danger ">
 <%--                    <span class="glyphicon glyphicon-warning-sign"></span>--%>
-                    <asp:ValidationSummary ID="ValidationSummary1" runat="server"  />
+                    <asp:ValidationSummary ID="valSumm" runat="server" DisplayMode="SingleParagraph"  />
                 </div>
             </div>
         </div>
@@ -31,8 +31,7 @@
                         </label>
                         <uc1:CalendarControl runat="server" ID="UCstartDate" />
                         <div class="error_msg label-control col-sm-6 oneSixity">
-                            &nbsp;&nbsp;&nbsp;
-                            <asp:RequiredFieldValidator ID="valRequired" runat="server" ControlToValidate="UCstartDate$txtDate" Display="Dynamic" ErrorMessage="Please select a start date "></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="valRequired" runat="server" ControlToValidate="UCstartDate$txtDate" Display="Dynamic" ErrorMessage="Please select a start date ">*</asp:RequiredFieldValidator>
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -41,9 +40,8 @@
                         </label>
                         <uc1:CalendarControl runat="server" ID="UCendDate" />
                         <div class="error_msg label-control col-sm-6 oneSixity">
-                            &nbsp;&nbsp;&nbsp;
-                           <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="UCendDate$txtDate" ErrorMessage="Please select an end date"></asp:RequiredFieldValidator>
-                            <asp:CustomValidator ID="valEndDate" runat="server" ErrorMessage="Your end must be after your start date" ControlToValidate="UCendDate$txtDate"></asp:CustomValidator>
+                           <asp:RequiredFieldValidator ID="valReqEnd" runat="server" ControlToValidate="UCendDate$txtDate" ErrorMessage="Please select an end date" ValidationGroup="valGroup"></asp:RequiredFieldValidator>
+                            <asp:CustomValidator ID="valEndDate" runat="server" ControlToValidate="UCendDate$txtDate" ErrorMessage="Your end must be after your start date" Text="*"></asp:CustomValidator>
                         </div>
 
                     </div>
@@ -61,12 +59,7 @@
                         </div>
                     </div>
                     <br />
-                    <div class="col-sm-6 center">
-                        <br />
-                        <label id="lblChooseRun" runat="server" class="label-control col-sm-4">Choose Run</label>
-                        <asp:DropDownList ID="ddlChooseRun" runat="server" CssClass="form-control short" ></asp:DropDownList>
-
-                    </div>
+                    
 
 
                         
@@ -74,18 +67,24 @@
                 </div>
                 <br />
                 <hr />
-                <h4 class="subtitleInline">Pets in Reservation -  </h4><asp:DropDownList ID="ddlPetsInRes" runat="server" CssClass="form-control short inlineDdl" OnSelectedIndexChanged="ddlPetsInRes_SelectedIndexChanged"></asp:DropDownList>
+                <h4 class="subtitleInline">Pets in Reservation -  </h4><asp:DropDownList ID="ddlPetsInRes" runat="server" CssClass="form-control short inlineDdl" OnSelectedIndexChanged="ddlPetsInRes_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList>
                 <asp:Button ID="btnRemovePet" runat="server" Text="Remove" CssClass="btn btn-default" OnClick="btnRemovePet_Click"/>
                 <div class="row">
                     <div class="col-md-6 ">
                         <label class="label-control col-sm-4">Services</label>
                         <!-- To be recieve from DB -->
-                        <div class="col-sm-8 center push-left">
+                        <div class="col-sm-6 center push-left">
                             <div class="col-sm-6">
-                            <asp:CheckBox ID="chWalk" runat="server" Text="Daily Walk" CssClass="" /><br />
-                            <asp:CheckBox ID="chPalytime" runat="server" Text="Daily Playtime" CssClass="" /><br  />
+                            <asp:CheckBox ID="chWalk" runat="server" Text="Daily Walk" CssClass="" AutoPostBack="True" OnCheckedChanged="chWalk_CheckedChanged" /><br />
+                            <asp:CheckBox ID="chPlaytime" runat="server" Text="Daily Playtime" CssClass="" AutoPostBack="True" OnCheckedChanged="chPlaytime_CheckedChanged" /><br  />
                                 <br />
                             </div>
+                      <div class="col-sm-6 center">
+                        <br />
+                        <label id="lblChooseRun" runat="server" class="label-control col-sm-4">Choose Run</label>
+                        <asp:DropDownList ID="ddlChooseRun" runat="server" CssClass="form-control short" ></asp:DropDownList>
+
+                    </div>
                         </div>
                     </div>
                     </div>
@@ -95,9 +94,9 @@
                 </div>
             </asp:Panel>
                 <div class="pull-left col-md-4 buttons">
-                    <asp:Button ID="btnBook" runat="server" Text="Book Now" CssClass="btn btn-primary"/>
+                    <asp:Button ID="btnBook" runat="server" Text="Book Now" CssClass="btn btn-primary" OnClick="btnBook_Click"/>
                     <asp:Button CssClass="btn btn-default" ID="btnEdit" Text="Edit" runat="server" CausesValidation="False" OnClick="btnEdit_Click1" />
-                    <asp:LinkButton ID="btnClear" runat="server">Cancel</asp:LinkButton>
+                    <asp:LinkButton ID="btnCancel" runat="server" OnClick="btnCancel_Click">Cancel</asp:LinkButton>
 
                 </div>
 
