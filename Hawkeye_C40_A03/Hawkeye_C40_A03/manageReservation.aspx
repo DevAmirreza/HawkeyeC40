@@ -75,17 +75,18 @@
                         <label class="label-control col-sm-4">Services</label>
                         <!-- To be recieve from DB -->
                         <div class="col-sm-6 center push-left">
-                            <div class="col-sm-6">
+                            <div class="col-sm-8">
                             <asp:CheckBox ID="chWalk" runat="server" Text="Daily Walk" CssClass="" AutoPostBack="True" OnCheckedChanged="chWalk_CheckedChanged" /><br />
                             <asp:CheckBox ID="chPlaytime" runat="server" Text="Daily Playtime" CssClass="" AutoPostBack="True" OnCheckedChanged="chPlaytime_CheckedChanged" /><br  />
                                 <br />
                             </div>
-                      <div class="col-sm-6 center">
+                      <%--<div class="col-sm-4 center">
                         <br />
+
                         <label id="lblChooseRun" runat="server" class="label-control col-sm-4">Choose Run</label>
                         <asp:DropDownList ID="ddlChooseRun" runat="server" CssClass="form-control short" ></asp:DropDownList>
 
-                    </div>
+                    </div>--%>
                         </div>
                     </div>
                     </div>
@@ -95,7 +96,7 @@
                 </div>
             </asp:Panel>
                 <div class="pull-left col-md-4 buttons">
-                    <asp:Button ID="btnBook" runat="server" Text="Book Now" CssClass="btn btn-primary" OnClick="btnBook_Click"/>
+                    <asp:Button ID="btnBook" runat="server" Text="Save" CssClass="btn btn-primary" OnClick="btnBook_Click"/>
                     <asp:Button CssClass="btn btn-default" ID="btnEdit" Text="Edit" runat="server" CausesValidation="False" OnClick="btnEdit_Click1" />
                     <asp:LinkButton ID="btnCancel" runat="server" OnClick="btnCancel_Click">Cancel</asp:LinkButton>
 

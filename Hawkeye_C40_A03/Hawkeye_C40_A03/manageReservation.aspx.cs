@@ -42,8 +42,8 @@ namespace AYadollahibastani_C40A02
                 changeState(true);
                 if ((UserType)Session["UserType"] == UserType.Owner)
                 {
-                    ddlChooseRun.Visible = false;
-                    lblChooseRun.Visible = false;
+                    //ddlChooseRun.Visible = false;
+                    //lblChooseRun.Visible = false;
                     if (Session["selectedReservation"] != null)
                     {
                         bool resFound = false;
@@ -86,8 +86,8 @@ namespace AYadollahibastani_C40A02
                 {// clerk
                     //update run ddl with availible runs for that day
 
-                    ddlChooseRun.Visible = false;//false for now
-                    lblChooseRun.Visible = false;//false for now
+                    //ddlChooseRun.Visible = false;//false for now
+                    //lblChooseRun.Visible = false;//false for now
                     if (Session["selectedReservation"] != null)// edit reservation / clerk
                     {
                         Reservation curRes = new Reservation();
@@ -362,19 +362,23 @@ namespace AYadollahibastani_C40A02
         {
             updatePres();
         }
-        public void validatDates() {
+        public void validatDates()
+        {
+            if (((TextBox)UCstartDate.FindControl("txtDate")).Text!= ""&& ((TextBox)UCendDate.FindControl("txtDate")).Text != "") { 
             try
             {
                 DateTime start = Convert.ToDateTime(UCstartDate.vacDate);
                 DateTime end = Convert.ToDateTime(UCendDate.vacDate);
-                if (end<start)
+                if (end < start)
                 {
                     valEndDate.IsValid = false;
                 }
             }
-            catch {
+            catch
+            {
                 valEndDate.IsValid = false;
             }
+        }
         }
         protected void btnBook_Click(object sender, EventArgs e)
         {
@@ -382,8 +386,8 @@ namespace AYadollahibastani_C40A02
             
             if ((UserType)Session["UserType"] == UserType.Owner)
             {// save to session
-                DateTime start = Convert.ToDateTime(UCstartDate.vacDate);
-                DateTime end = Convert.ToDateTime(UCendDate.vacDate);
+                DateTime start = Convert.ToDateTime(((TextBox)UCstartDate.FindControl("txtDate")).Text);
+                DateTime end = Convert.ToDateTime(((TextBox)UCendDate.FindControl("txtDate")).Text);
                 
                 editedReservation.startDate = start;
                 editedReservation.endDate = end;
