@@ -97,7 +97,7 @@ namespace AYadollahibastani_C40A02
                         if (curRes != null)
                         {
                             btnDeleteRes.Enabled = true;
-                            Owner own = ((Owner)(Session["selectedOwner"]));
+                            Owner own =Owner.getOwner(curRes.ownerNumber);
                             loadData(curRes, own);
                             pageTitle.InnerText = "Editing Reservation for " + own.firstName + " " + own.lastName;
                             Session["manageReservationObject"] = curRes;
