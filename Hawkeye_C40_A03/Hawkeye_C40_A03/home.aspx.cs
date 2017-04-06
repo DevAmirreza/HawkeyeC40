@@ -19,6 +19,7 @@ namespace AYadollahibastani_C40A02
         };
         protected void Page_Load(object sender, EventArgs e) {
             gvReservations.GridLines = GridLines.None;
+            
             searchPanel.Visible = false;
         }
 
@@ -34,6 +35,7 @@ namespace AYadollahibastani_C40A02
                     clerkPanel.Visible = false;
                     searchPanel.Visible = false;
                     resList = owner.reservationList;
+                    gvReservations.Columns[1].Visible = false;
                     break;
                 case UserType.Clerk:
                     customerPanel.Visible = false;
@@ -47,6 +49,7 @@ namespace AYadollahibastani_C40A02
         public void populateResGrid(List<Reservation> resList) {          
             if (resList != null) {
                 DataTable dt = new DataTable();
+                dt.Columns.Add("Owner");
                 dt.Columns.Add("PetNames");
                 dt.Columns.Add("StartDate");
                 dt.Columns.Add("EndDate");
@@ -63,6 +66,12 @@ namespace AYadollahibastani_C40A02
                         if (valid) {
                             valid = (PetVaccination.checkVaccinations(pres.pet.petNumber, res.endDate) == 0);
                         }
+                    }
+                    if ((UserType)Session["UserType"] == UserType.Owner)
+                        dr["Owner"] = owner.getFullName();
+                    else {
+                        Owner own = Owner.getOwner(res.ownerNumber);
+                        dr["Owner"] = own.getFullName();
                     }
                     dr["PetNames"] = petNames;
                     dr["StartDate"] = res.startDate.ToShortDateString();
