@@ -62,7 +62,8 @@ namespace AYadollahibastani_C40A02
             newOwner = Owner.getOwner(ownerNum);
             Session["SelectedOwner"] = newOwner;
             viewPet.Visible = true; 
-            editDisplay.Visible = true; 
+            editDisplay.Visible = true;
+
         }
         protected void btnBookNewReservation_Click(object sender, EventArgs e)
         {

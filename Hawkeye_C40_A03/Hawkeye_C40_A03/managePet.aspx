@@ -36,14 +36,20 @@
                             <asp:DropDownList CssClass="form-control medium" ID="ddlVacc" runat="server" DataSourceID="odsVaccinesNotHad" DataTextField="name" DataValueField="vaccinationNumber">
 
                             </asp:DropDownList>
-                            <asp:Button ID="btnAddVaccine" CssClass="btn btn-primary" runat="server" CausesValidation="False" OnClick="btnAddVaccine_Click" Text="Add Vaccine" />
+                            
                         </div>
                         <div class="col-sm-12" style="font-family: sans-serif">
 
-                            <label class="label-control col-sm-2">Expiry Date</label>
+                            <label class="label-control col-sm-4">Expiry Date</label>
                             
                             <uc1:CalendarControl runat="server" ID="UCexpDate" />
+                                
+                                
+                                
                             
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="label-control col-sm-4"><asp:Button ID="btnAddVaccine" runat="server" CausesValidation="False" CssClass="btn btn-primary" OnClick="btnAddVaccine_Click" Text="Add Vaccine" /></div>
                         </div>
                         <div class="error_msg col-sm-6 label-control block">
                             <asp:CustomValidator ID="valCheckDate" runat="server" ControlToValidate="UCexpDate$txtDate" ErrorMessage="Please enter a valid date"></asp:CustomValidator>
