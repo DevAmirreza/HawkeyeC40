@@ -240,3 +240,6 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+/HawkeyehvkDB/dsReservation.xsc
+/HawkeyehvkDB/dsReservation.xsd
+/HawkeyehvkDB/dsReservation.xss

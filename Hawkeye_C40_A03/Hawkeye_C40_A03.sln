@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HawkeyeC40A03", "Hawkeye_C40_A03\HawkeyeC40A03.csproj", "{3F207B2A-5B8F-432A-AB0B-CFB985CEC90B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HawkeyehvkDB", "..\HawkeyehvkDB\HawkeyehvkDB.csproj", "{90A6EA31-F53C-4E68-96B1-AEE071B4EF4F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HawkeyehvkBLL", "..\HawkeyehvkBLL\HawkeyehvkBLL.csproj", "{8436810A-AFB7-435A-A63A-B6AE24568A08}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{3F207B2A-5B8F-432A-AB0B-CFB985CEC90B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F207B2A-5B8F-432A-AB0B-CFB985CEC90B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F207B2A-5B8F-432A-AB0B-CFB985CEC90B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90A6EA31-F53C-4E68-96B1-AEE071B4EF4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90A6EA31-F53C-4E68-96B1-AEE071B4EF4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90A6EA31-F53C-4E68-96B1-AEE071B4EF4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90A6EA31-F53C-4E68-96B1-AEE071B4EF4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8436810A-AFB7-435A-A63A-B6AE24568A08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8436810A-AFB7-435A-A63A-B6AE24568A08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8436810A-AFB7-435A-A63A-B6AE24568A08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8436810A-AFB7-435A-A63A-B6AE24568A08}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
