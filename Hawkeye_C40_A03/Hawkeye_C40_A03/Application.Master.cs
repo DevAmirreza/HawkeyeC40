@@ -74,6 +74,8 @@ namespace AYadollahibastani_C40A02
                 btnNav2.Visible = true;
                 btnNav2.Text = "Owners";
                 btnNav2.Attributes["href"] = "/owners.aspx";
+                Session["PetID"] = null;
+                Session["SelectedPet"] = null;
             }
             else
             {

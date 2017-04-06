@@ -61,7 +61,8 @@ namespace AYadollahibastani_C40A02
                     newOwner.address.postalCode = "J9B 2P8";
                     newOwner.phoneNumber = "4385566065";
                     Session["owner"] = newOwner;
-
+                    Session["PetID"] = null;
+                    Session["SelectedPet"] = null;
                     // the sessions with objects are loaded from the master page used for application pages
                     Response.Redirect("home.aspx");
                 }
@@ -91,6 +92,7 @@ namespace AYadollahibastani_C40A02
         {
             setUserType("NewOwner");
             Session["owner"] = null;
+            Session["PetID"] = null;
             Server.Transfer("~/ManageCustomer.aspx");
         }
         

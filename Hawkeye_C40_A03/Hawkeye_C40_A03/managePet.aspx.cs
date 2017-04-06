@@ -124,13 +124,13 @@ namespace AYadollahibastani_C40A02
         {
             if (Session["PetID"] == null)
             {
-                newOwner.petList.Add(new Pet(0, Request.Form[txtPetName.UniqueID], 'n', 'f'));
-                Session["PetID"] = newOwner.petList.Count - 1; 
+                //newOwner.petList.Add(new Pet(0, Request.Form[txtPetName.UniqueID], 'n', 'f'));
+                //Session["PetID"] = newOwner.petList.Count - 1; 
             } else {
                 int tempindex = (int)Session["PetID"]; 
-            newOwner.petList[0].name  = Request.Form[txtPetName.UniqueID];
-            newOwner.petList[0].breed = Request.Form[txtBreed.UniqueID];
-            newOwner.petList[0].notes = Request.Form[txtSpecialNote.UniqueID];
+            newOwner.petList[tempindex].name  = Request.Form[txtPetName.UniqueID];
+            newOwner.petList[tempindex].breed = Request.Form[txtBreed.UniqueID];
+            newOwner.petList[tempindex].notes = Request.Form[txtSpecialNote.UniqueID];
         }
            
                 try

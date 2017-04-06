@@ -12,6 +12,8 @@ namespace AYadollahibastani_C40A02
         Owner owner;
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Session["PetID"] = null;
+            //Session["SelectedPet"] = null;
             editDisplay.Visible = false;
             viewPet.Visible = false;  
             gdOwner.GridLines = GridLines.None;

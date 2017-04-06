@@ -72,7 +72,8 @@
                             Reservation History
                         </div>
                         <div class="col-sm-6">
-                            <uc1:listPets runat="server" ID="listPets" />
+                            <%--To Be Fixed--%>
+                            <%--<uc1:listPets runat="server" ID="listPets" />--%>
                         </div>
                     </asp:Panel>
                 </asp:Panel>
