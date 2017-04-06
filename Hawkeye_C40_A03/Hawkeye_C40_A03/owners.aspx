@@ -64,7 +64,7 @@
                 
                    <asp:Panel runat="server" ID="editDisplay">
                     <asp:LinkButton ID="btnBookNewReservation" runat="server" CssClass="btn btn-default" OnClick="btnBookNewReservation_Click">Book a new reservation </asp:LinkButton>
-                    <asp:LinkButton ID="btnAddPet" href="/managePet.aspx" runat="server" CssClass="btn btn-default">Add a new Pet </asp:LinkButton>
+                    <asp:LinkButton ID="btnAddPet" href="/managePet.aspx" runat="server" CssClass="btn btn-default">Manage Pet </asp:LinkButton>
                     <asp:LinkButton ID="btnEditCustomer" href="/manageCustomer.aspx" runat="server" CssClass="btn btn-default">Manage Customer </asp:LinkButton>
                     <asp:Panel runat="server" ID="viewPet">
                         <div class="col-sm-6">
