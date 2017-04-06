@@ -201,7 +201,7 @@
          
             <uc1:listPets runat="server" ID="listPets" />
             <br />
-            <asp:Button CausesValidation="false" CssClass="btn btn-default" ID="btnAdd" Text="Add A New Pet + " OnClick="btnAdd_Click" runat="server" />
+            <asp:Button CausesValidation="false" CssClass="btn btn-default" ID="btnAdd" Text="Manage Pet" OnClick="btnAdd_Click" runat="server" />
 
         </div>
         <!--To be implemented in future -->

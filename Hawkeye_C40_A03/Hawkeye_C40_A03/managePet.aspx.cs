@@ -22,48 +22,42 @@ namespace AYadollahibastani_C40A02
             addDisplay.Visible = false;
             viewDisplay.Visible = false;
             
-            if ((UserType)Session["UserType"] == UserType.Owner)
-            {
-                newOwner = (Owner)Session["owner"];
-            }
-            else
-            {
-                newOwner = (Owner)Session["SelectedOwner"];
-            }
-
+        
             //newOwner = (Owner)Session["owner"];
             //if(Session["PetID"] != null)
             //x = (int)Session["PetID"];
             gvPetVaccination.GridLines = GridLines.None;
           
-            if(newOwner.petList.Count != 0 && Session["PetID"] == null)
-            {
-                Session["PetID"] = newOwner.petList[0].petNumber;
-            }
+            
         }
 
         protected void Page_PreRender(object sender, EventArgs e)
         {
+
+
             if (Session["owner"] == null)
             {
                 Response.Redirect("~/ManageCustomer.aspx");
                 //newOwner = new Owner();
-            }
-            else if (newOwner.petList.Count == 0)
+            } else
             {
+                if ((UserType)Session["UserType"] == UserType.Owner)
+                {
+                    newOwner = (Owner)Session["owner"];
+                }
+                else
+                {
+                    newOwner = (Owner)Session["SelectedOwner"];
+                }
 
-            }
-            else { 
-                //Application master = Master as Application;
-                //newOwner = master.owner;
-                //Session["PetId"] = newOwner.petList[0].petNumber;
-                //Session["PetId"] = 7;
-                
-
+                if (newOwner.petList.Count != 0 && Session["PetID"] == null)
+                {
+                    Session["PetID"] = newOwner.petList[0].petNumber;
+                }
                 if (!IsPostBack)
                     loadData();
-            }
-
+            }            
+            
 
             //loads data from objects into the fields
             loadData();
