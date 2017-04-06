@@ -61,12 +61,6 @@
     <Compile Include="Vaccination.cs" />
     <Compile Include="Vet.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\HawkeyehvkDB\HawkeyehvkDB.csproj">
-      <Project>{90a6ea31-f53c-4e68-96b1-aee071b4ef4f}</Project>
-      <Name>HawkeyehvkDB</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
