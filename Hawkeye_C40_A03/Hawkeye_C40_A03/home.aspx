@@ -34,6 +34,7 @@
                         <asp:Button ID="btn1" CssClass="btn btn-default" Text="More Info" runat="server" CausesValidation="false" CommandName="selectReservation" CommandArgument='<%# Eval("reservationId") %>' />
                     </ItemTemplate>
                 </asp:TemplateField>
+                <asp:BoundField HeaderText="Owner" DataField="Owner" />
                 <asp:BoundField HeaderText="Pet Names" DataField="PetNames" />
                 <asp:BoundField HeaderText="Start Date" DataField="StartDate" />
                 <asp:BoundField HeaderText="End Date" DataField="EndDate" />
