@@ -86,7 +86,7 @@
                                             <%# DataBinder.Eval(Container.DataItem, "vaccination.name")  %>
                                         </ItemTemplate>
                                         <EditItemTemplate>
-                                            <asp:TextBox ID="txtVacName" runat="server" Text=''></asp:TextBox>
+                                            <asp:Label runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "vaccination.name")  %>' />
                                         </EditItemTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Expiration Date" SortExpression="expirationDate">

@@ -25,10 +25,12 @@ namespace AYadollahibastani_C40A02
             if ((UserType)Session["UserType"] == UserType.Owner)
             {
                 newOwner = (Owner)Session["owner"];
+                gvPetVaccination.Columns[3].Visible = false;
             }
             else
             {
                 newOwner = (Owner)Session["SelectedOwner"];
+                gvPetVaccination.Columns[3].Visible = true;
             }
 
             //newOwner = (Owner)Session["owner"];
